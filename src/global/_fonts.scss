@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@mixin text($name, $weight, $size) {
+    font: $weight $size $name;
+}
+
+@mixin heading1($size) {
+    @include text("'Poppins', sans-serif", '700', $size);
+}
+
+@mixin heading2($size) {
+    @include text("'Poppins', sans-serif", '600', $size);
+}
+
+@mixin heading3($size) {
+    @include text("'Poppins', sans-serif", '500', $size);
+}
+
+@mixin body($size) {
+    @include text("'Poppins', sans-serif", '400', $size);
+}
+
+@mixin menuitem {
+    @include text("'Nunito', sans-serif", '700', $size);
+}
