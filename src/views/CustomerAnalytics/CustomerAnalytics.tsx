@@ -5,7 +5,7 @@ interface CustomerAnalyticsProps {}
 
 interface CustomerAnalyticsState {}
 
-export class CustomerAnalytics extends Component<
+export default class CustomerAnalytics extends Component<
     CustomerAnalyticsProps,
     CustomerAnalyticsState
 > {
@@ -14,4 +14,3 @@ export class CustomerAnalytics extends Component<
     }
 }
 
-export default CustomerAnalytics;

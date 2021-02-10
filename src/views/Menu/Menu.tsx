@@ -5,10 +5,9 @@ interface MenuProps {}
 
 interface MenuState {}
 
-export class Menu extends Component<MenuProps, MenuState> {
+export default class Menu extends Component<MenuProps, MenuState> {
     render() {
         return <div></div>;
     }
 }
 
-export default Menu;

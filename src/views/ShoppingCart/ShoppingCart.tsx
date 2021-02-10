@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
+import { OrderItem } from '../../models';
 import './ShoppingCart.css';
 
 interface ShoppingCartProps {}
 
-interface ShoppingCartState {}
+interface ShoppingCartState {
+    cart: OrderItem[];
+}
 
-export class ShoppingCart extends Component<
+export default class ShoppingCart extends Component<
     ShoppingCartProps,
     ShoppingCartState
 > {
     render() {
-        return <div></div>;
+        return <div id="cart"></div>;
     }
 }
-
-export default ShoppingCart;

@@ -5,7 +5,7 @@ interface ShoppingListProps {}
 
 interface ShoppingListState {}
 
-export class ShoppingList extends Component<
+export default class ShoppingList extends Component<
     ShoppingListProps,
     ShoppingListState
 > {
@@ -14,4 +14,3 @@ export class ShoppingList extends Component<
     }
 }
 
-export default ShoppingList;

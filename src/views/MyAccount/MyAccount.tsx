@@ -5,10 +5,8 @@ interface MyAccountProps {}
 
 interface MyAccountState {}
 
-export class MyAccount extends Component<MyAccountProps, MyAccountState> {
+export default class MyAccount extends Component<MyAccountProps, MyAccountState> {
     render() {
         return <div></div>;
     }
 }
-
-export default MyAccount;

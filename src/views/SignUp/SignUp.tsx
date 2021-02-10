@@ -5,10 +5,9 @@ interface SignUpProps {}
 
 interface SignUpState {}
 
-export class SignUp extends Component<SignUpProps, SignUpState> {
+export default class SignUp extends Component<SignUpProps, SignUpState> {
     render() {
         return <div></div>;
     }
 }
 
-export default SignUp;

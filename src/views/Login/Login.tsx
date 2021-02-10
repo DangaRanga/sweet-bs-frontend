@@ -5,10 +5,8 @@ interface LoginProps {}
 
 interface LoginState {}
 
-export class Login extends Component<LoginProps, LoginState> {
+export default class Login extends Component<LoginProps, LoginState> {
     render() {
         return <div></div>;
     }
 }
-
-export default Login;
