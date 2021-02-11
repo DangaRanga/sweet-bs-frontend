@@ -33,13 +33,13 @@ export default class OrderSummary extends Component<
         });
         return (
             <div id="order-summary">
-                <h3>Order Summary</h3>
+                <h1>Order Summary</h1>
                 <div className="items">{list}</div>
                 <div className="total-line">
                     <p>Total</p>
                     <p>${total}</p>
                 </div>
-                <a href="" className="btn">CHECKOUT</a>
+                <a href="" className="btn filled">CHECKOUT</a>
             </div>
         );
     }

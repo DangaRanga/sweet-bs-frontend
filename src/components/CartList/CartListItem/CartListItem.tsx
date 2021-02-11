@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { OrderItem } from '../../../models';
 import { ShoppingCart } from '../../../views';
 import './CartListItem.css';
+import placeholder from "../../../assets/cart_placeholder.png";
 
 interface CartListItemProps {
     item: OrderItem;
@@ -22,7 +23,8 @@ export default class CartListItem extends Component<
         return (
             <div className="cart-list-item">
                 <img
-                    src={this.props.item.getItem.getImgUrl}
+                src={placeholder}
+                    //src={this.props.item.getItem.getImgUrl}
                     alt=""
                     className="item-img"
                 />
@@ -32,6 +34,8 @@ export default class CartListItem extends Component<
                 </div>
                 <div className="counter">
                     <button
+                className="btn outline icon"
+
                         onClick={(e) => {
                             this.props.shoppingCart.setState((prev, props) => {
                                 var newCart = [...prev.cart];
@@ -54,6 +58,8 @@ export default class CartListItem extends Component<
                     </button>
                     <p className="qty">{this.props.item.getQty}</p>
                     <button
+                className="btn filled icon"
+
                         onClick={(e) => {
                             this.props.shoppingCart.setState((prev, props) => {
                                 var newCart = [...prev.cart];
@@ -77,6 +83,7 @@ export default class CartListItem extends Component<
                     {this.props.item.getItem.getPrice * this.props.item.getQty}
                 </p>
                 <button
+                className="btn filled icon"
                     onClick={(e) => {
                         this.props.shoppingCart.setState((prev, props) => {
                             var newCart = [...prev.cart];

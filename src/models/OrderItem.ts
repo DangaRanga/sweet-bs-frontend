@@ -1,6 +1,6 @@
 import MenuItem from './MenuItem';
 
-class OrderItem {
+export default class OrderItem {
     private item: MenuItem;
     private qty: number;
     private static counter: number = 0;
@@ -28,4 +28,3 @@ class OrderItem {
         return this.id;
     }
 }
-export default OrderItem;

@@ -1,16 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
 #cart {
   display: grid;
-  grid-template-columns: 7.5fr 2.5fr;
-  grid-template-rows: 0.5fr 0.5fr 9fr;
+  grid-template-columns: 7fr 3fr;
+  grid-template-rows: 100vh;
   width: 100%;
-  height: 100vh;
-  grid-template-areas: "back summary" "title summary" "cart summary"; }
-  #cart a.nav {
-    grid-area: back; }
+  max-height: 100vh;
+  grid-template-areas: 'main summary'; }
   #cart #order-summary {
     grid-area: summary; }
-  #cart .pgtitle {
-    grid-area: title; }
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlNob3BwaW5nQ2FydC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsd0hBQXdIO0FBQ3hIO0VBQ0UsYUFBYTtFQUNiLGtDQUFrQztFQUNsQyxtQ0FBbUM7RUFDbkMsV0FBVztFQUNYLGFBQWE7RUFDYixrRUFBa0UsRUFBRTtFQUNwRTtJQUNFLGVBQWUsRUFBRTtFQUNuQjtJQUNFLGtCQUFrQixFQUFFO0VBQ3RCO0lBQ0UsZ0JBQWdCLEVBQUUiLCJmaWxlIjoiU2hvcHBpbmdDYXJ0LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKFwiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1OdW5pdG86d2dodEA3MDAmZmFtaWx5PVBvcHBpbnM6d2dodEA0MDA7NTAwOzYwMDs3MDAmZGlzcGxheT1zd2FwXCIpO1xuI2NhcnQge1xuICBkaXNwbGF5OiBncmlkO1xuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDcuNWZyIDIuNWZyO1xuICBncmlkLXRlbXBsYXRlLXJvd3M6IDAuNWZyIDAuNWZyIDlmcjtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwdmg7XG4gIGdyaWQtdGVtcGxhdGUtYXJlYXM6IFwiYmFjayBzdW1tYXJ5XCIgXCJ0aXRsZSBzdW1tYXJ5XCIgXCJjYXJ0IHN1bW1hcnlcIjsgfVxuICAjY2FydCBhLm5hdiB7XG4gICAgZ3JpZC1hcmVhOiBiYWNrOyB9XG4gICNjYXJ0ICNvcmRlci1zdW1tYXJ5IHtcbiAgICBncmlkLWFyZWE6IHN1bW1hcnk7IH1cbiAgI2NhcnQgLnBndGl0bGUge1xuICAgIGdyaWQtYXJlYTogdGl0bGU7IH1cbiJdfQ== */
+  #cart main {
+    padding: 3rem 5rem;
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 9fr;
+    grid-template-columns: auto; }
+    #cart main .pgtitle {
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+      font-size: 2.25rem;
+      color: #232323;
+      margin: 2rem 0; }
+    #cart main a.nav {
+      color: #9377e2;
+      font-weight: 700;
+      font-family: "Poppins", sans-serif;
+      font-size: 1.15rem; }

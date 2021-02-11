@@ -1,2 +1,8 @@
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJDYXJ0TGlzdC5jc3MifQ== */
+#cart-list {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: min-content;
+  row-gap: 1.5rem;
+  overflow: scroll;
+  max-height: 100%;
+  width: 100%; }

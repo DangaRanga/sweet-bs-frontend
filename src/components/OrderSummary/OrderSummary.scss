@@ -1,8 +1,53 @@
-@import "../../global/colours";
-@import "../../global/fonts";
+@import '../../global/colours';
+@import '../../global/fonts';
 
-#order-summary{
+#order-summary {
     background-color: $bgDarker;
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
+    color: $onLight;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6.4rem 4rem 3rem 4rem;
+
+    h1{
+        @include heading1;
+        font-size: 1.5rem;
+    }
+
+    .items,.total-line{
+        display: grid;
+        grid-template-columns: 3fr 1.5fr;
+        grid-auto-rows: 1fr;
+        row-gap: 0.5rem;
+        align-items: flex-end;
+
+        p:nth-child(2n+1){
+            text-align: left;
+        }
+
+        p:nth-child(2n){
+            text-align: right;
+        }
+    }
+
+    .item-name{
+        @include body;
+        font-size: 1.15rem;
+    }
+
+    .item-qty{
+        @include heading1;
+        font-size: 1.15rem;
+    }
+
+    .total-line{
+        @include heading1;
+        font-size: 1.5rem;
+    }
+
+    a.btn{
+        font-size: 1.5rem;
+    }
 }

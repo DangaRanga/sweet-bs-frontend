@@ -1,4 +1,4 @@
-class MenuItem {
+export default class MenuItem {
     private price: number;
     private name: string;
     private desc: string;
@@ -59,4 +59,3 @@ class MenuItem {
     }
 }
 
-export default MenuItem;

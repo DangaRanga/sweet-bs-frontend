@@ -2,6 +2,37 @@
 #order-summary {
   background-color: #f8f5ff;
   height: 100%;
-  width: 100%; }
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk9yZGVyU3VtbWFyeS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsd0hBQXdIO0FBQ3hIO0VBQ0UseUJBQXlCO0VBQ3pCLFlBQVk7RUFDWixXQUFXLEVBQUUiLCJmaWxlIjoiT3JkZXJTdW1tYXJ5LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKFwiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1OdW5pdG86d2dodEA3MDAmZmFtaWx5PVBvcHBpbnM6d2dodEA0MDA7NTAwOzYwMDs3MDAmZGlzcGxheT1zd2FwXCIpO1xuI29yZGVyLXN1bW1hcnkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmNWZmO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlOyB9XG4iXX0= */
+  width: 100%;
+  color: #232323;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6.4rem 4rem 3rem 4rem; }
+  #order-summary h1 {
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem; }
+  #order-summary .items, #order-summary .total-line {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr;
+    grid-auto-rows: 1fr;
+    row-gap: 0.5rem;
+    align-items: flex-end; }
+    #order-summary .items p:nth-child(2n+1), #order-summary .total-line p:nth-child(2n+1) {
+      text-align: left; }
+    #order-summary .items p:nth-child(2n), #order-summary .total-line p:nth-child(2n) {
+      text-align: right; }
+  #order-summary .item-name {
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.15rem; }
+  #order-summary .item-qty {
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.15rem; }
+  #order-summary .total-line {
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem; }
+  #order-summary a.btn {
+    font-size: 1.5rem; }

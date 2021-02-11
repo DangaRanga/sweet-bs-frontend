@@ -1,4 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
+.btn {
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .btn:not(.icon) {
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    padding: 1.7rem 4rem;
+    border-radius: 10px; }
+  .btn.icon {
+    border-radius: 50%; }
+  .btn.filled {
+    background-color: #9377e2;
+    color: #ffffff; }
+  .btn.outline {
+    background-color: #ffffff; }
+    .btn.outline.icon {
+      border: #9377e2 1px solid;
+      color: #9377e2; }
+    .btn.outline:not(.icon) {
+      color: #232323; }
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+:root {
+  font-size: 12px; }
+
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar {
+  background-color: transparent; }
+
+::-webkit-scrollbar {
+  width: 12px; }
+
+::-webkit-scrollbar-button {
+  display: none; }
+
+::-webkit-scrollbar-corner {
+  background-color: #f8f5ff;
+  border-radius: 5px; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #d5c6ff;
+  border-radius: 7px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9377e2; }
