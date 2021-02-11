@@ -1,6 +1,6 @@
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import React, { Component } from 'react';
-import { NotFound, ShoppingCart } from '../views';
+import { NotFound, ShoppingCart } from '../pages';
 
 interface RoutesProps {}
 

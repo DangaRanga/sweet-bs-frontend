@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { OrderItem } from '../../models';
-import { ShoppingCart } from '../../views';
+import { ShoppingCart } from '../../pages';
 import './OrderSummary.css';
 
 interface OrderSummaryProps {
