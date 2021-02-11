@@ -1,0 +1,10 @@
+.cart-list-item {
+  display: grid;
+  grid-template-columns: 20% 40% 10% 20% 10%;
+  grid-template-rows: min-content; }
+  .cart-list-item .info {
+    display: flex;
+    flex-direction: column; }
+  .cart-list-item .counter {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; }
