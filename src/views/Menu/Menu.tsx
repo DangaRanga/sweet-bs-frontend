@@ -10,4 +10,3 @@ export default class Menu extends Component<MenuProps, MenuState> {
         return <div></div>;
     }
 }
-

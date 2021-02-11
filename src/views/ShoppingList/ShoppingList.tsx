@@ -13,4 +13,3 @@ export default class ShoppingList extends Component<
         return <div></div>;
     }
 }
-

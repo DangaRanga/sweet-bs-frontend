@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { OrderItem } from '../../../models';
 import { ShoppingCart } from '../../../views';
 import './CartListItem.css';
-import placeholder from "../../../assets/cart_placeholder.png";
+import placeholder from '../../../assets/cart_placeholder.png';
 
 interface CartListItemProps {
     item: OrderItem;
@@ -23,19 +23,21 @@ export default class CartListItem extends Component<
         return (
             <div className="cart-list-item">
                 <img
-                src={placeholder}
+                    src={placeholder}
                     //src={this.props.item.getItem.getImgUrl}
                     alt=""
                     className="item-img"
                 />
                 <div className="info">
-                    <p className="name">{this.props.item.getItem.getSelectedFlavour} {this.props.item.getItem.getName}</p>
+                    <p className="name">
+                        {this.props.item.getItem.getSelectedFlavour}{' '}
+                        {this.props.item.getItem.getName}
+                    </p>
                     <p className="desc">{this.props.item.getItem.getDesc}</p>
                 </div>
                 <div className="counter">
                     <button
-                className="btn outline icon"
-
+                        className="btn outline icon"
                         onClick={(e) => {
                             this.props.shoppingCart.setState((prev, props) => {
                                 var newCart = [...prev.cart];
@@ -58,8 +60,7 @@ export default class CartListItem extends Component<
                     </button>
                     <p className="qty">{this.props.item.getQty}</p>
                     <button
-                className="btn filled icon"
-
+                        className="btn filled icon"
                         onClick={(e) => {
                             this.props.shoppingCart.setState((prev, props) => {
                                 var newCart = [...prev.cart];
@@ -83,7 +84,7 @@ export default class CartListItem extends Component<
                     {this.props.item.getItem.getPrice * this.props.item.getQty}
                 </p>
                 <button
-                className="btn filled icon"
+                    className="btn filled icon"
                     onClick={(e) => {
                         this.props.shoppingCart.setState((prev, props) => {
                             var newCart = [...prev.cart];

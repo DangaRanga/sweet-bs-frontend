@@ -13,4 +13,3 @@ export default class CustomerAnalytics extends Component<
         return <div></div>;
     }
 }
-

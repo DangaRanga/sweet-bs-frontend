@@ -1,19 +1,15 @@
-import React, { Component } from "react";
-import "./EmptyCart.css";
+import React, { Component } from 'react';
+import './EmptyCart.css';
 
+interface EmptyCartProps {}
 
-interface EmptyCartProps {
-}
+interface EmptyCartState {}
 
-interface EmptyCartState {
-}
-
-export default class EmptyCart extends Component<EmptyCartProps,EmptyCartState> {
+export default class EmptyCart extends Component<
+    EmptyCartProps,
+    EmptyCartState
+> {
     render() {
-        return (
-            <div>
-                Empty
-            </div>
-        );
+        return <div>Empty</div>;
     }
 }

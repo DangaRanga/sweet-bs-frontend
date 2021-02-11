@@ -1,14 +1,11 @@
-import React, { Component } from "react";
-import "./NotFound.css";
+import React, { Component } from 'react';
+import './NotFound.css';
 
+interface NotFoundProps {}
 
-interface NotFoundProps {
-}
+interface NotFoundState {}
 
-interface NotFoundState {
-}
-
-export default class NotFound extends Component<NotFoundProps,NotFoundState> {
+export default class NotFound extends Component<NotFoundProps, NotFoundState> {
     render() {
         return (
             <div>

@@ -11,43 +11,44 @@
     justify-content: space-between;
     padding: 6.4rem 4rem 3rem 4rem;
 
-    h1{
+    h1 {
         @include heading1;
         font-size: 1.5rem;
     }
 
-    .items,.total-line{
+    .items,
+    .total-line {
         display: grid;
         grid-template-columns: 3fr 1.5fr;
         grid-auto-rows: 1fr;
         row-gap: 0.5rem;
         align-items: flex-end;
 
-        p:nth-child(2n+1){
+        p:nth-child(2n + 1) {
             text-align: left;
         }
 
-        p:nth-child(2n){
+        p:nth-child(2n) {
             text-align: right;
         }
     }
 
-    .item-name{
+    .item-name {
         @include body;
         font-size: 1.15rem;
     }
 
-    .item-qty{
+    .item-qty {
         @include heading1;
         font-size: 1.15rem;
     }
 
-    .total-line{
+    .total-line {
         @include heading1;
         font-size: 1.5rem;
     }
 
-    a.btn{
+    a.btn {
         font-size: 1.5rem;
     }
 }

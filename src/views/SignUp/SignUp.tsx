@@ -10,4 +10,3 @@ export default class SignUp extends Component<SignUpProps, SignUpState> {
         return <div></div>;
     }
 }
-

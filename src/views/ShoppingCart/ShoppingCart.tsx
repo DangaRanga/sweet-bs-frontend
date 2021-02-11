@@ -63,7 +63,11 @@ export default class ShoppingCart extends Component<
                         Back to Menu
                     </Link>
                     <h2 className="pgtitle">My Order</h2>
-{this.state.cart.length!==0 ? <CartList shoppingCart={this} /> : <EmptyCart/>}
+                    {this.state.cart.length !== 0 ? (
+                        <CartList shoppingCart={this} />
+                    ) : (
+                        <EmptyCart />
+                    )}
                 </main>
                 <aside>
                     <OrderSummary shoppingCart={this} />

@@ -39,7 +39,9 @@ export default class OrderSummary extends Component<
                     <p>Total</p>
                     <p>${total}</p>
                 </div>
-                <a href="" className="btn filled">CHECKOUT</a>
+                <a href="" className="btn filled">
+                    CHECKOUT
+                </a>
             </div>
         );
     }

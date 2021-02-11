@@ -1,5 +1,5 @@
 @import './colours';
-@import "./fonts";
+@import './fonts';
 
 .btn {
     outline: none;
@@ -9,7 +9,7 @@
     justify-content: center;
     cursor: pointer;
 
-    &:not(.icon){
+    &:not(.icon) {
         @include heading1;
         padding: 1.7rem 4rem;
         border-radius: 10px;

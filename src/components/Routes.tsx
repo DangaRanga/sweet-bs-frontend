@@ -16,7 +16,7 @@ export default class Routes extends Component<RoutesProps, RoutesState> {
                     </Route>
 
                     <Route>
-                        <NotFound/>
+                        <NotFound />
                     </Route>
                 </Switch>
             </BrowserRouter>

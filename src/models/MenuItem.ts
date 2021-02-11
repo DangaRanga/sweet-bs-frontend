@@ -12,7 +12,7 @@ export default class MenuItem {
         desc: string,
         imgUrl: string,
         flavours: string[],
-        selectedFlavour?:string
+        selectedFlavour?: string
     ) {
         this.price = price;
         this.name = name;
@@ -58,4 +58,3 @@ export default class MenuItem {
         return flav in this.getFlavours;
     }
 }
-
