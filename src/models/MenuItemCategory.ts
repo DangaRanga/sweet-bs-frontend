@@ -1,13 +1,14 @@
-import { Model, MenuItem } from '.';
+import {  MenuItem } from '.';
+import DbModel from './DbModel';
 
-export default class MenuItemCategory extends Model {
+export default class MenuItemCategory extends DbModel {
     private _name: string;
-    private _menuitems?: MenuItem[];
+    private _menuitems: MenuItem[];
 
     constructor(category: string, menuitems?: MenuItem[], id?: number) {
         super(id);
         this._name = category;
-        this._menuitems = menuitems;
+        this._menuitems = menuitems ?? [];
     }
 
     public toJSON(): object {
@@ -39,7 +40,7 @@ export default class MenuItemCategory extends Model {
         this._name = value;
     }
 
-    public get menuitems(): MenuItem[] | undefined {
+    public get menuitems(): MenuItem[] {
         return this._menuitems;
     }
 }

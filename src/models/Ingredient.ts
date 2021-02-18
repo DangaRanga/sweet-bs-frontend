@@ -1,6 +1,6 @@
-import { Model } from '.';
+import DbModel from "./DbModel";
 
-export default class Ingredient extends Model {
+export default class Ingredient extends DbModel {
     private _name: string;
 
     constructor(name: string, id?: number) {

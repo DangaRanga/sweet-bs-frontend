@@ -1,7 +1,7 @@
-import { Model } from '.';
+import DbModel  from './DbModel';
 import { Email } from './index';
 
-abstract class User extends Model {
+export abstract class User extends DbModel {
     private _username: string;
     private _email: Email;
     private _password: string;
@@ -84,6 +84,12 @@ abstract class User extends Model {
     public get createdOn(): Date {
         return this._createdOn;
     }
+
+    
+    public get localStorageFormat() : string {
+        return JSON.stringify(this.toJSON());
+    }
+    
 }
 
 export class Customer extends User {

@@ -1,5 +1,6 @@
-import { Customer, Model, OrderItem } from '.';
-export default class Order extends Model {
+import { Customer, OrderItem } from '.';
+import DbModel from './DbModel';
+export default class Order extends DbModel {
     private _complete: boolean;
 
     private _items: OrderItem[];

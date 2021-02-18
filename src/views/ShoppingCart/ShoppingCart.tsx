@@ -1,59 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { CartList, EmptyCart, OrderSummary } from '../../components';
-import { MenuItem, OrderItem } from '../../models';
+import { AppController, ShoppingCartController } from '../../controllers';
 import './ShoppingCart.css';
 
-interface ShoppingCartProps {}
-
-interface ShoppingCartState {
-    cart: OrderItem[];
+interface ShoppingCartProps {
+    appCtrl:AppController;
 }
+
+interface ShoppingCartState {}
 
 export default class ShoppingCart extends Component<
     ShoppingCartProps,
     ShoppingCartState
 > {
-    readonly state: Readonly<ShoppingCartState> = {
-        cart: [
-            new OrderItem(
-                new MenuItem(350, 'Cookies', 'Cookies', '', ['Oatmeal']),
-                3
-            ),
-            new OrderItem(
-                new MenuItem(1000, 'Cheesecake', 'Cheesecake', '', [
-                    'Strawberry',
-                    'Cherry',
-                    'Rum Cream',
-                ]),
-                2
-            ),
-            new OrderItem(
-                new MenuItem(350, 'Cookies', 'Cookies', '', ['Oatmeal']),
-                3
-            ),
-            new OrderItem(
-                new MenuItem(1000, 'Cheesecake', 'Cheesecake', '', [
-                    'Strawberry',
-                    'Cherry',
-                    'Rum Cream',
-                ]),
-                2
-            ),
-            new OrderItem(
-                new MenuItem(350, 'Cookies', 'Cookies', '', ['Oatmeal']),
-                3
-            ),
-            new OrderItem(
-                new MenuItem(1000, 'Cheesecake', 'Cheesecake', '', [
-                    'Strawberry',
-                    'Cherry',
-                    'Rum Cream',
-                ]),
-                2
-            ),
-        ],
-    };
+    private _controller: ShoppingCartController;
+
+    constructor(props: ShoppingCartProps) {
+        super(props);
+        this._controller = new ShoppingCartController(this, this.props.appCtrl);
+    }
 
     render() {
         return (
@@ -63,14 +29,14 @@ export default class ShoppingCart extends Component<
                         Back to Menu
                     </Link>
                     <h2 className="pgtitle">My Order</h2>
-                    {this.state.cart.length !== 0 ? (
-                        <CartList shoppingCart={this} />
+                    {!this._controller.appCtrl.isCartEmpty ? (
+                        <CartList controller={this._controller} />
                     ) : (
                         <EmptyCart />
                     )}
                 </main>
                 <aside>
-                    <OrderSummary shoppingCart={this} />
+                    <OrderSummary controller={this._controller} />
                 </aside>
             </div>
         );

@@ -1,6 +1,7 @@
-import { MenuItem, Model } from '.';
+import { MenuItem,} from '.';
+import DbModel from './DbModel';
 
-export default class OrderItem extends Model {
+export default class OrderItem extends DbModel {
     private _menuitem: MenuItem;
     private _qty: number;
 
