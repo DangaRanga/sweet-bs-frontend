@@ -24,9 +24,9 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "sass-task:scss-compile": "node-sass-chokidar -r src -o src",
-        "sass-task:autoprefix": "postcss src/**/**/**/*.css -r -u autoprefixer ",
+        "sass-task:autoprefix": "postcss src/**/**/*.css -r -u autoprefixer ",
         "sass:build": "npm-run-all -p sass-task:*",
-        "sass:watch": "chokidar src/**/**/**/*.scss -c \"npm run sass:build\"",
+        "sass:watch": "chokidar src/**/**/*.scss -c \"npm run sass:build\"",
         "dev:sass": "npm-run-all -p sass:*",
         "format": "npx prettier --write .",
         "start": "npm-run-all -p dev:*"

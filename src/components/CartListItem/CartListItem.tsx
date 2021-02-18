@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './CartListItem.css';
-import placeholder from '../../../assets/cart_placeholder.png';
-import { ShoppingCartController } from '../../../controllers';
-import { OrderItem } from '../../../models';
+import placeholder from '../../assets/cart_placeholder.png';
+import { ShoppingCartController } from '../../controllers';
+import { OrderItem } from '../../models';
 
 interface CartListItemProps {
     item: OrderItem;

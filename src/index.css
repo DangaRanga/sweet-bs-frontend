@@ -9,7 +9,7 @@
   .btn:not(.icon) {
     font-weight: 700;
     font-family: "Poppins", sans-serif;
-    padding: 1.7rem 4rem;
+    padding: 1.2rem 2.5rem;
     border-radius: 10px; }
   .btn.icon {
     border-radius: 50%; }

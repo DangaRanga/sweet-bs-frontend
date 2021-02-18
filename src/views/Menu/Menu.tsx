@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { WebsiteNav } from '../../components';
 import MenuItemDisplay from '../../components/MenuItemDisplay/MenuItemDisplay';
 import MenuItemSwitcher from '../../components/MenuItemSwitcher/MenuItemSwitcher';
 import { AppController, MenuController } from '../../controllers';
@@ -7,7 +8,7 @@ import { MenuItemCategory } from '../../models';
 import './Menu.css';
 
 interface MenuProps {
-    appCtrl:AppController;
+    appCtrl: AppController;
 }
 
 interface MenuState {
@@ -35,15 +36,16 @@ export default class Menu extends Component<MenuProps, MenuState> {
     }
 
     render() {
-        
-        return this.state.items.length>0 ? (
+        return this.state.items.length > 0 ? (
             <div id="menu">
-                <Link to="/cart">Cart</Link>
+                <WebsiteNav />
                 <MenuItemDisplay controller={this._controller} />
                 <MenuItemSwitcher controller={this._controller} />
             </div>
         ) : (
-            <div></div>
+            <div id="menu">
+                <WebsiteNav />
+            </div>
         );
     }
 }

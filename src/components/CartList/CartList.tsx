@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ShoppingCartController } from '../../controllers';
 import './CartList.css';
-import CartListItem from './CartListItem/CartListItem';
+import CartListItem from '../CartListItem/CartListItem';
 
 interface CartListProps {
     controller: ShoppingCartController;

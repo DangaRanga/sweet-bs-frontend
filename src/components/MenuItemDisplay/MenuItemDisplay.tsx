@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { MenuController } from '../../controllers';
 import { MenuItem } from '../../models';
 import './MenuItemDisplay.css';
-
+import placeholder from "../../assets/cart_placeholder.png";
 interface MenuItemDisplayProps {
     controller: MenuController;
 }
@@ -55,9 +55,9 @@ export default class MenuItemDisplay extends Component<
                         <h3>Flavours</h3>
                         <div>{flavours}</div>
                     </div>
-                    <div>
+                    <div id="add-to-cart-section">
                         <div id="qty-chooser">
-                            <button className="btn">-</button>
+                            <button className="btn minus">-</button>
                             <input
                                 type="number"
                                 name="qty"
@@ -66,10 +66,10 @@ export default class MenuItemDisplay extends Component<
                                 min={1}
                                 readOnly={true}
                             />
-                            <button className="btn">+</button>
+                            <button className="btn plus">+</button>
                         </div>
                         <button
-                            className="btn"
+                            className="btn primary filled"
                             id="add-to-cart-btn"
                             onClick={() => {
                                 const qty: HTMLInputElement = document.getElementById(
@@ -85,8 +85,9 @@ export default class MenuItemDisplay extends Component<
                         </button>
                     </div>
                 </div>
-                <img
-                    src={this.controller.selectedFlavour?.imgUrl}
+                <img id="pastry-img"
+                    src={placeholder}
+                    //src={this.controller.selectedFlavour?.imgUrl}
                     alt={this.controller.selectedFlavour?.fullName}
                 />
             </div>
