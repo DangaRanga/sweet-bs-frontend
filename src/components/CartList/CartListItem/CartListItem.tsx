@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { OrderItem } from '../../../models';
-import { ShoppingCart } from '../../../pages';
+import { ShoppingCart } from '../../../views';
 import './CartListItem.css';
 import placeholder from '../../../assets/cart_placeholder.png';
 

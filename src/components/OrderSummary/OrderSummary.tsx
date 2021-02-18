@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { OrderItem } from '../../models';
-import { ShoppingCart } from '../../pages';
+import { ShoppingCart } from '../../views';
 import './OrderSummary.css';
 
 interface OrderSummaryProps {
@@ -19,17 +19,17 @@ export default class OrderSummary extends Component<
 
         this.cart.forEach((oitem) => {
             list.push(
-                <p key={`item-name-${oitem.getId}`} className="item-name">
-                    {oitem.getItem.getSelectedFlavour} {oitem.getItem.getName}
+                <p key={`item-name-${oitem.id}`} className="item-name">
+                    {oitem.menuitem.fullName} 
                 </p>
             );
             list.push(
-                <p key={`item-qty-${oitem.getId}`} className="item-qty">
-                    x{oitem.getQty}
+                <p key={`item-qty-${oitem.id}`} className="item-qty">
+                    x{oitem.qty}
                 </p>
             );
 
-            total += oitem.getItem.price * oitem.getQty;
+            total += oitem.menuitem.price * oitem.qty;
         });
         return (
             <div id="order-summary">
