@@ -1,6 +1,6 @@
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import React, { Component } from 'react';
-import { NotFound, ShoppingCart } from '../pages';
+import { Menu, NotFound, ShoppingCart } from '../pages';
 
 interface RoutesProps {}
 
@@ -14,7 +14,9 @@ export default class Routes extends Component<RoutesProps, RoutesState> {
                     <Route exact path="/cart">
                         <ShoppingCart></ShoppingCart>
                     </Route>
-
+                    <Route exact path="/menu">
+                        <Menu></Menu>
+                    </Route>
                     <Route>
                         <NotFound />
                     </Route>

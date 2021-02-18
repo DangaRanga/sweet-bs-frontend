@@ -1,60 +1,92 @@
-export default class MenuItem {
-    private price: number;
-    private name: string;
-    private desc: string;
-    private imgUrl: string;
-    private flavours: string[];
-    private selectedFlavour: string;
+import { Ingredient, MenuItemCategory, Model } from '.';
+
+export default class MenuItem extends Model {
+    private _price: number;
+    private _flavour: string;
+    private _description: string;
+    private _imgUrl: string;
+    private _category: MenuItemCategory;
+    private _ingredients: Ingredient[];
 
     constructor(
         price: number,
-        name: string,
+        flavour: string,
         desc: string,
         imgUrl: string,
-        flavours: string[],
-        selectedFlavour?: string
+        category: MenuItemCategory,
+        ingredients: Ingredient[],
+        id?: number
     ) {
-        this.price = price;
-        this.name = name;
-        this.desc = desc;
-        this.imgUrl = imgUrl;
-        this.flavours = flavours;
-        this.selectedFlavour = selectedFlavour || this.flavours[0];
+        super(id);
+        this._price = price;
+        this._flavour = flavour;
+        this._description = desc;
+        this._imgUrl = imgUrl;
+        this._category = category;
+        this._ingredients = ingredients;
     }
 
-    public get getPrice(): number {
-        return this.price;
+    public toJSON(): object {
+        return this.id
+            ? {
+                  id: this.id,
+                  flavour: this.flavour,
+                  category: this.category,
+                  description: this.description,
+                  price: this.price,
+                  img_url: this.imgUrl,
+                  ingredients: this.ingredients,
+              }
+            : {
+                  flavour: this.flavour,
+                  category: this.category,
+                  description: this.description,
+                  price: this.price,
+                  img_url: this.imgUrl,
+                  ingredients: this.ingredients,
+              };
     }
 
-    public get getName(): string {
-        return this.name;
+    public static fromJSON(json: any): MenuItem {
+        return new MenuItem(
+            json['price'],
+            json['flavour'],
+            json['description'],
+            json['img_url'],
+            MenuItemCategory.fromJSON(json['category']),
+            json['ingredients']?.map((v: any) => Ingredient.fromJSON(v)) ?? [],
+            json['id']
+        );
     }
 
-    public get getDesc(): string {
-        return this.desc;
+    public get price(): number {
+        return this._price;
     }
 
-    public get getImgUrl(): string {
-        return this.imgUrl;
+    public get flavour(): string {
+        return this._flavour;
     }
 
-    public get getFlavours(): string[] {
-        return this.flavours;
+    public get description(): string {
+        return this._description;
     }
 
-    public get getSelectedFlavour(): string {
-        return this.selectedFlavour;
+    public get imgUrl(): string {
+        return this._imgUrl;
     }
 
-    public set setSelectedFlavour(flav: string) {
-        if (this.isValidFlavour(flav)) {
-            this.selectedFlavour = flav;
-        } else {
-            console.error('Not a flavour');
-        }
+    public get category(): MenuItemCategory {
+        return this._category;
     }
 
-    private isValidFlavour(flav: string) {
-        return flav in this.getFlavours;
+    public get fullName(): string {
+        return [this.flavour, this.category.name].join(' ');
+    }
+
+    public get ingredients(): Ingredient[] {
+        return this._ingredients;
+    }
+    public set ingredients(value: Ingredient[]) {
+        this._ingredients = value;
     }
 }

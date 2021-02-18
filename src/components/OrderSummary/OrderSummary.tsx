@@ -29,7 +29,7 @@ export default class OrderSummary extends Component<
                 </p>
             );
 
-            total += oitem.getItem.getPrice * oitem.getQty;
+            total += oitem.getItem.price * oitem.getQty;
         });
         return (
             <div id="order-summary">

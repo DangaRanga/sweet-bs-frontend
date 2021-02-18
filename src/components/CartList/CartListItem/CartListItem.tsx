@@ -33,7 +33,7 @@ export default class CartListItem extends Component<
                         {this.props.item.getItem.getSelectedFlavour}{' '}
                         {this.props.item.getItem.getName}
                     </p>
-                    <p className="desc">{this.props.item.getItem.getDesc}</p>
+                    <p className="desc">{this.props.item.getItem.desc}</p>
                 </div>
                 <div className="counter">
                     <button
@@ -81,7 +81,7 @@ export default class CartListItem extends Component<
                     </button>
                 </div>
                 <p className="price">
-                    {this.props.item.getItem.getPrice * this.props.item.getQty}
+                    {this.props.item.getItem.price * this.props.item.getQty}
                 </p>
                 <button
                     className="btn filled icon"
