@@ -5,7 +5,7 @@ import { AppController, ShoppingCartController } from '../../controllers';
 import './ShoppingCart.css';
 
 interface ShoppingCartProps {
-    appCtrl:AppController;
+    appCtrl: AppController;
 }
 
 interface ShoppingCartState {}

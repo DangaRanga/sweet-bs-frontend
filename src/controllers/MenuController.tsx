@@ -22,8 +22,6 @@ export default class MenuController extends ViewController {
         });
     }
 
-    
-
     public switchSelectedCategory(index: number): void {
         this._menuView.setState({ selectedCategory: index });
     }

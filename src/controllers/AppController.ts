@@ -1,7 +1,8 @@
-
 import { App } from '../components';
 import {
+    Customer,
     MenuItem,
+    Order,
     OrderItem,
     ShoppingCartData,
     User,
@@ -15,7 +16,10 @@ export default class AppController {
     }
 
     private updateCart(newCart: OrderItem[]): void {
-        localStorage.setItem('cart', new ShoppingCartData(newCart).localStorageFormat);
+        localStorage.setItem(
+            'cart',
+            new ShoppingCartData(newCart).localStorageFormat
+        );
     }
 
     public addToCart(menuitem: MenuItem, qty: number): void {
@@ -83,17 +87,53 @@ export default class AppController {
             return { cart: new ShoppingCartData(newCart) };
         });
     }
+    public async sendOrder(): Promise<boolean> {
+        var success: boolean = false;
+        var items: OrderItem[];
+        var user: Customer;
+        var newOrder!: Order;
+        this._app.setState(
+            (prevState, prevProps) => {
+                items = prevState.cart.items;
+                user = prevState.user as Customer;
+                newOrder = new Order(false, items, user);
+            },
+            () => {
+                fetch('http://0.0.0.0:9090/orders/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: newOrder.toJSON(),
+                })
+                    .then((res) => {
+                        success = res.status === 200;
+                    })
+                    .catch((err) => console.log(err));
+            }
+        );
+        return success;
+    }
+
+    public emptyCart(): void {
+        this._app.setState({ cart: new ShoppingCartData() });
+        this.updateCart([]);
+    }
 
     public get isCartEmpty(): boolean {
         return this._app.state.cart.items.length === 0;
+    }
+
+    public get app(): App {
+        return this._app;
     }
 
     public get cart(): ShoppingCartData {
         return this._app.state.cart;
     }
 
-    public set cart(value:ShoppingCartData){
-        this._app.setState({cart:value});
+    public set cart(value: ShoppingCartData) {
+        this._app.setState({ cart: value });
         localStorage.setItem('cart', value.localStorageFormat);
     }
 
@@ -103,7 +143,7 @@ export default class AppController {
 
     public set user(value: User | undefined) {
         if (this.user === undefined && value !== undefined) {
-            console.log("hi");
+            console.log('hi');
             this._app.setState({ user: value });
             localStorage.setItem('user', value.localStorageFormat);
         }

@@ -11,8 +11,8 @@
     color: $onLight;
     @include body;
 
-    #pastry-img{
-        width: 40% ;
+    #pastry-img {
+        width: 40%;
         height: auto;
         border-radius: 50%;
         object-fit: cover;
@@ -41,7 +41,7 @@
         #flavours {
             div {
                 display: grid;
-                gap:1rem;
+                gap: 1rem;
                 grid-template-columns: 1fr 1fr;
                 grid-auto-rows: 4rem;
                 .flavour {
@@ -58,13 +58,13 @@
             justify-content: space-between;
             @include heading1;
             width: 100%;
-            height:5rem;
+            height: 5rem;
 
             .btn {
                 padding: 0.5rem;
             }
 
-            #add-to-cart-btn{
+            #add-to-cart-btn {
                 box-shadow: $shadow 0 4px 16px -3px;
                 padding: 1rem 3rem;
             }

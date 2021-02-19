@@ -19,7 +19,7 @@ export default class OrderSummary extends Component<
         this.cart.items.forEach((oitem) => {
             list.push(
                 <p key={`item-name-${oitem.menuitem.id}`} className="item-name">
-                    {oitem.menuitem.fullName} 
+                    {oitem.menuitem.fullName}
                 </p>
             );
             list.push(
@@ -38,9 +38,12 @@ export default class OrderSummary extends Component<
                     <p>Total</p>
                     <p>${total}</p>
                 </div>
-                <button className="btn filled primary" onClick={(e)=>{
-                    this.props.controller.placeOrder()
-                }}>
+                <button
+                    className="btn filled primary"
+                    onClick={(e) => {
+                        this.props.controller.placeOrder();
+                    }}
+                >
                     CHECKOUT
                 </button>
             </div>

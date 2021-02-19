@@ -14,9 +14,7 @@ export default class ShoppingCartData {
         this._items = value;
     }
 
-    
-    public get localStorageFormat() : string {
-        return JSON.stringify(this._items.map(item=>item.toObject()));
+    public get localStorageFormat(): string {
+        return JSON.stringify(this._items.map((item) => item.toObject()));
     }
-    
 }

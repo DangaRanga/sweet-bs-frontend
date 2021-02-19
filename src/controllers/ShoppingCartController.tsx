@@ -12,16 +12,10 @@ export default class ShoppingCartController extends ViewController {
     }
 
     public placeOrder(): void {
-        var items = this.appCtrl.cart.items;
-        var user = this.appCtrl.user;
-        var newOrder = new Order(false, items, user as Customer);
-        //console.log(newOrder);
-        fetch('http://0.0.0.0:9090/orders/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: newOrder.toJSON(),
-        }).catch((err) => console.log(err));
+        if (this.appCtrl.sendOrder()) {
+            this.appCtrl.emptyCart();
+        } else {
+            console.log('failed');
+        }
     }
 }

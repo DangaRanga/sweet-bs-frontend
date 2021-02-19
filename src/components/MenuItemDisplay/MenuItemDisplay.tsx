@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { MenuController } from '../../controllers';
 import { MenuItem } from '../../models';
 import './MenuItemDisplay.css';
-import placeholder from "../../assets/cart_placeholder.png";
+import placeholder from '../../assets/cart_placeholder.png';
 interface MenuItemDisplayProps {
     controller: MenuController;
 }
@@ -85,7 +85,8 @@ export default class MenuItemDisplay extends Component<
                         </button>
                     </div>
                 </div>
-                <img id="pastry-img"
+                <img
+                    id="pastry-img"
                     src={placeholder}
                     //src={this.controller.selectedFlavour?.imgUrl}
                     alt={this.controller.selectedFlavour?.fullName}

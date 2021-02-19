@@ -32,9 +32,8 @@ export default class App extends Component<AppProps, AppState> {
 
     componentDidMount() {
         var userData = localStorage.getItem('user');
-        var user: User;
+        var user: User | undefined;
         var cartData = localStorage.getItem('cart');
-        console.log(userData);
         if (userData) {
             try {
                 user = Customer.fromJSON(JSON.parse(userData));
@@ -42,20 +41,14 @@ export default class App extends Component<AppProps, AppState> {
                 try {
                     user = Admin.fromJSON(JSON.parse(userData));
                 } catch (e) {
-                    console.log(e);
+                    user = undefined;
                 }
+            } finally {
+                this.setState({ user: user });
             }
         }
         if (cartData) {
-            console.log(cartData);
-
             var cartdataObj = JSON.parse(cartData);
-            console.log(cartdataObj);
-
-            /*  cartdataObj = cartdataObj.map((v: any) =>
-                JSON.parse(v)
-            );
-            console.log(cartdataObj); */
 
             try {
                 this._controller.cart = new ShoppingCartData(
@@ -66,18 +59,6 @@ export default class App extends Component<AppProps, AppState> {
                 this._controller.cart = new ShoppingCartData();
             }
         }
-        this._controller.user = new Customer(
-            'ARich123',
-            '\\x24326224313524496739415766517174436d5731477159784b6e64772e5a7631667673374d70347855506e3061446b45757379324b316a7238495143',
-            'anakai.richards@gmail.com',
-            'Anakai',
-            'Richards',
-            '2021-02-18T15:52:04.698362',
-            '1789e432-7599-4d01-98e0-b06390d17b25',
-            0,
-            'address 1, city 2',
-            1
-        );
     }
 
     render() {

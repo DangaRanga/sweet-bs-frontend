@@ -46,7 +46,6 @@ export default class Order extends DbModel {
         );
     }
 
-
     public get complete(): boolean {
         return this._complete;
     }

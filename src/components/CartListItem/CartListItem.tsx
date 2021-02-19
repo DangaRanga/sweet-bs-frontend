@@ -15,7 +15,6 @@ export default class CartListItem extends Component<
     CartListItemProps,
     CartListItemState
 > {
-
     render() {
         return (
             <div className="cart-list-item">
@@ -26,16 +25,18 @@ export default class CartListItem extends Component<
                     className="item-img"
                 />
                 <div className="info">
-                    <p className="name">
-                        {this.props.item.menuitem.fullName}
+                    <p className="name">{this.props.item.menuitem.fullName}</p>
+                    <p className="desc">
+                        {this.props.item.menuitem.description}
                     </p>
-                    <p className="desc">{this.props.item.menuitem.description}</p>
                 </div>
                 <div className="counter">
                     <button
                         className="btn outline icon"
                         onClick={(e) => {
-                            this.props.controller.appCtrl.decreaseItemQty(this.props.item);
+                            this.props.controller.appCtrl.decreaseItemQty(
+                                this.props.item
+                            );
                         }}
                     >
                         -
@@ -44,7 +45,9 @@ export default class CartListItem extends Component<
                     <button
                         className="btn filled icon"
                         onClick={(e) => {
-                            this.props.controller.appCtrl.increaseItemQty(this.props.item);
+                            this.props.controller.appCtrl.increaseItemQty(
+                                this.props.item
+                            );
                         }}
                     >
                         +
@@ -56,7 +59,9 @@ export default class CartListItem extends Component<
                 <button
                     className="btn filled icon"
                     onClick={(e) => {
-                        this.props.controller.appCtrl.removeItem(this.props.item);
+                        this.props.controller.appCtrl.removeItem(
+                            this.props.item
+                        );
                     }}
                 >
                     x

@@ -4,20 +4,20 @@ import { Menu, NotFound, ShoppingCart } from '../views';
 import { AppController } from '../controllers';
 
 interface RoutesProps {
-    appCtrl :AppController
+    appCtrl: AppController;
 }
 
-interface RoutesState {
-}
+interface RoutesState {}
 
 export default class Routes extends Component<RoutesProps, RoutesState> {
-
     render() {
         return (
             <BrowserRouter forceRefresh={false}>
                 <Switch>
                     <Route exact path="/cart">
-                        <ShoppingCart appCtrl={this.props.appCtrl}></ShoppingCart>
+                        <ShoppingCart
+                            appCtrl={this.props.appCtrl}
+                        ></ShoppingCart>
                     </Route>
                     <Route exact path="/menu">
                         <Menu appCtrl={this.props.appCtrl}></Menu>

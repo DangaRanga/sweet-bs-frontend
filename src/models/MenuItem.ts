@@ -35,7 +35,7 @@ export default class MenuItem extends DbModel {
                   description: this.description,
                   price: this.price,
                   img_url: this.imgUrl,
-                  ingredients: this.ingredients.map(v=>v.toObject()),
+                  ingredients: this.ingredients.map((v) => v.toObject()),
               }
             : {
                   flavour: this.flavour,
@@ -43,12 +43,11 @@ export default class MenuItem extends DbModel {
                   description: this.description,
                   price: this.price,
                   img_url: this.imgUrl,
-                  ingredients: this.ingredients.map(v=>v.toObject()),
+                  ingredients: this.ingredients.map((v) => v.toObject()),
               };
     }
 
     public toJSON(): string {
-        
         return JSON.stringify(this.toObject());
     }
 

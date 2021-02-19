@@ -1,8 +1,7 @@
-import {  MenuItem } from '.';
+import { MenuItem } from '.';
 import DbModel from './DbModel';
 
 export default class MenuItemCategory extends DbModel {
-    
     private _name: string;
     private _menuitems: MenuItem[];
 
@@ -14,15 +13,15 @@ export default class MenuItemCategory extends DbModel {
 
     public toObject(): object {
         return this.id
-        ? {
-              menuitems: this.menuitems?.map((v) => v.toObject()) ?? [],
-              name: this.name,
-              id: this.id,
-          }
-        : {
-              menuitems: this.menuitems?.map((v) => v.toObject()) ?? [],
-              name: this.name,
-          };
+            ? {
+                  menuitems: this.menuitems?.map((v) => v.toObject()) ?? [],
+                  name: this.name,
+                  id: this.id,
+              }
+            : {
+                  menuitems: this.menuitems?.map((v) => v.toObject()) ?? [],
+                  name: this.name,
+              };
     }
 
     public toJSON(): string {
