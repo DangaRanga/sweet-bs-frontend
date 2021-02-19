@@ -46,9 +46,6 @@ export default class Order extends DbModel {
         );
     }
 
-    public static newEmptyOrder(user: Customer): Order {
-        return new Order(false, [], user);
-    }
 
     public get complete(): boolean {
         return this._complete;
