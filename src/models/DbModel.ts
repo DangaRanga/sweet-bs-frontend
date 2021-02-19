@@ -9,8 +9,10 @@ export default abstract class DbModel {
         return this._id;
     }
 
-    public abstract toJSON():object;
+    public abstract toJSON():string;
 
+    public abstract toObject():object;
+    
     public static fromJSON(json:any): DbModel {
         throw new Error('Method not implemented.');
     };

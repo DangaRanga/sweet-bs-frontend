@@ -18,20 +18,23 @@ export default class Order extends DbModel {
         this._items = items;
         this._user = user;
     }
-
-    public toJSON(): object {
+    public toObject(): object {
         return this.id
             ? {
                   id: this.id,
                   complete: this.complete,
-                  items: this.items.map((v) => v.toJSON()),
-                  user: this.user.toJSON(),
+                  items: this.items.map((v) => v.toObject()),
+                  user_id: this.user.id,
               }
             : {
                   complete: this.complete,
-                  items: this.items.map((v) => v.toJSON()),
-                  user: this.user.toJSON(),
+                  items: this.items.map((v) => v.toObject()),
+                  user_id: this.user.id,
               };
+    }
+
+    public toJSON(): string {
+        return JSON.stringify(this.toObject());
     }
 
     public static fromJSON(json: any): Order {
@@ -41,6 +44,10 @@ export default class Order extends DbModel {
             Customer.fromJSON(json['user']),
             json['id']
         );
+    }
+
+    public static newEmptyOrder(user: Customer): Order {
+        return new Order(false, [], user);
     }
 
     public get complete(): boolean {

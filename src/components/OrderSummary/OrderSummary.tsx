@@ -38,9 +38,11 @@ export default class OrderSummary extends Component<
                     <p>Total</p>
                     <p>${total}</p>
                 </div>
-                <a href="" className="btn filled">
+                <button className="btn filled primary" onClick={(e)=>{
+                    this.props.controller.placeOrder()
+                }}>
                     CHECKOUT
-                </a>
+                </button>
             </div>
         );
     }

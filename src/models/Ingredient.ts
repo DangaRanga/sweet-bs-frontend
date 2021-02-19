@@ -1,6 +1,7 @@
 import DbModel from "./DbModel";
 
 export default class Ingredient extends DbModel {
+    
     private _name: string;
 
     constructor(name: string, id?: number) {
@@ -8,17 +9,20 @@ export default class Ingredient extends DbModel {
         this._name = name;
     }
 
-    public toJSON(): object {
-        return this.id
-            ? {
-                  id: this.id,
-                  name: this.name,
-              }
-            : {
-                  name: this.name,
-              };
+    public toJSON():string{
+        return JSON.stringify(this.toObject());
     }
-
+    
+    public toObject(): object {
+        return this.id
+        ? {
+              id: this.id,
+              name: this.name,
+          }
+        : {
+              name: this.name,
+          };
+    }
     public static fromJSON(json: any): Ingredient {
         return new Ingredient(json['name'], json['id']);
     }

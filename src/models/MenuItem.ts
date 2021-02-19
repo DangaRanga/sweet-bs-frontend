@@ -26,26 +26,30 @@ export default class MenuItem extends DbModel {
         this._category = category;
         this._ingredients = ingredients;
     }
-
-    public toJSON(): object {
+    public toObject(): object {
         return this.id
             ? {
                   id: this.id,
                   flavour: this.flavour,
-                  category: this.category,
+                  category: this.category.toObject(),
                   description: this.description,
                   price: this.price,
                   img_url: this.imgUrl,
-                  ingredients: this.ingredients,
+                  ingredients: this.ingredients.map(v=>v.toObject()),
               }
             : {
                   flavour: this.flavour,
-                  category: this.category,
+                  category: this.category.toObject(),
                   description: this.description,
                   price: this.price,
                   img_url: this.imgUrl,
-                  ingredients: this.ingredients,
+                  ingredients: this.ingredients.map(v=>v.toObject()),
               };
+    }
+
+    public toJSON(): string {
+        
+        return JSON.stringify(this.toObject());
     }
 
     public static fromJSON(json: any): MenuItem {

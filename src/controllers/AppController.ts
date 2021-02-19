@@ -92,20 +92,26 @@ export default class AppController {
         return this._app.state.cart;
     }
 
+    public set cart(value:ShoppingCartData){
+        this._app.setState({cart:value});
+        localStorage.setItem('cart', value.localStorageFormat);
+    }
+
     public get user(): User | undefined {
         return this._app.state.user;
     }
 
     public set user(value: User | undefined) {
         if (this.user === undefined && value !== undefined) {
+            console.log("hi");
             this._app.setState({ user: value });
-            localStorage.setItem('cart', value.localStorageFormat);
+            localStorage.setItem('user', value.localStorageFormat);
         }
         if (this.user !== undefined && value === undefined) {
             this._app.setState({ user: value });
             localStorage.removeItem('user');
         } else {
-            throw new Error('Logout first!');
+            //throw new Error('Logout first!');
         }
     }
 }

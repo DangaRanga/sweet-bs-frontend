@@ -1,4 +1,4 @@
-import DbModel  from './DbModel';
+import DbModel from './DbModel';
 import { Email } from './index';
 
 export abstract class User extends DbModel {
@@ -85,11 +85,9 @@ export abstract class User extends DbModel {
         return this._createdOn;
     }
 
-    
-    public get localStorageFormat() : string {
-        return JSON.stringify(this.toJSON());
+    public get localStorageFormat(): string {
+        return this.toJSON();
     }
-    
 }
 
 export class Customer extends User {
@@ -135,7 +133,7 @@ export class Customer extends User {
         return this._ordersPlaced;
     }
 
-    public toJSON(): object {
+    public toObject(): object {
         return this.id
             ? {
                   id: this.id,
@@ -160,6 +158,10 @@ export class Customer extends User {
                   orders_placed: this.ordersPlaced,
                   address: this.address,
               };
+    }
+
+    public toJSON(): string {
+        return JSON.stringify(this.toObject());
     }
 
     public static fromJSON(json: any): Customer {
@@ -201,8 +203,7 @@ export class Admin extends User {
             id
         );
     }
-
-    public toJSON(): object {
+    public toObject(): object {
         return this.id
             ? {
                   id: this.id,
@@ -223,6 +224,10 @@ export class Admin extends User {
                   created_on: this.createdOn,
                   public_id: this.publicId,
               };
+    }
+
+    public toJSON(): string {
+        return JSON.stringify(this.toObject());
     }
 
     public static fromJSON(json: any): Admin {
