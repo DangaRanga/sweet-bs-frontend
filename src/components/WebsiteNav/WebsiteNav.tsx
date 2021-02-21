@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Person, PersonPinCircle, PersonRounded, ShoppingCartRounded } from '@material-ui/icons';
+import logo from "../../assets/CLIENT/Sweet B's Long dark.png";
+import { PersonRounded, ShoppingCartRounded } from '@material-ui/icons';
 import './WebsiteNav.css';
 
 interface WebsiteNavProps {}
@@ -14,7 +15,7 @@ export default class WebsiteNav extends Component<
     render() {
         return (
             <nav>
-                <h1>Sweet B's</h1>
+                <img src={logo} alt="SweetB's logo"/>
                 <div>
                     <Link to="/menu">Menu</Link>
                     <Link to="/cart">

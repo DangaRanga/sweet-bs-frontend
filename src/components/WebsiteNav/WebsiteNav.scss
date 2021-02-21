@@ -6,6 +6,15 @@ nav {
     justify-content: space-between;
     align-items: center;
     @include heading1;
+    //background-color: $primary-light;
+    padding: 1rem 6rem 1rem 6rem;
+    //box-shadow: $shadow 0 4px 16px -3px;
+
+    img{
+        height: 100%;
+        object-fit: contain;
+        width:auto;
+    }
 
     div {
         display: grid;
