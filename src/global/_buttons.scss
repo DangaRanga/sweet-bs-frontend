@@ -26,9 +26,10 @@
 
     &.outline {
         background-color: $bg;
+        border: $primary 2px solid;
+
 
         &.icon {
-            border: $primary 1px solid;
             color: $primary;
         }
 

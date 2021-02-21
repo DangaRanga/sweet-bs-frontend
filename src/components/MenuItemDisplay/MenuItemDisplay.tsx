@@ -2,7 +2,8 @@ import { Component } from 'react';
 import { MenuController } from '../../controllers';
 import { MenuItem } from '../../models';
 import './MenuItemDisplay.css';
-import placeholder from '../../assets/cart_placeholder.png';
+import placeholder from '../../assets/big_cake.png';
+import { DoneRounded } from '@material-ui/icons';
 interface MenuItemDisplayProps {
     controller: MenuController;
 }
@@ -57,7 +58,14 @@ export default class MenuItemDisplay extends Component<
                     </div>
                     <div id="add-to-cart-section">
                         <div id="qty-chooser">
-                            <button className="btn minus">-</button>
+                            <button
+                                className="btn minus"
+                                onClick={(e) =>
+                                    this.controller.decreaseMenuQty()
+                                }
+                            >
+                                -
+                            </button>
                             <input
                                 type="number"
                                 name="qty"
@@ -66,7 +74,14 @@ export default class MenuItemDisplay extends Component<
                                 min={1}
                                 readOnly={true}
                             />
-                            <button className="btn plus">+</button>
+                            <button
+                                className="btn plus"
+                                onClick={(e) =>
+                                    this.controller.increaseMenuQty()
+                                }
+                            >
+                                +
+                            </button>
                         </div>
                         <button
                             className="btn primary filled"
@@ -75,22 +90,31 @@ export default class MenuItemDisplay extends Component<
                                 const qty: HTMLInputElement = document.getElementById(
                                     'qty'
                                 ) as HTMLInputElement;
-                                this.controller.appCtrl.addToCart(
+                                this.controller.triggerAddToCart(
                                     this.controller.selectedFlavour as MenuItem,
                                     qty.valueAsNumber
                                 );
                             }}
                         >
-                            Add to Cart
+                            <DoneRounded
+                                id="add-to-cart-success"
+                                fontSize="large"
+                            />
+                            <p id="first">Add</p>
+                            <p id="extra-inner">ed</p>
+                            <p id="extra"> to Cart</p>
                         </button>
                     </div>
                 </div>
-                <img
-                    id="pastry-img"
-                    src={placeholder}
-                    //src={this.controller.selectedFlavour?.imgUrl}
-                    alt={this.controller.selectedFlavour?.fullName}
-                />
+                <div id="pastry-img-div">
+                    <img
+                        id="pastry-img"
+                        //src="https://drive.google.com/u/0/uc?id=158Whc7Szz-TRiGxCEVrKRrmDN59l312o&export=download"
+                        src={placeholder}
+                        //src={this.controller.selectedFlavour?.imgUrl}
+                        alt={this.controller.selectedFlavour?.fullName}
+                    />
+                </div>
             </div>
         );
     }

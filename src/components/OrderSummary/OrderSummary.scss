@@ -16,6 +16,10 @@
         font-size: 1.5rem;
     }
 
+    .items{
+        overflow: auto;
+    }
+    
     .items,
     .total-line {
         display: grid;

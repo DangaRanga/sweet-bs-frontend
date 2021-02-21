@@ -22,6 +22,7 @@ export default class Ingredient extends DbModel {
                   name: this.name,
               };
     }
+    
     public static fromJSON(json: any): Ingredient {
         return new Ingredient(json['name'], json['id']);
     }

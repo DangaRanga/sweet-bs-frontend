@@ -1,8 +1,6 @@
 import { ShoppingCart } from '../views';
 import ViewController from './ViewController';
 import { AppController } from '.';
-import { Customer, Order } from '../models';
-
 export default class ShoppingCartController extends ViewController {
     private _cartView: ShoppingCart;
 

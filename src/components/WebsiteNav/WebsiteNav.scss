@@ -20,5 +20,15 @@ nav {
     a {
         font-size: 1.2rem;
         color: $onLight;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #account-link,
+    .btn.icon {
+        height: 3.5rem;
+        width: 3.5rem;
     }
 }

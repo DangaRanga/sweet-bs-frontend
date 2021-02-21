@@ -11,11 +11,27 @@
     color: $onLight;
     @include body;
 
-    #pastry-img {
+    #pastry-img-div {
         width: 40%;
         height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 50%;
-        object-fit: cover;
+        background-color: $primary;
+        overflow: hidden;
+
+        &:after {
+            content: '';
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        #pastry-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
     }
 
     #menuitem-info {
@@ -49,6 +65,15 @@
                     box-shadow: $shadow 0 4px 16px -3px;
                     background-color: $bg;
                     padding: 1rem;
+                    transition: all 0.5s;
+
+                    &.selected {
+                        background-color: $primary-light;
+                    }
+
+                    &:hover {
+                        box-shadow: $primary-light 0 4px 16px -3px;
+                    }
                 }
             }
         }
@@ -66,7 +91,38 @@
 
             #add-to-cart-btn {
                 box-shadow: $shadow 0 4px 16px -3px;
-                padding: 1rem 3rem;
+                padding: 1rem 2rem;
+                position: relative;
+
+                transition: all 1s;
+
+                #add-to-cart-success {
+                    opacity: 0;
+                    //display: none;
+                    position: relative;
+                    left: 26px;
+                    transition: 1s all;
+                }
+
+                #first {
+                    display: inline;
+                    right:8px;
+                    transition: 0.7s all;
+                    position: relative;
+                }
+                #extra {
+                    position: relative;
+                    right: 20px;
+                    display: inline;
+                    transition: 0.7s all;
+                }
+                #extra-inner {
+                    opacity: 0;
+                    transition: 0.7s all;
+                    right: 30px;
+                    position: relative;
+                    display: inline;
+                }
             }
 
             #qty-chooser {

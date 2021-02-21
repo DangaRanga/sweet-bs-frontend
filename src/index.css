@@ -17,9 +17,9 @@
     background-color: #9377e2;
     color: #ffffff; }
   .btn.outline {
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    border: #9377e2 2px solid; }
     .btn.outline.icon {
-      border: #9377e2 1px solid;
       color: #9377e2; }
     .btn.outline:not(.icon) {
       color: #232323; }

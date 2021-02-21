@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { WebsiteNav } from '../../components';
-import MenuItemDisplay from '../../components/MenuItemDisplay/MenuItemDisplay';
-import MenuItemSwitcher from '../../components/MenuItemSwitcher/MenuItemSwitcher';
+import {
+    MenuItemDisplay,
+    MenuItemSwitcher,
+    Spinner,
+    WebsiteNav,
+} from '../../components';
 import { AppController, MenuController } from '../../controllers';
 import { MenuItemCategory } from '../../models';
 import './Menu.css';
@@ -36,7 +38,7 @@ export default class Menu extends Component<MenuProps, MenuState> {
     }
 
     render() {
-        return this.state.items.length > 0 ? (
+        return this._controller.isCartLoaded ? (
             <div id="menu">
                 <WebsiteNav />
                 <MenuItemDisplay controller={this._controller} />
@@ -45,6 +47,7 @@ export default class Menu extends Component<MenuProps, MenuState> {
         ) : (
             <div id="menu">
                 <WebsiteNav />
+                <Spinner />
             </div>
         );
     }

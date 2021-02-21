@@ -18,7 +18,7 @@ export default class MenuItemSwitcher extends Component<
             <button
                 key={cat.id}
                 onClick={(e) => this.props.controller.switchSelectedCategory(i)}
-                className="btn icon category"
+                className={`btn icon category ${i===this.props.controller.selectedCategoryIndex? "selected" : ""}`}
             >
                 <img
                     src={placeholder}
