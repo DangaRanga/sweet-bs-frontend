@@ -18,13 +18,24 @@ export default class ShoppingCartController extends ViewController {
             console.log('failed');
         }
     }
-    
-    public get cartItems() : OrderItem[] {
+
+    public get cartItems(): OrderItem[] {
         return this.appCtrl.cart.items;
     }
-    
 
     public isCartEmpty(): boolean {
         return this.appCtrl.app.state.cart.items.length === 0;
+    }
+
+    removeItem(item: OrderItem) {
+        this.appCtrl.removeItem(item);
+    }
+    
+    increaseItemQty(item: OrderItem) {
+        this.appCtrl.increaseItemQty(item);
+    }
+
+    decreaseItemQty(item: OrderItem) {
+        this.appCtrl.decreaseItemQty(item);
     }
 }

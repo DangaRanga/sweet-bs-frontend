@@ -10,12 +10,8 @@ interface CartListProps {
 interface CartListState {}
 
 export default class CartList extends Component<CartListProps, CartListState> {
-    private get cart() {
-        return this.props.controller.appCtrl.cart;
-    }
-
     render() {
-        const list = this.cart.items.map((item) => {
+        const list = this.props.controller.cartItems.map((item) => {
             console.log(item.menuitem);
 
             return (

@@ -34,7 +34,7 @@ export default class CartListItem extends Component<
                     <button
                         className="btn outline icon"
                         onClick={(e) => {
-                            this.props.controller.appCtrl.decreaseItemQty(
+                            this.props.controller.decreaseItemQty(
                                 this.props.item
                             );
                         }}
@@ -45,7 +45,7 @@ export default class CartListItem extends Component<
                     <button
                         className="btn filled icon"
                         onClick={(e) => {
-                            this.props.controller.appCtrl.increaseItemQty(
+                            this.props.controller.increaseItemQty(
                                 this.props.item
                             );
                         }}
@@ -59,7 +59,7 @@ export default class CartListItem extends Component<
                 <button
                     className="btn filled icon"
                     onClick={(e) => {
-                        this.props.controller.appCtrl.removeItem(
+                        this.props.controller.removeItem(
                             this.props.item
                         );
                     }}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../../assets/CLIENT/Sweet B's Long dark.png";
+import logo from "../../assets/CLIENT/Sweet B's Long.png";
 import { PersonRounded, ShoppingCartRounded } from '@material-ui/icons';
 import './WebsiteNav.css';
 
