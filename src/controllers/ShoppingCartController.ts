@@ -1,6 +1,8 @@
 import { ShoppingCart } from '../views';
 import ViewController from './ViewController';
 import { AppController } from '.';
+import { OrderItem } from '../models';
+
 export default class ShoppingCartController extends ViewController {
     private _cartView: ShoppingCart;
 
@@ -15,5 +17,14 @@ export default class ShoppingCartController extends ViewController {
         } else {
             console.log('failed');
         }
+    }
+    
+    public get cartItems() : OrderItem[] {
+        return this.appCtrl.cart.items;
+    }
+    
+
+    public isCartEmpty(): boolean {
+        return this.appCtrl.app.state.cart.items.length === 0;
     }
 }

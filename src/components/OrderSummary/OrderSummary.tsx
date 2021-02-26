@@ -16,7 +16,7 @@ export default class OrderSummary extends Component<
         var list: JSX.Element[] = [];
         var total = 0;
 
-        this.cart.items.forEach((oitem) => {
+        this.props.controller.cartItems.forEach((oitem) => {
             list.push(
                 <p key={`item-name-${oitem.menuitem.id}`} className="item-name">
                     {oitem.menuitem.fullName}
@@ -49,8 +49,5 @@ export default class OrderSummary extends Component<
             </div>
         );
     }
-
-    private get cart() {
-        return this.props.controller.appCtrl.cart;
-    }
+    
 }

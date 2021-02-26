@@ -90,7 +90,7 @@ export default class MenuItemDisplay extends Component<
                                 const qty: HTMLInputElement = document.getElementById(
                                     'qty'
                                 ) as HTMLInputElement;
-                                this.controller.triggerAddToCart(
+                                this.controller.addToCart(
                                     this.controller.selectedFlavour as MenuItem,
                                     qty.valueAsNumber
                                 );

@@ -22,7 +22,7 @@ export default class AppController {
         );
     }
 
-    public addToCart(menuitem: MenuItem, qty: number): void {
+    public addItemToCart(menuitem: MenuItem, qty: number): void {
         this._app.setState((prevState, prevProps) => {
             var newCartItems = [...prevState.cart.items];
             var index = newCartItems.findIndex(
@@ -120,9 +120,7 @@ export default class AppController {
         this.updateCart([]);
     }
 
-    public get isCartEmpty(): boolean {
-        return this._app.state.cart.items.length === 0;
-    }
+   
 
     public get app(): App {
         return this._app;

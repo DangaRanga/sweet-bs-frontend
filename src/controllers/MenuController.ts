@@ -45,8 +45,8 @@ export default class MenuController extends ViewController {
         }
     }
 
-    public triggerAddToCart(menuitem: MenuItem, qty: number): void {
-        this.appCtrl.addToCart(menuitem, qty);
+    public addToCart(menuitem: MenuItem, qty: number): void {
+        this.appCtrl.addItemToCart(menuitem, qty);
         const btn = document.getElementById('add-to-cart-btn')!;
         var children = btn.children;
         console.log(children);

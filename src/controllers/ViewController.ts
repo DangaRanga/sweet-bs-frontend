@@ -7,7 +7,7 @@ export default abstract class ViewController {
         this._appCtrl = controller;
     }
 
-    public get appCtrl(): AppController {
+    protected get appCtrl(): AppController {
         return this._appCtrl;
     }
 }
