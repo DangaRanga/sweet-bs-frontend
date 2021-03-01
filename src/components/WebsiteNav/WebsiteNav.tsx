@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/CLIENT/Sweet B's Long.png";
 import { PersonRounded, ShoppingCartRounded } from '@material-ui/icons';
 import './WebsiteNav.css';
+import {Icons} from "..";
 
 interface WebsiteNavProps {}
 
@@ -15,19 +16,39 @@ export default class WebsiteNav extends Component<
     render() {
         return (
             <nav>
-                <img src={logo} alt="SweetB's logo"/>
-                <div>
-                    <Link to="/menu">Menu</Link>
-                    <Link to="/cart">
-                        <button className="btn primary filled">
-                            <ShoppingCartRounded htmlColor={'white'} />
-                        </button>
-                    </Link>
-                    <Link id="account-link" to="/account">
-                        <button className="btn ptimary icon outline">
-                            <PersonRounded htmlColor={'#9377e2'} />
-                        </button>
-                    </Link>
+                <div id="main-nav">
+                    <img src={logo} alt="SweetB's logo" />
+                    <div className="right">
+                        <Link id="menu-link" to="/menu">
+                            Menu
+                        </Link>
+                        <Link id="cart-link" to="/cart">
+                            <button className="btn primary filled">
+                                <ShoppingCartRounded htmlColor={'white'} />
+                            </button>
+                        </Link>
+                        <div id="account-dropdown-section">
+                            <button
+                                id="accounts"
+                                className="btn primary icon filled"
+                                onClick={(e) => {
+                                    const dropdown = document.getElementById(
+                                        'account-dropdown'
+                                    )!;
+                                    dropdown.classList.toggle('hidden');
+                                }}
+                            >
+                                <Icons.PersonCircleInverted fill="white"/>
+                            </button>
+                            <div id="account-dropdown" className="hidden">
+                                <Link to="/signup">Sign Up</Link>
+                                <hr />
+                                <Link to="/login">Login</Link>
+                                <hr />
+                                <Link to="/profile">My Profile</Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </nav>
         );

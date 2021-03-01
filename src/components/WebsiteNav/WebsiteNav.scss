@@ -2,26 +2,34 @@
 @import '../../global/colours';
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     @include heading1;
+    position: relative;
     //background-color: $primary-light;
     padding: 1rem 6rem 1rem 6rem;
     //box-shadow: $shadow 0 4px 16px -3px;
 
-    img{
+    #main-nav {
         height: 100%;
-        object-fit: contain;
-        width:auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
     }
 
-    div {
+    img {
+        height: 100%;
+        object-fit: contain;
+        width: auto;
+    }
+
+    div.right {
+        max-height: 100%;
         display: grid;
         justify-content: center;
         grid-template-columns: min-content min-content min-content;
         grid-auto-columns: min-content;
-        grid-template-rows: 1fr;
+        grid-template-areas: 'menulink cartlink accountlink';
+        grid-template-rows: 100%;
         gap: 1.5rem;
         align-items: center;
     }
@@ -35,9 +43,64 @@ nav {
         align-items: center;
     }
 
-    #account-link,
+    #accounts,
     .btn.icon {
         height: 3.5rem;
         width: 3.5rem;
+    }
+
+    #menu-link {
+        grid-area: menulink;
+    }
+
+    #cart-link {
+        grid-area: cartlink;
+    }
+
+    #account-dropdown-section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+        align-self: baseline;
+        right: 0;
+        max-height: 100%;
+        width: 8rem;
+        grid-area: accountlink;
+        //top:0;
+        z-index: 1;
+    }
+
+    #account-dropdown {
+        position: relative;
+        display: flex;
+
+        @include body;
+        flex-direction: column;
+        background-color: $primary;
+        border-radius: 10px;
+        padding: 1.5rem;
+        width: 8rem;
+        box-shadow: $shadow 0 4px 16px;
+
+        & > * {
+            text-align: center;
+            color: $onDark;
+        }
+
+        a{
+            padding: 1rem 0;
+        }
+        
+        hr {
+            width: 100%;
+            border-color: $shadow;
+        }
+
+        &.hidden {
+            visibility: hidden;
+            pointer-events: none;
+            display: none;
+        }
     }
 }

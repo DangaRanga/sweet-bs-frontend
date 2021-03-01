@@ -7,3 +7,4 @@ export { default as WebsiteNav } from './WebsiteNav/WebsiteNav';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as MenuItemSwitcher } from './MenuItemSwitcher/MenuItemSwitcher';
 export { default as MenuItemDisplay } from './MenuItemDisplay/MenuItemDisplay';
+export  * as Icons  from "./Icons";
