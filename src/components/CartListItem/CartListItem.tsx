@@ -54,7 +54,7 @@ export default class CartListItem extends Component<
                     </button>
                 </div>
                 <p className="price">
-                    {this.props.item.menuitem.price * this.props.item.qty}
+                    ${this.props.item.menuitem.price * this.props.item.qty}
                 </p>
                 <button
                     className="btn filled icon"

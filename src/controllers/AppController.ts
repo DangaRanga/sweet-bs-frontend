@@ -107,7 +107,7 @@ export default class AppController {
                     body: newOrder.toJSON(),
                 })
                     .then((res) => {
-                        success = res.status === 200;
+                        success = res.status === 201;
                     })
                     .catch((err) => console.log(err));
             }

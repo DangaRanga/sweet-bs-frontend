@@ -1,0 +1,58 @@
+@import '../../global/colours';
+@import '../../global/fonts';
+
+#not-found {
+    background-color: $primary;
+    @include heading1;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    & > img {
+        width: 50%;
+        height: auto;
+    }
+
+    .action {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $onDark;
+
+        a {
+            max-width: 100%;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        .btn.filled {
+            background-color: $accent;
+            box-shadow: $shadow 0 4px 16px -3px;
+            font-size: 1.5rem;
+            display: grid;
+            grid-template-columns: max-content min-content min-content;
+            grid-template-rows: 5rem;
+            max-width: 100%;
+            gap: 1rem;
+            align-items: center;
+            justify-items: center;
+
+            .icon {
+                height: 3rem;
+                width: 3rem;
+            }
+            img {
+                height: 100%;
+                width: auto;
+                object-fit: contain;
+            }
+        }
+    }
+}

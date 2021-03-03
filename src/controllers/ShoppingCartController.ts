@@ -23,19 +23,19 @@ export default class ShoppingCartController extends ViewController {
         return this.appCtrl.cart.items;
     }
 
-    public isCartEmpty(): boolean {
+    public get isEmptyCart(): boolean {
         return this.appCtrl.app.state.cart.items.length === 0;
     }
 
-    removeItem(item: OrderItem) {
+    public removeItem(item: OrderItem): void {
         this.appCtrl.removeItem(item);
     }
     
-    increaseItemQty(item: OrderItem) {
+    public increaseItemQty(item: OrderItem) :void {
         this.appCtrl.increaseItemQty(item);
     }
 
-    decreaseItemQty(item: OrderItem) {
+    public decreaseItemQty(item: OrderItem) {
         this.appCtrl.decreaseItemQty(item);
     }
 }

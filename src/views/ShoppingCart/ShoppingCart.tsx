@@ -29,7 +29,7 @@ export default class ShoppingCart extends Component<
                         Back to Menu
                     </Link>
                     <h2 className="pgtitle">My Order</h2>
-                    {!this._controller.isCartEmpty() ? (
+                    {!this._controller.isEmptyCart ? (
                         <CartList controller={this._controller} />
                     ) : (
                         <EmptyCart />

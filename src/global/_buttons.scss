@@ -22,6 +22,12 @@
     &.filled {
         background-color: $primary;
         color: $onDark;
+
+        &:disabled{
+            background-color: $primary-light;
+            cursor: not-allowed;
+            color: $bgDarker;
+        }
     }
 
     &.outline {

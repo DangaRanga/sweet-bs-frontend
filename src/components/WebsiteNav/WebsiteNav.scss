@@ -5,7 +5,7 @@ nav {
     @include heading1;
     position: relative;
     //background-color: $primary-light;
-    padding: 1rem 6rem 1rem 6rem;
+    padding: 1rem 3rem 1rem 3rem;
     //box-shadow: $shadow 0 4px 16px -3px;
 
     #main-nav {
@@ -26,11 +26,11 @@ nav {
         max-height: 100%;
         display: grid;
         justify-content: center;
-        grid-template-columns: min-content min-content min-content;
+        grid-template-columns: 1fr 1fr 1fr;
         grid-auto-columns: min-content;
         grid-template-areas: 'menulink cartlink accountlink';
         grid-template-rows: 100%;
-        gap: 1.5rem;
+        gap: 0.5rem;
         align-items: center;
     }
 
@@ -55,6 +55,10 @@ nav {
 
     #cart-link {
         grid-area: cartlink;
+
+        .btn.filled.primary{
+            height: 3.5rem;
+        }
     }
 
     #account-dropdown-section {
@@ -91,7 +95,7 @@ nav {
         a{
             padding: 1rem 0;
         }
-        
+
         hr {
             width: 100%;
             border-color: $shadow;

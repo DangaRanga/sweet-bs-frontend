@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/CLIENT/Sweet B's Long.png";
-import { PersonRounded, ShoppingCartRounded } from '@material-ui/icons';
 import './WebsiteNav.css';
 import {Icons} from "..";
 
@@ -24,7 +23,7 @@ export default class WebsiteNav extends Component<
                         </Link>
                         <Link id="cart-link" to="/cart">
                             <button className="btn primary filled">
-                                <ShoppingCartRounded htmlColor={'white'} />
+                                <Icons.ShoppingCartHollow fill="white" />
                             </button>
                         </Link>
                         <div id="account-dropdown-section">

@@ -7,3 +7,4 @@ export { default as MenuManager } from './MenuManger/MenuManager';
 export { default as Menu } from './Menu/Menu';
 export { default as Login } from './Login/Login';
 export { default as NotFound } from './NotFound/NotFound';
+export { default as ProcessOrder } from "./ProcessOrder/ProcessOrder";

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { ShoppingCartController } from '../../controllers';
 import './OrderSummary.css';
 
@@ -38,16 +39,23 @@ export default class OrderSummary extends Component<
                     <p>Total</p>
                     <p>${total}</p>
                 </div>
-                <button
-                    className="btn filled primary"
-                    onClick={(e) => {
-                        this.props.controller.placeOrder();
+                <Link
+                    to={{
+                        pathname: '/processorder',
+                        state: this.props.controller,
                     }}
                 >
-                    CHECKOUT
-                </button>
+                    <button
+                        disabled={this.props.controller.isEmptyCart}
+                        className="btn filled primary"
+                        /* onClick={(e) => {
+                        this.props.controller.placeOrder();
+                    }} */
+                    >
+                        CHECKOUT
+                    </button>
+                </Link>
             </div>
         );
     }
-    
 }
