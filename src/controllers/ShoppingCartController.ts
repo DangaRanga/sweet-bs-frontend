@@ -11,14 +11,6 @@ export default class ShoppingCartController extends ViewController {
         this._cartView = cart;
     }
 
-    public placeOrder(): void {
-        if (this.appCtrl.sendOrder()) {
-            this.appCtrl.emptyCart();
-        } else {
-            console.log('failed');
-        }
-    }
-
     public get cartItems(): OrderItem[] {
         return this.appCtrl.cart.items;
     }
@@ -30,8 +22,8 @@ export default class ShoppingCartController extends ViewController {
     public removeItem(item: OrderItem): void {
         this.appCtrl.removeItem(item);
     }
-    
-    public increaseItemQty(item: OrderItem) :void {
+
+    public increaseItemQty(item: OrderItem): void {
         this.appCtrl.increaseItemQty(item);
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import IconProps from './IconProps';
-import "./Icons.css";
+import './Icons.css';
 
 export default function ChevronRight(props: IconProps) {
     return (

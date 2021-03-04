@@ -42,8 +42,9 @@ export default class Menu extends Component<MenuProps, MenuState> {
             <div id="menu">
                 <WebsiteNav />
                 <div className="content">
-                <MenuItemDisplay controller={this._controller} />
-                <MenuItemSwitcher controller={this._controller} /></div>
+                    <MenuItemDisplay controller={this._controller} />
+                    <MenuItemSwitcher controller={this._controller} />
+                </div>
             </div>
         ) : (
             <div id="menu">

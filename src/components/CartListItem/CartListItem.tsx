@@ -32,7 +32,7 @@ export default class CartListItem extends Component<
                 </div>
                 <div className="counter">
                     <button
-                        className="btn outline icon"
+                        className="btn outline icon primary"
                         onClick={(e) => {
                             this.props.controller.decreaseItemQty(
                                 this.props.item
@@ -43,7 +43,7 @@ export default class CartListItem extends Component<
                     </button>
                     <p className="qty">{this.props.item.qty}</p>
                     <button
-                        className="btn filled icon"
+                        className="btn filled icon primary"
                         onClick={(e) => {
                             this.props.controller.increaseItemQty(
                                 this.props.item
@@ -57,11 +57,9 @@ export default class CartListItem extends Component<
                     ${this.props.item.menuitem.price * this.props.item.qty}
                 </p>
                 <button
-                    className="btn filled icon"
+                    className="btn filled icon primary"
                     onClick={(e) => {
-                        this.props.controller.removeItem(
-                            this.props.item
-                        );
+                        this.props.controller.removeItem(this.props.item);
                     }}
                 >
                     x

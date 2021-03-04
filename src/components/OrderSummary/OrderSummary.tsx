@@ -40,17 +40,16 @@ export default class OrderSummary extends Component<
                     <p>${total}</p>
                 </div>
                 <Link
+                    id="checkout-link"
                     to={{
                         pathname: '/processorder',
-                        state: this.props.controller,
+                        state: { fromCart: true },
                     }}
                 >
                     <button
+                        id="checkout-btn"
                         disabled={this.props.controller.isEmptyCart}
                         className="btn filled primary"
-                        /* onClick={(e) => {
-                        this.props.controller.placeOrder();
-                    }} */
                     >
                         CHECKOUT
                     </button>

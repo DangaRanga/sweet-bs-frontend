@@ -1,8 +1,8 @@
 import React from 'react';
 import IconProps from './IconProps';
-import "./Icons.css";
+import './Icons.css';
 
-export default function ShoppingCartHollow(props:IconProps) {
+export default function ShoppingCartHollow(props: IconProps) {
     return (
         <div className="icon shopping-cart-hollow">
             <svg

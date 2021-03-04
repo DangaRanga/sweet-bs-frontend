@@ -1,4 +1,4 @@
 export default interface IconProps {
-    fill:string;
-    size?: string
+    fill: string;
+    size?: string;
 }

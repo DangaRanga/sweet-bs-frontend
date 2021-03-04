@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/CLIENT/Sweet B's Long.png";
 import './WebsiteNav.css';
-import {Icons} from "..";
+import { Icons } from '..';
 
 interface WebsiteNavProps {}
 
@@ -37,7 +37,7 @@ export default class WebsiteNav extends Component<
                                     dropdown.classList.toggle('hidden');
                                 }}
                             >
-                                <Icons.PersonCircleInverted fill="white"/>
+                                <Icons.PersonCircleInverted fill="white" />
                             </button>
                             <div id="account-dropdown" className="hidden">
                                 <Link to="/signup">Sign Up</Link>

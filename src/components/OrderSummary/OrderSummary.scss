@@ -16,10 +16,10 @@
         font-size: 1.5rem;
     }
 
-    .items{
+    .items {
         overflow: auto;
     }
-    
+
     .items,
     .total-line {
         display: grid;
@@ -54,5 +54,13 @@
 
     a.btn {
         font-size: 1.5rem;
+    }
+
+    #checkout-link {
+        width: 100%;
+        
+        #checkout-btn {
+            width: 100%;
+        }
     }
 }

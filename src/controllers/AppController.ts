@@ -120,8 +120,6 @@ export default class AppController {
         this.updateCart([]);
     }
 
-   
-
     public get app(): App {
         return this._app;
     }

@@ -1,14 +1,11 @@
-import React, { Component } from "react";
-import "./Spinner.css";
+import React, { Component } from 'react';
+import './Spinner.css';
 
+interface SpinnerProps {}
 
-interface SpinnerProps {
-}
+interface SpinnerState {}
 
-interface SpinnerState {
-}
-
-export default class Spinner extends Component<SpinnerProps,SpinnerState> {
+export default class Spinner extends Component<SpinnerProps, SpinnerState> {
     render() {
         return (
             <div className="spinner">

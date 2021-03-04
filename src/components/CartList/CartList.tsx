@@ -12,7 +12,6 @@ interface CartListState {}
 export default class CartList extends Component<CartListProps, CartListState> {
     render() {
         const list = this.props.controller.cartItems.map((item) => {
-            console.log(item.menuitem);
 
             return (
                 <CartListItem
