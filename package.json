@@ -1,57 +1,61 @@
 {
-  "name": "sweet-bs-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.25",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "immer": "^8.0.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^2.0.5",
-    "typescript": "^4.1.4",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "autoprefix": "postcss src/**/**/*.css -r -u autoprefixer",
-    "scss": "node-sass src -o src --output-style expanded --source-comments false",
-    "react-start": "react-scripts start",
-    "dev-react": "yarn react-start",
-    "dev-css": "nodemon -e css -x \"npm run autoprefix\"",
-    "dev-scss": "nodemon -e sass,scss -x \"npm run scss\"",
-    "start": "npm run dev-react"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/node-sass": "^4.11.1",
-    "node-sass": "^5.0.0",
-    "nodemon": "^2.0.7",
-    "npm-run-all": "^4.1.5"
-  }
+    "name": "sweet-bs-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.1.0",
+        "@testing-library/user-event": "^12.1.10",
+        "@types/jest": "^26.0.15",
+        "@types/node": "^14.14.25",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-router-dom": "^5.1.7",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "4.0.2",
+        "typescript": "^4.1.4",
+        "web-vitals": "^1.0.1"
+    },
+    "scripts": {
+        "dev:start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "sass-task:scss-compile": "node-sass-chokidar -r src -o src",
+        "sass-task:autoprefix": "postcss src/**/**/*.css -r -u autoprefixer ",
+        "sass:build": "npm-run-all -p sass-task:*",
+        "sass:watch": "chokidar src/**/**/*.scss -c \"npm run sass:build\"",
+        "dev:sass": "npm-run-all -p sass:*",
+        "format": "npx prettier --write .",
+        "start": "npm-run-all -p dev:*"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@material-ui/icons": "^4.11.2",
+        "autoprefixer": "^9.8.6",
+        "chokidar-cli": "^2.1.0",
+        "node-sass-chokidar": "^1.5.0",
+        "npm-run-all": "^4.1.5",
+        "postcss-cli": "^8.3.1",
+        "prettier": "2.2.1"
+    }
 }

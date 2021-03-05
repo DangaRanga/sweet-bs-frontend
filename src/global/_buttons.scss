@@ -1,0 +1,40 @@
+@import './colours';
+@import './fonts';
+
+.btn {
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:not(.icon) {
+        @include heading1;
+        padding: 1.2rem 2.5rem;
+        border-radius: 10px;
+    }
+
+    &.icon {
+        border-radius: 50%;
+    }
+
+    &.filled {
+        background-color: $primary;
+        color: $onDark;
+    }
+
+    &.outline {
+        background-color: $bg;
+        border: $primary 2px solid;
+
+
+        &.icon {
+            color: $primary;
+        }
+
+        &:not(.icon) {
+            color: $onLight;
+        }
+    }
+}

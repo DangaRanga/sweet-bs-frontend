@@ -1,5 +1,54 @@
+@import './global/buttons';
+
+body {
+    margin: 0;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    font-size: 12px;
+}
+
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: $bgDarker;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $primary-light;
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $primary;
+}
+
+ul {
+    list-style-type: none;
 }
