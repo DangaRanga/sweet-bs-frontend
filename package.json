@@ -31,8 +31,7 @@
         "sass:watch": "chokidar src/**/**/*.scss -c \"npm run sass:build\"",
         "dev:sass": "npm-run-all -p sass:*",
         "format": "npx prettier --write .",
-        "start1": "npm-run-all -p dev:*",
-        "start": "react-scripts start"
+        "start": "npm-run-all -p dev:*"
     },
     "eslintConfig": {
         "extends": [
