@@ -12,11 +12,11 @@ export default class ShoppingCartController extends ViewController {
     }
 
     public get cartItems(): OrderItem[] {
-        return this.appCtrl.localCart.items;
+        return this.appCtrl.cartItems;
     }
 
     public get isEmptyCart(): boolean {
-        return this.appCtrl.app.state.cart.items.length === 0;
+        return this.appCtrl.cartItemCount === 0;
     }
 
     public removeItem(item: OrderItem): void {

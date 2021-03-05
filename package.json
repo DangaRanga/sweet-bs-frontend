@@ -3,6 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@material-ui/core": "^4.11.3",
+        "@material-ui/utils": "^4.11.2",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
@@ -29,7 +31,8 @@
         "sass:watch": "chokidar src/**/**/*.scss -c \"npm run sass:build\"",
         "dev:sass": "npm-run-all -p sass:*",
         "format": "npx prettier --write .",
-        "start": "npm-run-all -p dev:*"
+        "start1": "npm-run-all -p dev:*",
+        "start": "react-scripts start"
     },
     "eslintConfig": {
         "extends": [

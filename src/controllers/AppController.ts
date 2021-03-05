@@ -35,8 +35,6 @@ export default class AppController {
         this._app.setState({ user: user, cart: cart });
     }
 
-
-
     /**
      * Adds a new menu item with a specified quantity to the cart if the menu item isn't already in the cart.
      * If the menuitem is in the cart, increase the quantity by `qty`
@@ -60,9 +58,9 @@ export default class AppController {
                 newCartItems[index].qty += qty;
             }
             // update the cart in local storage as well as the app state
-            var cart = new ShoppingCartData(newCartItems); 
-            this.localCart = cart
-            return { cart: cart};
+            var cart = new ShoppingCartData(newCartItems);
+            this.localCart = cart;
+            return { cart: cart };
         });
     }
 
@@ -81,9 +79,9 @@ export default class AppController {
             // increase that item's quantity
             newCartItems[i].qty += 1;
             // update the cart in local storage as well as the app state
-            var cart = new ShoppingCartData(newCartItems); 
-            this.localCart = cart
-            return { cart: cart};
+            var cart = new ShoppingCartData(newCartItems);
+            this.localCart = cart;
+            return { cart: cart };
         });
     }
 
@@ -106,9 +104,9 @@ export default class AppController {
             }
             newCartItems[i] = oitem;
             // update the cart in local storage as well as the app state
-            var cart = new ShoppingCartData(newCartItems); 
-            this.localCart = cart
-            return { cart: cart};
+            var cart = new ShoppingCartData(newCartItems);
+            this.localCart = cart;
+            return { cart: cart };
         });
     }
 
@@ -125,9 +123,9 @@ export default class AppController {
                 (oitem) => oitem.menuitem.id !== item.menuitem.id
             );
             // update the cart in local storage as well as the app state
-            var cart = new ShoppingCartData(newCart); 
-            this.localCart = cart
-            return { cart: cart};
+            var cart = new ShoppingCartData(newCart);
+            this.localCart = cart;
+            return { cart: cart };
         });
     }
 
@@ -181,6 +179,9 @@ export default class AppController {
         this.localCart = emptyCart;
     }
 
+    /**
+     * The cart in local storage
+     */
     private get localCart(): ShoppingCartData | undefined {
         var cartData = localStorage.getItem('cart');
         var cart = undefined;
@@ -206,6 +207,14 @@ export default class AppController {
         } else {
             localStorage.removeItem('cart');
         }
+    }
+
+    public get cartItems(): OrderItem[] {
+        return this.localCart?.items ?? [];
+    }
+
+    public get cartItemCount(): number {
+        return this.localCart?.itemCount ?? 0;
     }
 
     /**
