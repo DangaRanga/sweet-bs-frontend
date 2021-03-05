@@ -1,2 +1,22 @@
+#not-found {
+    background: url('../../assets/bg/404.png') center center no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Temporary Column Flex until the buttons are done */
+    align-items: center;
+    justify-content: center;
+}
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJOb3RGb3VuZC5jc3MifQ== */
+#not-found-img {
+    height: 55vh;
+}
+
+#not-found-text {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 4em;
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+}
