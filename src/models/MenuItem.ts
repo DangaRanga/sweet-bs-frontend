@@ -1,12 +1,21 @@
 import { Ingredient, MenuItemCategory } from '.';
 import DbModel from './DbModel';
 
+/**
+ * Represents a menu item in the database
+ */
 export default class MenuItem extends DbModel {
+    /** The price of the menu item */
     private _price: number;
+    /** The flavour of the menu item */
     private _flavour: string;
+    /** A description of the menu item */
     private _description: string;
+    /** A url to an image of the item */
     private _imgUrl: string;
+    /** The category the menu item belongs to */
     private _category: MenuItemCategory;
+    /** The ingredients used to make this menu item */
     private _ingredients: Ingredient[];
 
     constructor(
@@ -26,6 +35,7 @@ export default class MenuItem extends DbModel {
         this._category = category;
         this._ingredients = ingredients;
     }
+    
     public toObject(): object {
         return this.id
             ? {

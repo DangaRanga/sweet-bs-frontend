@@ -1,5 +1,8 @@
 import { AppController } from '.';
 
+/**
+ * Base class for all controllers for views
+ */
 export default abstract class ViewController {
     private _appCtrl: AppController;
 

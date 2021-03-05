@@ -3,17 +3,21 @@ import { MenuController } from '../../controllers';
 import './MenuItemSwitcher.css';
 import placeholder from '../../assets/cart_placeholder.png';
 
-interface MenuItemSwitcherProps {
+interface MenuItemCategorySwitcherProps {
     controller: MenuController;
 }
 
-interface MenuItemSwitcherState {}
+interface MenuItemCategorySwitcherState {}
 
-export default class MenuItemSwitcher extends Component<
-    MenuItemSwitcherProps,
-    MenuItemSwitcherState
+/**
+ * Allows for the selected menu item category to be switched by the user
+ */
+export default class MenuItemCategorySwitcher extends Component<
+    MenuItemCategorySwitcherProps,
+    MenuItemCategorySwitcherState
 > {
     render() {
+        // build list of category buttons and register an onclick handler to switch the category
         const categories = this.props.controller.categories.map((cat, i) => (
             <button
                 key={cat.id}

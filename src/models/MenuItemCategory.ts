@@ -1,8 +1,14 @@
 import { MenuItem } from '.';
 import DbModel from './DbModel';
 
+/**
+ * Represents the menu item categories and associated menu items
+ * in the database.
+ */
 export default class MenuItemCategory extends DbModel {
+    /** Category name */
     private _name: string;
+    /** The menu items in this category */
     private _menuitems: MenuItem[];
 
     constructor(category: string, menuitems?: MenuItem[], id?: number) {

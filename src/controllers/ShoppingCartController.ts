@@ -12,7 +12,7 @@ export default class ShoppingCartController extends ViewController {
     }
 
     public get cartItems(): OrderItem[] {
-        return this.appCtrl.cart.items;
+        return this.appCtrl.localCart.items;
     }
 
     public get isEmptyCart(): boolean {
@@ -24,10 +24,10 @@ export default class ShoppingCartController extends ViewController {
     }
 
     public increaseItemQty(item: OrderItem): void {
-        this.appCtrl.increaseItemQty(item);
+        this.appCtrl.incrementItemQty(item);
     }
 
     public decreaseItemQty(item: OrderItem) {
-        this.appCtrl.decreaseItemQty(item);
+        this.appCtrl.decrementItemQty(item);
     }
 }

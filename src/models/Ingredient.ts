@@ -1,6 +1,10 @@
 import DbModel from './DbModel';
 
+/**
+ * Represents an ingredient in the database
+ */
 export default class Ingredient extends DbModel {
+    /** THe name of the ingredient */
     private _name: string;
 
     constructor(name: string, id?: number) {

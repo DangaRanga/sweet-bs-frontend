@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { MenuController } from '../../controllers';
-import { MenuItem } from '../../models';
 import './MenuItemDisplay.css';
 import placeholder from '../../assets/big_cake.png';
 import { DoneRounded } from '@material-ui/icons';
@@ -10,18 +9,23 @@ interface MenuItemDisplayProps {
 
 interface MenuItemDisplayState {}
 
+/**
+ * Displays the details of a menu item of a selected flavour and category.
+ * Allows the user to switch flavours
+ */
 export default class MenuItemDisplay extends Component<
     MenuItemDisplayProps,
     MenuItemDisplayState
 > {
     render() {
-        const flavours = this.controller.selectedCategory.menuitems.map(
+        // build the list of flavour buttons and register an onclick handler to each to switch the flavour
+        const flavours = this.props.controller.selectedCategory.menuitems.map(
             (item, i) =>
-                item.id === this.controller.selectedFlavour?.id ? (
+                item.id === this.props.controller.selectedFlavour?.id ? (
                     <button
                         key={item.id}
                         onClick={() => {
-                            this.controller.switchSelectedFlavour(i);
+                            this.props.controller.switchSelectedFlavour(i);
                         }}
                         className="btn flavour selected"
                     >
@@ -31,7 +35,7 @@ export default class MenuItemDisplay extends Component<
                     <button
                         key={item.id}
                         onClick={() => {
-                            this.controller.switchSelectedFlavour(i);
+                            this.props.controller.switchSelectedFlavour(i);
                         }}
                         className="btn flavour"
                     >
@@ -42,15 +46,15 @@ export default class MenuItemDisplay extends Component<
         return (
             <div id="menuitem">
                 <div id="menuitem-info">
-                    <h1>{this.controller.selectedFlavour?.fullName}</h1>
+                    <h1>{this.props.controller.selectedFlavour?.fullName}</h1>
                     <h3>
                         Price:{' '}
                         <p className="price">
-                            ${this.controller.selectedFlavour?.price}
+                            ${this.props.controller.selectedFlavour?.price}
                         </p>
                     </h3>
                     <p className="desc">
-                        {this.controller.selectedFlavour?.description}
+                        {this.props.controller.selectedFlavour?.description}
                     </p>
                     <div id="flavours">
                         <h3>Flavours</h3>
@@ -61,7 +65,7 @@ export default class MenuItemDisplay extends Component<
                             <button
                                 className="btn minus"
                                 onClick={(e) =>
-                                    this.controller.decreaseMenuQty()
+                                    this.props.controller.decrementMenuQty()
                                 }
                             >
                                 -
@@ -77,7 +81,7 @@ export default class MenuItemDisplay extends Component<
                             <button
                                 className="btn plus"
                                 onClick={(e) =>
-                                    this.controller.increaseMenuQty()
+                                    this.props.controller.incrementMenuQty()
                                 }
                             >
                                 +
@@ -87,13 +91,7 @@ export default class MenuItemDisplay extends Component<
                             className="btn primary filled"
                             id="add-to-cart-btn"
                             onClick={() => {
-                                const qty: HTMLInputElement = document.getElementById(
-                                    'qty'
-                                ) as HTMLInputElement;
-                                this.controller.addToCart(
-                                    this.controller.selectedFlavour as MenuItem,
-                                    qty.valueAsNumber
-                                );
+                                this.props.controller.addToCart();
                             }}
                         >
                             <DoneRounded
@@ -109,17 +107,12 @@ export default class MenuItemDisplay extends Component<
                 <div id="pastry-img-div">
                     <img
                         id="pastry-img"
-                        //src="https://drive.google.com/u/0/uc?id=158Whc7Szz-TRiGxCEVrKRrmDN59l312o&export=download"
                         src={placeholder}
                         //src={this.controller.selectedFlavour?.imgUrl}
-                        alt={this.controller.selectedFlavour?.fullName}
+                        alt={this.props.controller.selectedFlavour?.fullName}
                     />
                 </div>
             </div>
         );
-    }
-
-    private get controller() {
-        return this.props.controller;
     }
 }
