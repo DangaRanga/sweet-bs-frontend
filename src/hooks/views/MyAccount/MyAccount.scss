@@ -1,0 +1,26 @@
+@import '../../global/colours';
+
+#my-account {
+    background-color: $bgDarker;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem auto;
+    column-gap: 2%;
+    grid-template-areas: 'navbar' 'maincontent';
+    height: 100vh;
+    width: 100%;
+
+    nav {
+        grid-area: navbar;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .accent {
+            background-color: $bg;
+            box-shadow: $shadow 0 4px 16px;
+        }
+    }
+}
