@@ -4,7 +4,6 @@ import {
     BrowserRouter,
     RouteComponentProps,
 } from 'react-router-dom';
-import React, { Component } from 'react';
 import {
     Menu,
     MyAccount,
@@ -13,25 +12,25 @@ import {
     ShoppingCart,
 } from '../views';
 import { AppController } from '../effects';
+import { ShoppingCartData } from '../models/AppData';
 
 interface RoutesProps {
-    appCtrl: AppController;
+    cart: ShoppingCartData
+    setCart: AppController.UpdateCartAction
 }
 
-interface RoutesState {}
 
-export default class Routes extends Component<RoutesProps, RoutesState> {
-    render() {
+export default function Routes(props:RoutesProps) {
         return (
             <BrowserRouter forceRefresh={false}>
                 <Switch>
                     <Route exact path="/cart">
                         <ShoppingCart
-                            appCtrl={this.props.appCtrl}
+                            //appCtrl={this.props.appCtrl}
                         ></ShoppingCart>
                     </Route>
                     <Route exact path="/menu">
-                        <Menu/>
+                        {/*<Menu/>*/}
                     </Route>
                     <Route exact path="/profile">
                         <MyAccount />
@@ -41,7 +40,7 @@ export default class Routes extends Component<RoutesProps, RoutesState> {
                         path="/processorder"
                         render={(props: RouteComponentProps<any, any, any>) => (
                             <ProcessOrder
-                                appCtrl={this.props.appCtrl}
+                                //appCtrl={this.props.appCtrl}
                                 history={props.history}
                                 location={props.location}
                                 match={props.match}
@@ -56,5 +55,5 @@ export default class Routes extends Component<RoutesProps, RoutesState> {
                 </Switch>
             </BrowserRouter>
         );
-    }
+    
 }

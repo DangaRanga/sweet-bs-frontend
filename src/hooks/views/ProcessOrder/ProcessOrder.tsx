@@ -7,7 +7,6 @@ import './ProcessOrder.css';
 
 
 interface ProcessOrderProps extends Partial<RouteComponentProps<any, any, {fromCart:boolean}>>{
-        appCtrl: AppController;
     }
 interface ProcessOrderState {}
 
@@ -22,7 +21,7 @@ export default class ProcessOrder extends Component<
     constructor(props: ProcessOrderProps) {
         super(props);
         this._hadCheckedOut = this.props.location?.state?.fromCart ?? false;
-        this._controller = new ProcessOrderController(this, this.props.appCtrl);
+        this._controller = new ProcessOrderController(this, this);
     }
 
     render() {

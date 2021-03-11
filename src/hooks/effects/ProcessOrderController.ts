@@ -5,7 +5,7 @@ import ViewController from "./ViewController";
 export default class ProcessOrderController extends ViewController {
     private _processOrderView :ProcessOrder;
 
-    constructor(processOrder:ProcessOrder,appCtrl:AppController) {
+    constructor(processOrder:ProcessOrder,appCtrl:any) {
         super(appCtrl);
         this._processOrderView = processOrder;
     }

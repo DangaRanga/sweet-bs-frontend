@@ -1,31 +1,163 @@
+import { ShoppingCartData } from './../models/AppData';
 import { App } from '../components';
-import {
-    Customer,
-    MenuItem,
-    Order,
-    OrderItem,
-} from '../models';
-import { fromJSON, toJSON, toLocalStorageFormat } from '../utils/JsonUtils';
+import { Admin, Customer, MenuItem, Order, OrderItem } from '../models';
+import { fromJSON,toJSON, toLocalStorageFormat } from '../utils/JsonUtils';
+import { Component, Reducer, useEffect, useReducer } from 'react';
+
+export function useJWT() {}
+
+export type UpdateCartAction =
+    | { type: 'add'; item: MenuItem; qty: number }
+    | { type: 'remove' | 'incrementQty' | 'decrementQty'; item: OrderItem };
+
+export type CartSetter = React.Dispatch<UpdateCartAction>;
+
+export function useCart() {
+
+    function init(initial:ShoppingCartData) {
+        var cart = fromJSON<ShoppingCartData>(localStorage.getItem('sweetbs-cart'));
+        return cart ?? initial;
+    }
+
+    function reducer(cart: ShoppingCartData, action: UpdateCartAction) {
+        switch (action.type) {
+            case 'add':
+                return addItemToCart(cart, action.item, action.qty);
+            case 'decrementQty':
+                return decrementItemQty(cart, action.item);
+            case 'incrementQty':
+                return incrementItemQty(cart, action.item);
+            case 'remove':
+                return removeItem(cart, action.item);
+            default:
+                return cart;
+        }
+    }
+
+    const [cart, setCart] = useReducer<
+        Reducer<ShoppingCartData, UpdateCartAction>,ShoppingCartData
+    >(reducer, [], init);
+
+    useEffect(() => {
+        localStorage.setItem('sweetbs-cart',toJSON(cart) ?? "[]");
+    }, [cart]);
+
+    return <const>[cart, setCart];
+}
+
+/**
+ * Adds a new menu item with a specified quantity to the cart if the menu item isn't already in the cart.
+ * If the menuitem is in the cart, increase the quantity by `qty`
+ *
+ * @param cart The cart to be updated
+ * @param menuitem Menu item selected by a user to be added to cart
+ * @param qty the quantity of that menu item to be added
+ */
+function addItemToCart(
+    cart: ShoppingCartData,
+    menuitem: MenuItem,
+    qty: number
+): ShoppingCartData {
+    // duplicate the existing cart
+    var newCartItems = [...cart];
+    // check if the menu item already exists in the cart by id since ids are unique
+    var index = newCartItems.findIndex((v) => v.menuitem.id === menuitem.id);
+
+    if (index === -1) {
+        // add the new menu item if it is not in the cart
+        var item: OrderItem = { menuitem: menuitem, qty: qty };
+        newCartItems.push(item);
+    } else {
+        // otherwise increase the quantity
+        newCartItems[index].qty += qty;
+    }
+    // update the cart in local storage as well as the app state
+    return newCartItems;
+}
+
+/**
+ * Increases the quantity of the specified cart item by 1
+ * @param cart the cart to be updated
+ * @param item An item in the cart whose quantity the user wants to adjust
+ */
+function incrementItemQty(
+    cart: ShoppingCartData,
+    item: OrderItem
+): ShoppingCartData {
+    // duplicate the existing cart
+    var newCartItems = [...cart];
+    // find the item in the cart
+    var i = newCartItems.findIndex(
+        (oitem) => oitem.menuitem.id === item.menuitem.id
+    );
+    // increase that item's quantity
+    newCartItems[i].qty += 1;
+    return newCartItems;
+}
+
+/**
+ * Decreases the quantity of the specified cart item by 1 but only if the current quantity is greater than 1
+ * @param cart the cart to be updated
+ * @param item An item in the cart whose quantity the user wants to adjust
+ */
+function decrementItemQty(
+    cart: ShoppingCartData,
+    item: OrderItem
+): ShoppingCartData {
+    // duplicate the existing cart
+    var newCartItems = [...cart];
+    // find the item in the cart
+    var i = newCartItems.findIndex(
+        (oitem) => oitem.menuitem.id === item.menuitem.id
+    );
+    var oitem = newCartItems[i];
+    if (oitem.qty > 1) {
+        // decrease that item's quantity if the quantity if greater than 1
+        oitem.qty -= 1;
+    }
+    newCartItems[i] = oitem;
+    return newCartItems;
+}
+
+/**
+ * Removes an item from the cart
+ * @param cart the cart to be updated
+ * @param item the item to be removed
+ */
+function removeItem(cart: ShoppingCartData, item: OrderItem): ShoppingCartData {
+    // duplicate cart
+    var newCart = [...cart];
+    // filter out the item to be removed
+    newCart = newCart.filter((oitem) => oitem.menuitem.id !== item.menuitem.id);
+    return newCart;
+}
 
 
+interface AppProps {}
 
+interface AppState {
+    cart: OrderItem[];
+    user: Admin | Customer | undefined;
+}
 
 /**
  * Manages the global state of the app. That includes the shopping cart and the logged in user.
  */
-export default class AppController {
+export class AppController<
+T extends Component<AppProps, AppState>
+> {
     /** The app */
-    private _app: App;
+    private _app: T;
 
     /**
      * Initializes an AppController instance
      * @param app The app to attach the controller to
      */
-    constructor(app: App) {
+    constructor(app: T) {
         this._app = app;
         // fetch the cart and user from local storage
         var cart = this.localCart;
-        var user:any;
+        var user: any;
 
         // if there is no cart set a new empty cart
         if (!cart) {
@@ -152,7 +284,7 @@ export default class AppController {
                 // initialize the items to be sent to the database
                 items = prevState.cart;
                 user = prevState.user as Customer;
-                newOrder ={ complete:false,  items:items, jwt:""};
+                newOrder = { complete: false, items: items, jwt: '' };
             },
             () => {
                 // After initialization, send the new order to the database
@@ -176,7 +308,7 @@ export default class AppController {
      * Completely empties the cart
      */
     public emptyCart(): void {
-        var emptyCart:OrderItem[] = [];
+        var emptyCart: OrderItem[] = [];
         this._app.setState({ cart: emptyCart });
         this.localCart = emptyCart;
     }
@@ -190,9 +322,7 @@ export default class AppController {
         if (cartData) {
             var cartdataObj = JSON.parse(cartData);
             try {
-                cart = 
-                    cartdataObj.map((v: any) => fromJSON<OrderItem>(v))
-                ;
+                cart = cartdataObj.map((v: any) => fromJSON<OrderItem>(v));
             } catch (e) {
                 cart = [];
             }
@@ -203,9 +333,12 @@ export default class AppController {
     /**
      * The cart in local storage
      */
-    private set localCart(cart:OrderItem[] | undefined) {
+    private set localCart(cart: OrderItem[] | undefined) {
         if (cart) {
-            localStorage.setItem('cart', toLocalStorageFormat({cartItems:cart}));
+            localStorage.setItem(
+                'cart',
+                toLocalStorageFormat({ cartItems: cart })
+            );
         } else {
             localStorage.removeItem('cart');
         }
@@ -218,7 +351,7 @@ export default class AppController {
     public get cartItemCount(): number {
         return this.localCart?.length ?? 0;
     }
-/* 
+    /* 
     
     private get localUser(): User | undefined {
         var userData = localStorage.getItem('user');

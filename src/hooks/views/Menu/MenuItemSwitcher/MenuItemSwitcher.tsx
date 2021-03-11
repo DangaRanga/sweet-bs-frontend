@@ -1,12 +1,12 @@
 import './MenuItemSwitcher.css';
 import placeholder from '../../../../assets/cart_placeholder.png';
 import { MenuItemCategory } from '../../../models';
-import { SelectedDispatch } from '../../../effects/MenuController';
+import { SelectedSetter } from '../../../effects/MenuController';
 
 interface MenuItemCategorySwitcherProps {
     categories: MenuItemCategory[];
     selectedCategory: number;
-    setSelected: SelectedDispatch;
+    setSelected: SelectedSetter;
 }
 
 /**

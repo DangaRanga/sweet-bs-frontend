@@ -6,7 +6,7 @@ import { OrderItem } from '../models';
 export default class ShoppingCartController extends ViewController {
     private _cartView: ShoppingCart;
 
-    constructor(cart: ShoppingCart, app: AppController) {
+    constructor(cart: ShoppingCart, app: any) {
         super(app);
         this._cartView = cart;
     }

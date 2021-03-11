@@ -1,39 +1,55 @@
 import { AppData } from '../models';
-import DbModel from '../models/DbModel';
 
 /**
- * Converts a database model object to a string for sending to the server
+ * Converts a variable to a JSON string if possible
  * @param obj an object from/to be stored in the database
- * @returns a JSON string version of the object passed in
+ * @returns a JSON string version of the object passed in or null, if the conversion failed
  */
-export function toJSON(obj: DbModel): string {
-    return JSON.stringify(obj);
+export function toJSON(obj: any): string | null {
+    var json: string;
+    try {
+        json = JSON.stringify(obj);
+        if (json) {
+            return json;
+        } else {
+            return null;
+        }
+    } catch (e) {
+        return null;
+    }
 }
 
 /**
- * Converts, where possible, a JSON string to an object of type T which is a database object.
- * @template {T extends DbModel} T the type of DbModel to parse
- * @param {string} json a JSON string representation of a database object
+ * Converts, where possible, a JSON object, array or string to type T.
+ * @template {T extends any} T the type of object to parse
+ * @param json a JSON representation of an object or array
  * @returns { T | null } the object if parsing was successful and null otherwise
  */
-export function fromJSON<T extends DbModel>(json: string | object): T {
-    // parse the json
+export function fromJSON<T extends any>(json: any): T | null {
     var modelObj: T;
-    if (typeof json === 'object') {
-        modelObj = json as T;
+    if (json) {
+        try {
+            if (typeof json === 'string') {
+                // parse the json
+                modelObj = JSON.parse(json) as T;
+            } else {
+                modelObj = json as T;
+            }
+            return modelObj;
+        } catch (e) {
+            return null;
+        }
     } else {
-        modelObj = JSON.parse(json) as T;
+        return null;
     }
-    return modelObj;
 }
-
 
 /**
  * **This method is a stub**
  * @returns App data from localStorage
  */
-export function fromLocalStorageFormat(json: string): AppData {
-    return JSON.parse(json) as AppData;
+export function fromLocalStorageFormat(json: string): AppData.AppData {
+    return JSON.parse(json) as AppData.AppData;
 }
 
 /**
@@ -41,7 +57,10 @@ export function fromLocalStorageFormat(json: string): AppData {
  * @param data app data to be stored
  */
 export function toLocalStorageFormat(
-    data: Pick<AppData, 'jwt'> | Pick<AppData, 'cartItems'> | AppData
+    data:
+        | Pick<AppData.AppData, 'jwt'>
+        | Pick<AppData.AppData, 'cartItems'>
+        | AppData.AppData
 ): string {
     return JSON.stringify(data);
 }

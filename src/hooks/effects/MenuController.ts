@@ -1,6 +1,5 @@
 import { useEffect, useState, Component, useReducer, Reducer } from 'react';
-import { MenuItem, MenuItemCategory } from '../models';
-import { AppController } from '.';
+import { MenuItemCategory } from '../models';
 import ViewController from './ViewController';
 import { fromJSON } from '../utils/JsonUtils';
 
@@ -40,7 +39,7 @@ type SelectedDispatchAction =
     | { type: 'flavour'; index: number };
 
 /** Used to update the Menu's selected state */
-export type SelectedDispatch = React.Dispatch<SelectedDispatchAction>;
+export type SelectedSetter = React.Dispatch<SelectedDispatchAction>;
 
 /** The selected state in the Menu */
 interface SelectedFromMenuState {
@@ -103,25 +102,13 @@ export function useQuantity() {
     return <const>[qty, setQty];
 }
 
-export function useAddToCart(item: MenuItem, qty: number) {
-    const [shouldAddToCart, setShouldAddToCart] = useState(false);
-
-    useEffect(() => {
-        if (shouldAddToCart) {
-            //TODO add stuff to cart
-            setShouldAddToCart(false);
-        }
-    }, [shouldAddToCart, item, qty]);
-
-    return setShouldAddToCart;
-}
 
 /**
  * props for the Menu View
  */
 interface MenuProps {
     /** The global app controller */
-    appCtrl: AppController;
+    appCtrl: any;
 }
 
 /**
@@ -149,7 +136,7 @@ export default class MenuController<
      * @param menu The Menu
      * @param app The App controller
      */
-    constructor(menu: T, app: AppController) {
+    constructor(menu: T, app: any) {
         super(app);
         this._menuView = menu;
     }

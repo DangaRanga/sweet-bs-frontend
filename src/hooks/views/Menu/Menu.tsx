@@ -1,4 +1,5 @@
 import { Spinner, WebsiteNav } from '../../components';
+import { AppController } from '../../effects';
 import {
     useMenuCategories,
     useSelectedFromMenu,
@@ -7,10 +8,14 @@ import './Menu.css';
 import MenuItemDisplay from './MenuItemDisplay/MenuItemDisplay';
 import MenuItemSwitcher from './MenuItemSwitcher/MenuItemSwitcher';
 
+interface MenuProps{
+    setCart:AppController.CartSetter
+}
+
 /**
  * The Menu View from which customer may add items to their cart
  */
-export default function Menu() {
+export default function Menu(props: MenuProps) {
     /** All menu items in the database, grouped by category (Cookies or Cheesecake for example) */
     const categories = useMenuCategories();
     /** The index of the category and flavour selected by the user */
@@ -22,6 +27,7 @@ export default function Menu() {
             <WebsiteNav />
             <div className="content">
                 <MenuItemDisplay
+                setCart={props.setCart}
                     setSelected={setSelected}
                     category={categories[selected.category]}
                     menuitem={

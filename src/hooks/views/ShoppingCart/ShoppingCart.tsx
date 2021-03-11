@@ -7,7 +7,6 @@ import OrderSummary from "./OrderSummary/OrderSummary";
 import './ShoppingCart.css';
 
 interface ShoppingCartProps {
-    appCtrl: AppController;
 }
 
 interface ShoppingCartState {}
@@ -20,7 +19,7 @@ export default class ShoppingCart extends Component<
 
     constructor(props: ShoppingCartProps) {
         super(props);
-        this._controller = new ShoppingCartController(this, this.props.appCtrl);
+        this._controller = new ShoppingCartController(this, this);
     }
 
     render() {

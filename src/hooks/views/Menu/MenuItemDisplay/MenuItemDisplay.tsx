@@ -2,12 +2,14 @@ import './MenuItemDisplay.css';
 import placeholder from '../../../../assets/big_cake.png';
 import { DoneRounded } from '@material-ui/icons';
 import { MenuItem, MenuItemCategory } from '../../../models';
-import { SelectedDispatch as SelectedSetter, useQuantity } from '../../../effects/MenuController';
+import { SelectedSetter, useQuantity } from '../../../effects/MenuController';
+import { CartSetter } from '../../../effects/AppController';
 
 interface MenuItemDisplayProps {
     menuitem: MenuItem;
     category: MenuItemCategory;
     setSelected: SelectedSetter;
+    setCart: CartSetter;
 }
 
 /**
@@ -86,9 +88,11 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                         className="btn primary filled"
                         id="add-to-cart-btn"
                         onClick={() => {
-                            //TODO convert to effect
-                            //this.props.controller.addToCart();
-                            console.log('TODO');
+                            props.setCart({
+                                type: 'add',
+                                item: props.menuitem,
+                                qty: qty,
+                            });
                         }}
                     >
                         <DoneRounded
