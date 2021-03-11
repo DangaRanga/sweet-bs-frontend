@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Switch,
     Route,
@@ -12,22 +12,23 @@ import {
     ProcessOrder,
     ShoppingCart,
 } from '../../views';
-import { AppController } from '../../effects';
+import { AppHooks } from '../../hooks';
 import './App.css';
 
 export default function App() {
-    const [cart, setCart] = AppController.useCart();
+    const [cart, updateCart] = AppHooks.useCart();
 
     return (
         <BrowserRouter forceRefresh={false}>
             <Switch>
                 <Route exact path="/cart">
                     <ShoppingCart
-                    //appCtrl={this.props.appCtrl}
+                    cart={cart}
+                    updateCart={updateCart}
                     />
                 </Route>
                 <Route exact path="/menu">
-                    <Menu setCart={setCart}/>
+                    <Menu updateCart={updateCart}/>
                 </Route>
                 <Route exact path="/profile">
                     <MyAccount />
@@ -38,6 +39,8 @@ export default function App() {
                     render={(props: RouteComponentProps<any, any, any>) => (
                         <ProcessOrder
                             //appCtrl={this.props.appCtrl}
+                            cart={cart}
+                            updateCart={updateCart}
                             history={props.history}
                             location={props.location}
                             match={props.match}

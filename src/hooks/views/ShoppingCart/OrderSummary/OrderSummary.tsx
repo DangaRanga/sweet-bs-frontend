@@ -1,26 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCartController } from '../../../effects';
+import { ShoppingCartData } from '../../../models/AppData';
 import './OrderSummary.css';
 
 interface OrderSummaryProps {
-    controller: ShoppingCartController;
+    cart: ShoppingCartData;
 }
 
-interface OrderSummaryState {}
+export default function OrderSummary(props: OrderSummaryProps){
 
-export default class OrderSummary extends Component<
-    OrderSummaryProps,
-    OrderSummaryState
-> {
-    render() {
         var list: JSX.Element[] = [];
         var total = 0;
 
-        this.props.controller.cartItems.forEach((oitem) => {
+        props.cart.forEach((oitem) => {
             list.push(
                 <p key={`item-name-${oitem.menuitem.id}`} className="item-name">
-                    {oitem.menuitem.flavour + " " + oitem.menuitem.category}
+                    {oitem.menuitem.flavour + " " + oitem.menuitem.category.name}
                 </p>
             );
             list.push(
@@ -48,7 +43,7 @@ export default class OrderSummary extends Component<
                 >
                     <button
                         id="checkout-btn"
-                        disabled={this.props.controller.isEmptyCart}
+                        disabled={props.cart.length===0}
                         className="btn filled primary"
                     >
                         CHECKOUT
@@ -56,5 +51,4 @@ export default class OrderSummary extends Component<
                 </Link>
             </div>
         );
-    }
 }

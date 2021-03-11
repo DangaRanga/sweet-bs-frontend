@@ -1,12 +1,11 @@
 import { ShoppingCart } from '../views';
-import ViewController from './ViewController';
-import { AppController } from '.';
+import ViewController from './ViewHooks';
 import { OrderItem } from '../models';
 
 export default class ShoppingCartController extends ViewController {
-    private _cartView: ShoppingCart;
+    private _cartView: any;
 
-    constructor(cart: ShoppingCart, app: any) {
+    constructor(cart: any, app: any) {
         super(app);
         this._cartView = cart;
     }

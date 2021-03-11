@@ -1,11 +1,10 @@
-import { AppController } from ".";
 import { ProcessOrder } from "../views";
-import ViewController from "./ViewController";
+import ViewController from "./ViewHooks";
 
 export default class ProcessOrderController extends ViewController {
-    private _processOrderView :ProcessOrder;
+    private _processOrderView :any;
 
-    constructor(processOrder:ProcessOrder,appCtrl:any) {
+    constructor(processOrder:any,appCtrl:any) {
         super(appCtrl);
         this._processOrderView = processOrder;
     }

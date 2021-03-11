@@ -1,4 +1,3 @@
-import { AppController } from '.';
 
 /**
  * Base class for all controllers for views

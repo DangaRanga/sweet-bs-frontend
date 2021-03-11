@@ -2,14 +2,13 @@ import './MenuItemDisplay.css';
 import placeholder from '../../../../assets/big_cake.png';
 import { DoneRounded } from '@material-ui/icons';
 import { MenuItem, MenuItemCategory } from '../../../models';
-import { SelectedSetter, useQuantity } from '../../../effects/MenuController';
-import { CartSetter } from '../../../effects/AppController';
+import { AppHooks, MenuHooks } from '../../../hooks';
 
 interface MenuItemDisplayProps {
     menuitem: MenuItem;
     category: MenuItemCategory;
-    setSelected: SelectedSetter;
-    setCart: CartSetter;
+    updateSelected: MenuHooks.SelectedUpdater;
+    updateCart: AppHooks.CartUpdater;
 }
 
 /**
@@ -24,7 +23,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
             <button
                 key={item.id}
                 onClick={() => {
-                    props.setSelected({ type: 'flavour', index: i });
+                    props.updateSelected({ type: 'flavour', index: i });
                 }}
                 className="btn flavour selected"
             >
@@ -34,7 +33,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
             <button
                 key={item.id}
                 onClick={() => {
-                    props.setSelected({ type: 'flavour', index: i });
+                    props.updateSelected({ type: 'flavour', index: i });
                 }}
                 className="btn flavour"
             >
@@ -43,7 +42,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
         )
     );
 
-    const [qty, setQty] = useQuantity();
+    const [qty, updateQty] = MenuHooks.useQuantity();
 
     return (
         <div id="menuitem">
@@ -65,7 +64,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                     <div id="qty-chooser">
                         <button
                             className="btn minus"
-                            onClick={(e) => setQty('decrement')}
+                            onClick={(e) => updateQty('decrement')}
                         >
                             -
                         </button>
@@ -79,7 +78,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                         />
                         <button
                             className="btn plus"
-                            onClick={(e) => setQty('increment')}
+                            onClick={(e) => updateQty('increment')}
                         >
                             +
                         </button>
@@ -88,7 +87,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                         className="btn primary filled"
                         id="add-to-cart-btn"
                         onClick={() => {
-                            props.setCart({
+                            props.updateCart({
                                 type: 'add',
                                 item: props.menuitem,
                                 qty: qty,

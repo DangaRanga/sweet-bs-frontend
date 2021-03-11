@@ -1,15 +1,12 @@
 import { Spinner, WebsiteNav } from '../../components';
-import { AppController } from '../../effects';
-import {
-    useMenuCategories,
-    useSelectedFromMenu,
-} from '../../effects/MenuController';
+import { AppHooks,MenuHooks } from '../../hooks';
+
 import './Menu.css';
 import MenuItemDisplay from './MenuItemDisplay/MenuItemDisplay';
 import MenuItemSwitcher from './MenuItemSwitcher/MenuItemSwitcher';
 
 interface MenuProps{
-    setCart:AppController.CartSetter
+    updateCart:AppHooks.CartUpdater
 }
 
 /**
@@ -17,9 +14,9 @@ interface MenuProps{
  */
 export default function Menu(props: MenuProps) {
     /** All menu items in the database, grouped by category (Cookies or Cheesecake for example) */
-    const categories = useMenuCategories();
+    const categories = MenuHooks.useCategories();
     /** The index of the category and flavour selected by the user */
-    const [selected, setSelected] = useSelectedFromMenu();
+    const [selected, setSelected] = MenuHooks.useSelected();
 
     // display a spinner until the the menu items have been fetched then display the menu
     return categories.length > 0 ? (
@@ -27,8 +24,8 @@ export default function Menu(props: MenuProps) {
             <WebsiteNav />
             <div className="content">
                 <MenuItemDisplay
-                setCart={props.setCart}
-                    setSelected={setSelected}
+                updateCart={props.updateCart}
+                    updateSelected={setSelected}
                     category={categories[selected.category]}
                     menuitem={
                         categories[selected.category].menuitems[selected.flavour]
@@ -37,7 +34,7 @@ export default function Menu(props: MenuProps) {
                 <MenuItemSwitcher
                     categories={categories}
                     selectedCategory={selected.category}
-                    setSelected={setSelected}
+                    updateSelected={setSelected}
                 />
             </div>
         </div>

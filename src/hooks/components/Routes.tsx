@@ -2,21 +2,17 @@ import {
     Switch,
     Route,
     BrowserRouter,
-    RouteComponentProps,
 } from 'react-router-dom';
 import {
-    Menu,
     MyAccount,
     NotFound,
-    ProcessOrder,
-    ShoppingCart,
 } from '../views';
-import { AppController } from '../effects';
+import { AppHooks } from '../hooks';
 import { ShoppingCartData } from '../models/AppData';
 
 interface RoutesProps {
     cart: ShoppingCartData
-    setCart: AppController.UpdateCartAction
+    setCart: AppHooks.UpdateCartAction
 }
 
 
@@ -25,9 +21,7 @@ export default function Routes(props:RoutesProps) {
             <BrowserRouter forceRefresh={false}>
                 <Switch>
                     <Route exact path="/cart">
-                        <ShoppingCart
-                            //appCtrl={this.props.appCtrl}
-                        ></ShoppingCart>
+                        {/*<ShoppingCart/>*/}
                     </Route>
                     <Route exact path="/menu">
                         {/*<Menu/>*/}
@@ -35,7 +29,7 @@ export default function Routes(props:RoutesProps) {
                     <Route exact path="/profile">
                         <MyAccount />
                     </Route>
-                    <Route
+                    {/* <Route
                         exact
                         path="/processorder"
                         render={(props: RouteComponentProps<any, any, any>) => (
@@ -47,7 +41,7 @@ export default function Routes(props:RoutesProps) {
                                 staticContext={props.staticContext}
                             />
                         )}
-                    ></Route>
+                    ></Route> */}
 
                     <Route>
                         <NotFound />

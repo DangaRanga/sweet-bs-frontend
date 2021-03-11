@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
-import { ShoppingCartController } from '../../../effects';
+import React from 'react';
 import './CartList.css';
 import CartListItem from '../CartListItem/CartListItem';
+import { ShoppingCartData } from '../../../models/AppData';
+import { AppHooks } from '../../../hooks';
 
 interface CartListProps {
-    controller: ShoppingCartController;
+    cart: ShoppingCartData;
+    updateCart: AppHooks.CartUpdater;
 }
 
-interface CartListState {}
-
-export default class CartList extends Component<CartListProps, CartListState> {
-    render() {
-        const list = this.props.controller.cartItems.map((item) => {
-
-            return (
-                <CartListItem
-                    key={item.menuitem.id}
-                    item={item}
-                    controller={this.props.controller}
-                />
-            );
-        });
-        return <div id="cart-list">{list}</div>;
-    }
+export default function CartList(props: CartListProps) {
+    const list = props.cart.map((item) => {
+        return (
+            <CartListItem
+                key={item.menuitem.id}
+                item={item}
+                updateCart={props.updateCart}
+            />
+        );
+    });
+    return <div id="cart-list">{list}</div>;
 }

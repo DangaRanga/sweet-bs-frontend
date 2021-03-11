@@ -1,12 +1,12 @@
 import './MenuItemSwitcher.css';
 import placeholder from '../../../../assets/cart_placeholder.png';
 import { MenuItemCategory } from '../../../models';
-import { SelectedSetter } from '../../../effects/MenuController';
+import { MenuHooks} from '../../../hooks';
 
 interface MenuItemCategorySwitcherProps {
     categories: MenuItemCategory[];
     selectedCategory: number;
-    setSelected: SelectedSetter;
+    updateSelected: MenuHooks.SelectedUpdater;
 }
 
 /**
@@ -19,7 +19,7 @@ export default function MenuItemCategorySwitcher(
     const categories = props.categories.map((cat, i) => (
         <button
             key={cat.id}
-            onClick={(e) => props.setSelected({type:'category', index:i})}
+            onClick={(e) => props.updateSelected({ type: 'category', index: i })}
             className={`btn icon category ${
                 i === props.selectedCategory ? 'selected' : ''
             }`}
