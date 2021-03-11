@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { CartList, EmptyCart, OrderSummary } from '../../components';
-import { AppController, ShoppingCartController } from '../../controllers';
+import { AppController, ShoppingCartController } from '../../effects';
+import CartList from './CartList/CartList';
+import EmptyCart from './EmptyCart/EmptyCart';
+import OrderSummary from "./OrderSummary/OrderSummary";
 import './ShoppingCart.css';
 
 interface ShoppingCartProps {

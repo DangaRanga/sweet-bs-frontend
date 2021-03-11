@@ -16,48 +16,32 @@ export function toJSON(obj: DbModel): string {
  * @param {string} json a JSON string representation of a database object
  * @returns { T | null } the object if parsing was successful and null otherwise
  */
-export function fromJSON<T extends DbModel>(json: string): T | null {
+export function fromJSON<T extends DbModel>(json: string | object): T {
     // parse the json
-    var modelObj = JSON.parse(json);
-    // check if it is a DbModel of type T then return the object if it is or null if it is not.
-    return isDbModel<T>(modelObj) ? (modelObj as T) : null;
+    var modelObj: T;
+    if (typeof json === 'object') {
+        modelObj = json as T;
+    } else {
+        modelObj = JSON.parse(json) as T;
+    }
+    return modelObj;
 }
 
-/**
- * Checks if an object is of type T, a DbModel.
- * @template {T extends DbModel} T the type of DbModel to be checked
- * @param {any} obj any object to be tested
- * @returns whether the object passed in is of type T
- */
-function isDbModel<T extends DbModel>(obj: any): obj is T {
-    try {
-        // try to type cast to T
-        var test = obj as T;
-        // if type casting works then it fits the type
-        return true;
-    } catch (e) {
-        // otherwise, it is not of type T
-        return false;
-    }
-}
 
 /**
  * **This method is a stub**
  * @returns App data from localStorage
  */
-export function fetchAppData(): AppData {
-    return (
-        JSON.parse(localStorage.getItem('sweetbs-data') ?? '') || {
-            jwt: '',
-            cartItems: [],
-        }
-    );
+export function fromLocalStorageFormat(json: string): AppData {
+    return JSON.parse(json) as AppData;
 }
 
 /**
  * **This method is stub**
  * @param data app data to be stored
  */
-export function storeAppData(data: AppData) {
-    localStorage.setItem('sweetbs-data', JSON.stringify(data));
+export function toLocalStorageFormat(
+    data: Pick<AppData, 'jwt'> | Pick<AppData, 'cartItems'> | AppData
+): string {
+    return JSON.stringify(data);
 }

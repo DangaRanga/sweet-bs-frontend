@@ -1,5 +1,4 @@
-import { MenuItem } from '.';
-import DbModel from './DbModel';
+import { MenuItem,DbModel } from '.';
 
 /**
  * Represents an OrderItem in the database

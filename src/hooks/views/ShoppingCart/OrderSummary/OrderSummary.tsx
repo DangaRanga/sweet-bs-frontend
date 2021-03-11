@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCartController } from '../../controllers';
+import { ShoppingCartController } from '../../../effects';
 import './OrderSummary.css';
 
 interface OrderSummaryProps {
@@ -20,7 +20,7 @@ export default class OrderSummary extends Component<
         this.props.controller.cartItems.forEach((oitem) => {
             list.push(
                 <p key={`item-name-${oitem.menuitem.id}`} className="item-name">
-                    {oitem.menuitem.fullName}
+                    {oitem.menuitem.flavour + " " + oitem.menuitem.category}
                 </p>
             );
             list.push(

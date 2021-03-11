@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './EmptyCart.css';
-import EmptyImg from '../../assets/images/empty.svg';
+import EmptyImg from '../../../../assets/images/empty.svg';
 import { Link } from 'react-router-dom';
 
 interface EmptyCartProps {}

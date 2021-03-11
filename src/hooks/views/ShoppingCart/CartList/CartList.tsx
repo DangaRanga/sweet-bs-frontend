@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ShoppingCartController } from '../../controllers';
+import { ShoppingCartController } from '../../../effects';
 import './CartList.css';
 import CartListItem from '../CartListItem/CartListItem';
 

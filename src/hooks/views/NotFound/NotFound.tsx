@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './NotFound.css';
-import NotFoundImg from '../../assets/images/page_not_found 1.svg';
-import logo from "../../assets/CLIENT/Sweet B's Long.png";
+import NotFoundImg from '../../../assets/images/page_not_found 1.svg';
+import logo from "../../../assets/CLIENT/Sweet B's Long.png";
 import { Icons } from '../../components';
 import { Link } from 'react-router-dom';
 

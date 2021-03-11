@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './EnterCard.css';
-import cardImg from '../../assets/images/undraw_Credit_card_re_blml 1.svg';
-import { ProcessOrderController } from '../../controllers';
+import cardImg from '../../../../assets/images/undraw_Credit_card_re_blml 1.svg';
+import { ProcessOrderController } from '../../../effects';
 
 interface EnterCardProps {
     controller: ProcessOrderController;

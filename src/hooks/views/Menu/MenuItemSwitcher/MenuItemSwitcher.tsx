@@ -1,40 +1,35 @@
-import React, { Component } from 'react';
-import { MenuController } from '../../controllers';
 import './MenuItemSwitcher.css';
-import placeholder from '../../assets/cart_placeholder.png';
+import placeholder from '../../../../assets/cart_placeholder.png';
+import { MenuItemCategory } from '../../../models';
+import { SelectedDispatch } from '../../../effects/MenuController';
 
 interface MenuItemCategorySwitcherProps {
-    controller: MenuController;
+    categories: MenuItemCategory[];
+    selectedCategory: number;
+    setSelected: SelectedDispatch;
 }
-
-interface MenuItemCategorySwitcherState {}
 
 /**
  * Allows for the selected menu item category to be switched by the user
  */
-export default class MenuItemCategorySwitcher extends Component<
-    MenuItemCategorySwitcherProps,
-    MenuItemCategorySwitcherState
-> {
-    render() {
-        // build list of category buttons and register an onclick handler to switch the category
-        const categories = this.props.controller.categories.map((cat, i) => (
-            <button
-                key={cat.id}
-                onClick={(e) => this.props.controller.switchSelectedCategory(i)}
-                className={`btn icon category ${
-                    i === this.props.controller.selectedCategoryIndex
-                        ? 'selected'
-                        : ''
-                }`}
-            >
-                <img
-                    src={placeholder}
-                    //src={cat.menuitems[0].imgUrl}
-                    alt={this.props.controller.categories[i].name}
-                />
-            </button>
-        ));
-        return <div id="menuitem-switcher">{categories}</div>;
-    }
+export default function MenuItemCategorySwitcher(
+    props: MenuItemCategorySwitcherProps
+) {
+    // build list of category buttons and register an onclick handler to switch the category
+    const categories = props.categories.map((cat, i) => (
+        <button
+            key={cat.id}
+            onClick={(e) => props.setSelected({type:'category', index:i})}
+            className={`btn icon category ${
+                i === props.selectedCategory ? 'selected' : ''
+            }`}
+        >
+            <img
+                src={placeholder}
+                //src={cat.menuitems[0].imgUrl}
+                alt={cat.name}
+            />
+        </button>
+    ));
+    return <div id="menuitem-switcher">{categories}</div>;
 }

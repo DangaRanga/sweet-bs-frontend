@@ -1,5 +1,4 @@
-import { Customer, OrderItem } from ".";
-import DbModel from "./DbModel";
+import { Customer, OrderItem,DbModel } from ".";
 
 /** 
  * A base order class representing an Order in the database 

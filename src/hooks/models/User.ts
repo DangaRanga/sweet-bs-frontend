@@ -1,4 +1,4 @@
-import DbModel from "./DbModel";
+import {DbModel} from ".";
 
 /**
  * Represents a user in the database

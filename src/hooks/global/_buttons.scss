@@ -1,0 +1,102 @@
+@import './colours';
+@import './fonts';
+
+.btn {
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:not(.icon) {
+        @include heading1;
+        padding: 1.2rem 2.5rem;
+        border-radius: 10px;
+    }
+
+    &.icon {
+        border-radius: 50%;
+    }
+
+    &.filled {
+        color: $onDark;
+
+        &.primary {
+            background-color: $primary;
+
+            &:disabled {
+                background-color: $primary-light;
+            }
+        }
+
+        &.danger {
+            background-color: $danger;
+
+            &:disabled {
+                background-color: $danger-light;
+            }
+        }
+
+        &.success{
+            background-color: $success;
+
+            &:disabled {
+                background-color: $success-light;
+            }
+        }
+
+        &.warning{
+            background-color: $warning;
+
+            &:disabled {
+                background-color: $warning-light;
+            }
+        }
+
+        &.info{
+            background-color: $info;
+
+            &:disabled {
+                background-color: $info-light;
+            }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: $bgDarker;
+        }
+    }
+
+    &.outline {
+        background-color: $bg;
+        border-width: 2px;
+        border-style: solid;
+
+        &.primary{
+            border-color: $primary;
+            color: $primary;
+        }
+
+        &.danger{
+            border-color: $danger;
+            color: $danger;
+        }
+
+        &.warning{
+            border-color: $warning;
+            color: $warning;
+        }
+
+        &.success{
+            border-color: $success;
+            color: $success;
+        }
+
+        &.info {
+            border-color: $info;
+            color: $info;
+        }
+
+    }
+}

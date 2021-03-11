@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
 import { Routes } from '..';
-import { AppController } from '../../controllers';
-import {
-    ShoppingCartData,
-    User,
-} from '../../models';
+import { AppController } from '../../effects';
+import { Admin, AppData, Customer, OrderItem } from '../../models';
 import './App.css';
 
 interface AppProps {}
 
 interface AppState {
-    cart: ShoppingCartData;
-    user: User | undefined;
+    cart: OrderItem[];
+    user: Admin | Customer | undefined;
 }
 
 export default class App extends Component<AppProps, AppState> {
-    private _controller: AppController;
+    private _controller!: AppController;
 
     readonly state: Readonly<AppState> = {
-        cart: new ShoppingCartData(),
+        cart: [],
         user: undefined,
     };
 
-    constructor(props: AppProps) {
-        super(props);
+    componentDidMount(){
         this._controller = new AppController(this);
     }
 

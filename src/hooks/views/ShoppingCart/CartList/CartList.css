@@ -1,11 +1,8 @@
 #cart-list {
   display: grid;
   grid-template-columns: auto;
-  grid-auto-rows: -webkit-min-content;
   grid-auto-rows: min-content;
   row-gap: 1.5rem;
   overflow: scroll;
   max-height: 100%;
   width: 100%; }
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNhcnRMaXN0LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsbUNBQTJCO0VBQTNCLDJCQUEyQjtFQUMzQixlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixXQUFXLEVBQUUiLCJmaWxlIjoiQ2FydExpc3QuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2NhcnQtbGlzdCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0bztcbiAgZ3JpZC1hdXRvLXJvd3M6IG1pbi1jb250ZW50O1xuICByb3ctZ2FwOiAxLjVyZW07XG4gIG92ZXJmbG93OiBzY3JvbGw7XG4gIG1heC1oZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlOyB9XG4iXX0= */

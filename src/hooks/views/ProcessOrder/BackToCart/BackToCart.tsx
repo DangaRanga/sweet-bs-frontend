@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './BackToCart.css';
-import logo from "../../assets/CLIENT/Sweet B's Long.png";
+import logo from "../../../../assets/CLIENT/Sweet B's Long.png";
 
 interface BackToCartProps {}
 

@@ -12,7 +12,7 @@ import {
     ProcessOrder,
     ShoppingCart,
 } from '../views';
-import { AppController } from '../controllers';
+import { AppController } from '../effects';
 
 interface RoutesProps {
     appCtrl: AppController;
@@ -31,7 +31,7 @@ export default class Routes extends Component<RoutesProps, RoutesState> {
                         ></ShoppingCart>
                     </Route>
                     <Route exact path="/menu">
-                        <Menu appCtrl={this.props.appCtrl}></Menu>
+                        <Menu/>
                     </Route>
                     <Route exact path="/profile">
                         <MyAccount />

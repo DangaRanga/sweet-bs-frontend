@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './CartListItem.css';
-import placeholder from '../../assets/cart_placeholder.png';
-import { ShoppingCartController } from '../../controllers';
-import { OrderItem } from '../../models';
+import placeholder from '../../../../assets/cart_placeholder.png';
+import { ShoppingCartController } from '../../../effects';
+import { OrderItem } from '../../../models';
 
 interface CartListItemProps {
     item: OrderItem;
@@ -25,7 +25,7 @@ export default class CartListItem extends Component<
                     className="item-img"
                 />
                 <div className="info">
-                    <p className="name">{this.props.item.menuitem.fullName}</p>
+                    <p className="name">{this.props.item.menuitem.flavour+" "+ this.props.item.menuitem.category.name}</p>
                     <p className="desc">
                         {this.props.item.menuitem.description}
                     </p>

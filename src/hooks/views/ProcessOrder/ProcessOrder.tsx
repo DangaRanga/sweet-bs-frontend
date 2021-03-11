@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { BackToCart, EnterCard } from '../../components';
-import { AppController, ProcessOrderController } from '../../controllers';
+import { AppController, ProcessOrderController } from '../../effects';
+import BackToCart from './BackToCart/BackToCart';
+import EnterCard from './EnterCard/EnterCard';
 import './ProcessOrder.css';
 
 

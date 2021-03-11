@@ -1,5 +1,4 @@
-import { MenuItemCategory, Ingredient } from '.';
-import DbModel from './DbModel';
+import { MenuItemCategory, Ingredient, DbModel } from '.';
 
 /** Represents menu items in the database */
 export default interface MenuItem extends DbModel {

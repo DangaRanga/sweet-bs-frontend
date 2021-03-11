@@ -1,4 +1,4 @@
-import DbModel from "./DbModel";
+import {DbModel} from ".";
 
 /** Represents ingredients in the database */
 export default interface Ingredient extends DbModel{

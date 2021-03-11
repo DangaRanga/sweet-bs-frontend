@@ -1,12 +1,5 @@
-export { default as OrderSummary } from './OrderSummary/OrderSummary';
-export { default as CartList } from '../views/ShoppingCart/CartList/CartList';
 export { default as Routes } from './Routes';
-export { default as EmptyCart } from './EmptyCart/EmptyCart';
 export { default as App } from './App/App';
 export { default as WebsiteNav } from './WebsiteNav/WebsiteNav';
 export { default as Spinner } from './Spinner/Spinner';
-export { default as MenuItemSwitcher } from '../views/Menu/MenuItemSwitcher/MenuItemSwitcher';
-export { default as MenuItemDisplay } from './MenuItemDisplay/MenuItemDisplay';
 export * as Icons from './Icons';
-export { default as EnterCard }from "./EnterCard/EnterCard";
-export { default as BackToCart } from "../views/ProcessOrder/BackToCart/BackToCart";
