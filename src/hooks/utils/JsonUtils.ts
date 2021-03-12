@@ -1,5 +1,3 @@
-import { AppData } from '../models';
-
 /**
  * Converts a variable to a JSON string if possible
  * @param obj an object from/to be stored in the database
@@ -44,23 +42,3 @@ export function fromJSON<T extends any>(json: any): T | null {
     }
 }
 
-/**
- * **This method is a stub**
- * @returns App data from localStorage
- */
-export function fromLocalStorageFormat(json: string): AppData.AppData {
-    return JSON.parse(json) as AppData.AppData;
-}
-
-/**
- * **This method is stub**
- * @param data app data to be stored
- */
-export function toLocalStorageFormat(
-    data:
-        | Pick<AppData.AppData, 'jwt'>
-        | Pick<AppData.AppData, 'cartItems'>
-        | AppData.AppData
-): string {
-    return JSON.stringify(data);
-}

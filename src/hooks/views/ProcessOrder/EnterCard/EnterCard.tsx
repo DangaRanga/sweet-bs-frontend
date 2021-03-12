@@ -2,17 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './EnterCard.css';
 import cardImg from '../../../../assets/images/undraw_Credit_card_re_blml 1.svg';
-import { AppHooks} from '../../../hooks';
-import { ShoppingCartData } from '../../../models/AppData';
-
+import { AppHooks, ProcessOrderHooks } from '../../../hooks';
+import { JWT, ShoppingCartData } from '../../../models/AppData';
 
 interface EnterCardProps {
     cart: ShoppingCartData;
     updateCart: AppHooks.CartUpdater;
+    jwt: JWT;
 }
 
-
 export default function EnterCard(props: EnterCardProps) {
+    const [fields, updateFields] = ProcessOrderHooks.useFields();
+    const [
+        canPlaceOrder,
+        setShouldPlaceOrder,
+    ] = ProcessOrderHooks.usePlaceOrder(props.cart, props.jwt, fields);
+
     return (
         <div id="enter-card">
             <div className="content">
@@ -30,6 +35,13 @@ export default function EnterCard(props: EnterCardProps) {
                             id="visa-card-type"
                             value="visa"
                             required
+                            onChange={(e) =>
+                                e.currentTarget.checked
+                                    ? updateFields({
+                                          card: e.currentTarget.value,
+                                      })
+                                    : null
+                            }
                         />
                         <input
                             type="radio"
@@ -37,6 +49,13 @@ export default function EnterCard(props: EnterCardProps) {
                             id="master-card-type"
                             value="master-card"
                             required
+                            onChange={(e) =>
+                                e.currentTarget.checked
+                                    ? updateFields({
+                                          card: e.currentTarget.value,
+                                      })
+                                    : null
+                            }
                         />
                     </div>
                     <label htmlFor="card-number">Card Number</label>
@@ -49,10 +68,31 @@ export default function EnterCard(props: EnterCardProps) {
                         maxLength={19}
                         minLength={17}
                         required
+                        onChange={(e) =>
+                            e.currentTarget.checked
+                                ? updateFields({
+                                      cardNumber: e.currentTarget.value,
+                                  })
+                                : null
+                        }
+                        value={fields.cardNumber}
                     />
 
                     <label htmlFor="name-on-card">Name On Card</label>
-                    <input type="text" placeholder="eg. John Doe" required />
+                    <input
+                        type="text"
+                        name="name-on-card"
+                        placeholder="eg. John Doe"
+                        required
+                        onChange={(e) =>
+                            e.currentTarget.checked
+                                ? updateFields({
+                                      nameOnCard: e.currentTarget.value,
+                                  })
+                                : null
+                        }
+                        value={fields.nameOnCard}
+                    />
                     <div id="date-and-cvv">
                         <div id="select-date">
                             <label htmlFor="expiry-date">Expiry Date</label>
@@ -66,6 +106,15 @@ export default function EnterCard(props: EnterCardProps) {
                                     minLength={2}
                                     inputMode="numeric"
                                     required
+                                    value={fields.expiryMonth}
+                                    onChange={(e) =>
+                                        e.currentTarget.checked
+                                            ? updateFields({
+                                                  expiryMonth:
+                                                      e.currentTarget.value,
+                                              })
+                                            : null
+                                    }
                                 />
                                 <input
                                     type="tel"
@@ -76,9 +125,22 @@ export default function EnterCard(props: EnterCardProps) {
                                     minLength={4}
                                     inputMode="numeric"
                                     required
+                                    value={fields.expiryYear}
+                                    onChange={(e) =>
+                                        e.currentTarget.checked
+                                            ? updateFields({
+                                                  expiryYear:
+                                                      e.currentTarget.value,
+                                              })
+                                            : null
+                                    }
                                 />
                             </div>
-                            <input type="hidden" name="expiry-date" />
+                            <input
+                                type="hidden"
+                                name="expiry-date"
+                                value={fields.expiryDate}
+                            />
                         </div>
                         <div id="select-cvv">
                             <label htmlFor="cvv">CVV</label>
@@ -91,10 +153,16 @@ export default function EnterCard(props: EnterCardProps) {
                                 minLength={3}
                                 inputMode="numeric"
                                 required
+                                value={fields.cvv}
                             />
                         </div>
                     </div>
-                    <button type="submit" className="btn success filled">
+                    <button
+                        type="submit"
+                        disabled={!canPlaceOrder}
+                        className="btn success filled"
+                        onClick={(e) => setShouldPlaceOrder(true)}
+                    >
                         Place Order
                     </button>
                 </form>

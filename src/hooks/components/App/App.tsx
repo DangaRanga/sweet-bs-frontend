@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Switch,
     Route,
@@ -17,18 +17,24 @@ import './App.css';
 
 export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
+    const [jwt, updateJWT] = AppHooks.useJWT();
+
+    /* updateJWT({
+        type: 'login',
+        username: 'ARich123',
+        password: 't#st123',
+    }); */
+
+    console.log(jwt);
 
     return (
         <BrowserRouter forceRefresh={false}>
             <Switch>
                 <Route exact path="/cart">
-                    <ShoppingCart
-                    cart={cart}
-                    updateCart={updateCart}
-                    />
+                    <ShoppingCart cart={cart} updateCart={updateCart} />
                 </Route>
                 <Route exact path="/menu">
-                    <Menu updateCart={updateCart}/>
+                    <Menu updateCart={updateCart} />
                 </Route>
                 <Route exact path="/profile">
                     <MyAccount />
@@ -40,6 +46,7 @@ export default function App() {
                         <ProcessOrder
                             //appCtrl={this.props.appCtrl}
                             cart={cart}
+                            jwt={jwt}
                             updateCart={updateCart}
                             history={props.history}
                             location={props.location}
