@@ -2,6 +2,7 @@ import { Reducer, useEffect, useReducer, useState } from 'react';
 import { Order } from '../models';
 import { JWT, ShoppingCartData } from '../models/AppData';
 import { toJSON } from '../utils/JsonUtils';
+import { AppHooks } from '.';
 
 namespace ProcessOrderHooks {
     interface CardFormFields {
@@ -64,13 +65,13 @@ namespace ProcessOrderHooks {
     export function usePlaceOrder(
         cart: ShoppingCartData,
         jwt: JWT,
-        fields: CardFormFields
+        fields: CardFormFields,
+        updateCart: AppHooks.CartUpdater
     ) {
         const [canPlaceOrder, setCanPlaceOrder] = useState(false);
         const [shouldPlaceOrder, setShouldPlaceOrder] = useState(false);
 
         useEffect(() => {
-            console.log('fired2');
             let isMounted = true;
             if (isMounted) {
                 var list = Object.entries(fields) as [string, string][];
@@ -88,14 +89,15 @@ namespace ProcessOrderHooks {
 
             if (isMounted) {
                 if (shouldPlaceOrder) {
-                    console.log('fired');
-                    sendOrder(cart, jwt);
+                    sendOrder(cart, jwt).then((success) =>
+                        success ? updateCart({ type: 'empty' }) : null
+                    );
                 }
             }
             return () => {
                 isMounted = false;
             };
-        }, [shouldPlaceOrder, cart, jwt]);
+        }, [shouldPlaceOrder, cart, jwt, updateCart]);
 
         return [canPlaceOrder, setShouldPlaceOrder] as const;
     }

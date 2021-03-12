@@ -49,6 +49,7 @@ namespace AppHooks {
             }
         }
 
+        // 
         useEffect(() => {
             localStorage.setItem('sweetbs-jwt', toJSON(jwt) ?? '');
         }, [jwt]);

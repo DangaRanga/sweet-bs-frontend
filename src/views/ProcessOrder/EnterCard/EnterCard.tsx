@@ -16,7 +16,7 @@ export default function EnterCard(props: EnterCardProps) {
     const [
         canPlaceOrder,
         setShouldPlaceOrder,
-    ] = ProcessOrderHooks.usePlaceOrder(props.cart, props.jwt, fields);
+    ] = ProcessOrderHooks.usePlaceOrder(props.cart, props.jwt, fields, props.updateCart);
 
     return (
         <div id="enter-card">
