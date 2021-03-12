@@ -112,7 +112,7 @@ namespace ProcessOrderHooks {
         // the new order to be sent
         var newOrder: Order = { complete: false, items: cart };
 
-        const token = toJSON(jwt) ?? '';
+        const token = jwt.token ?? '';
         // After initialization, send the new order to the database
         success = await fetch('http://0.0.0.0:9090/orders/add', {
             method: 'POST',

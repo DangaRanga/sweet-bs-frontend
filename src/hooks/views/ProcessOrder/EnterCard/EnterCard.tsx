@@ -21,7 +21,7 @@ export default function EnterCard(props: EnterCardProps) {
     return (
         <div id="enter-card">
             <div className="content">
-                <form action="" method="post">
+                <form method="post">
                     <Link replace className="danger" to="/cart">
                         Cancel
                     </Link>
@@ -69,11 +69,9 @@ export default function EnterCard(props: EnterCardProps) {
                         minLength={17}
                         required
                         onChange={(e) =>
-                            e.currentTarget.checked
-                                ? updateFields({
-                                      cardNumber: e.currentTarget.value,
-                                  })
-                                : null
+                            updateFields({
+                                cardNumber: e.currentTarget.value,
+                            })
                         }
                         value={fields.cardNumber}
                     />
@@ -85,11 +83,9 @@ export default function EnterCard(props: EnterCardProps) {
                         placeholder="eg. John Doe"
                         required
                         onChange={(e) =>
-                            e.currentTarget.checked
-                                ? updateFields({
-                                      nameOnCard: e.currentTarget.value,
-                                  })
-                                : null
+                            updateFields({
+                                nameOnCard: e.currentTarget.value,
+                            })
                         }
                         value={fields.nameOnCard}
                     />
@@ -108,12 +104,9 @@ export default function EnterCard(props: EnterCardProps) {
                                     required
                                     value={fields.expiryMonth}
                                     onChange={(e) =>
-                                        e.currentTarget.checked
-                                            ? updateFields({
-                                                  expiryMonth:
-                                                      e.currentTarget.value,
-                                              })
-                                            : null
+                                        updateFields({
+                                            expiryMonth: e.currentTarget.value,
+                                        })
                                     }
                                 />
                                 <input
@@ -127,12 +120,9 @@ export default function EnterCard(props: EnterCardProps) {
                                     required
                                     value={fields.expiryYear}
                                     onChange={(e) =>
-                                        e.currentTarget.checked
-                                            ? updateFields({
-                                                  expiryYear:
-                                                      e.currentTarget.value,
-                                              })
-                                            : null
+                                        updateFields({
+                                            expiryYear: e.currentTarget.value,
+                                        })
                                     }
                                 />
                             </div>
@@ -140,6 +130,7 @@ export default function EnterCard(props: EnterCardProps) {
                                 type="hidden"
                                 name="expiry-date"
                                 value={fields.expiryDate}
+                                readOnly
                             />
                         </div>
                         <div id="select-cvv">
@@ -154,6 +145,11 @@ export default function EnterCard(props: EnterCardProps) {
                                 inputMode="numeric"
                                 required
                                 value={fields.cvv}
+                                onChange={(e) =>
+                                    updateFields({
+                                        cvv: e.currentTarget.value,
+                                    })
+                                }
                             />
                         </div>
                     </div>
@@ -161,7 +157,10 @@ export default function EnterCard(props: EnterCardProps) {
                         type="submit"
                         disabled={!canPlaceOrder}
                         className="btn success filled"
-                        onClick={(e) => setShouldPlaceOrder(true)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setShouldPlaceOrder(true);
+                        }}
                     >
                         Place Order
                     </button>
