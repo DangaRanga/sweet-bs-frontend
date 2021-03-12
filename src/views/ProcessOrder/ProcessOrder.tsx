@@ -1,33 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { BackToCart, EnterCard } from '../../components';
-import { AppController, ProcessOrderController } from '../../controllers';
+import { AppHooks } from '../../hooks';
+import { JWT, ShoppingCartData } from '../../models/AppData';
+import BackToCart from './BackToCart/BackToCart';
+import EnterCard from './EnterCard/EnterCard';
 import './ProcessOrder.css';
 
+interface ProcessOrderProps
+    extends Partial<RouteComponentProps<any, any, { fromCart: boolean }>> {
+    updateCart: AppHooks.CartUpdater;
+    cart: ShoppingCartData;
+    jwt: JWT;
+}
 
-interface ProcessOrderProps extends Partial<RouteComponentProps<any, any, {fromCart:boolean}>>{
-        appCtrl: AppController;
-    }
-interface ProcessOrderState {}
+export default function ProcessOrder(props: ProcessOrderProps) {
+    const hadCheckedOut = props.location?.state?.fromCart ?? false;
 
-export default class ProcessOrder extends Component<
-    ProcessOrderProps,
-    ProcessOrderState
-> {
-
-    private _hadCheckedOut:boolean;
-    private _controller:ProcessOrderController;
-
-    constructor(props: ProcessOrderProps) {
-        super(props);
-        this._hadCheckedOut = this.props.location?.state?.fromCart ?? false;
-        this._controller = new ProcessOrderController(this, this.props.appCtrl);
-    }
-
-    render() {
-        return <div id="process-order">
-            {this._hadCheckedOut && <EnterCard controller={this._controller}/>} 
-            {!this._hadCheckedOut && <BackToCart/>}
-        </div>;
-    }
+    return (
+        <div id="process-order">
+            {hadCheckedOut && (
+                <EnterCard
+                    jwt={props.jwt}
+                    cart={props.cart}
+                    updateCart={props.updateCart}
+                />
+            )}
+            {!hadCheckedOut && <BackToCart />}
+        </div>
+    );
 }

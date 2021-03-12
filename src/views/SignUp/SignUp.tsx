@@ -5,8 +5,6 @@ interface SignUpProps {}
 
 interface SignUpState {}
 
-export default class SignUp extends Component<SignUpProps, SignUpState> {
-    render() {
-        return <div></div>;
-    }
+export default function SignUp(props: SignUpProps) {
+    return <div></div>;
 }
