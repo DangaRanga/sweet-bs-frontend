@@ -1,55 +1,49 @@
-import React, { Component } from 'react';
-import {
-    MenuItemDisplay,
-    MenuItemSwitcher,
-    Spinner,
-    WebsiteNav,
-} from '../../components';
-import { AppController, MenuController } from '../../controllers';
-import { MenuItemCategory } from '../../models';
+import { Spinner, WebsiteNav } from '../../components';
+import { AppHooks, MenuHooks } from '../../hooks';
+
 import './Menu.css';
+import MenuItemDisplay from './MenuItemDisplay/MenuItemDisplay';
+import MenuItemSwitcher from './MenuItemSwitcher/MenuItemSwitcher';
 
 interface MenuProps {
-    appCtrl: AppController;
+    updateCart: AppHooks.CartUpdater;
 }
 
-interface MenuState {
-    items: MenuItemCategory[];
-    selectedCategory: number;
-    selectedFlavour: number;
-}
+/**
+ * The Menu View from which customer may add items to their cart
+ */
+export default function Menu(props: MenuProps) {
+    /** All menu items in the database, grouped by category (Cookies or Cheesecake for example) */
+    const categories = MenuHooks.useCategories();
+    /** The index of the category and flavour selected by the user */
+    const [selected, setSelected] = MenuHooks.useSelected();
 
-export default class Menu extends Component<MenuProps, MenuState> {
-    private _controller: MenuController;
-
-    readonly state: Readonly<MenuState> = {
-        items: [],
-        selectedCategory: 0,
-        selectedFlavour: 0,
-    };
-
-    constructor(props: MenuProps) {
-        super(props);
-        this._controller = new MenuController(this, this.props.appCtrl);
-    }
-
-    async componentDidMount() {
-        await this._controller.fetchMenuItems();
-    }
-
-    render() {
-        return this._controller.isCartLoaded ? (
-            <div id="menu">
-                <WebsiteNav />
-                <div className="content">
-                <MenuItemDisplay controller={this._controller} />
-                <MenuItemSwitcher controller={this._controller} /></div>
+    // display a spinner until the the menu items have been fetched then display the menu
+    return categories.length > 0 ? (
+        <div id="menu">
+            <WebsiteNav />
+            <div className="content">
+                <MenuItemDisplay
+                    updateCart={props.updateCart}
+                    updateSelected={setSelected}
+                    category={categories[selected.category]}
+                    menuitem={
+                        categories[selected.category].menuitems[
+                            selected.flavour
+                        ]
+                    }
+                />
+                <MenuItemSwitcher
+                    categories={categories}
+                    selectedCategory={selected.category}
+                    updateSelected={setSelected}
+                />
             </div>
-        ) : (
-            <div id="menu">
-                <WebsiteNav />
-                <Spinner />
-            </div>
-        );
-    }
+        </div>
+    ) : (
+        <div id="menu">
+            <WebsiteNav />
+            <Spinner />
+        </div>
+    );
 }

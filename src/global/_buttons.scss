@@ -20,21 +20,82 @@
     }
 
     &.filled {
-        background-color: $primary;
         color: $onDark;
+
+        &.primary {
+            background-color: $primary;
+
+            &:disabled {
+                background-color: $primary-light;
+            }
+        }
+
+        &.danger {
+            background-color: $danger;
+
+            &:disabled {
+                background-color: $danger-light;
+            }
+        }
+
+        &.success {
+            background-color: $success;
+
+            &:disabled {
+                background-color: $success-light;
+            }
+        }
+
+        &.warning {
+            background-color: $warning;
+
+            &:disabled {
+                background-color: $warning-light;
+            }
+        }
+
+        &.info {
+            background-color: $info;
+
+            &:disabled {
+                background-color: $info-light;
+            }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: $bgDarker;
+        }
     }
 
     &.outline {
         background-color: $bg;
-        border: $primary 2px solid;
+        border-width: 2px;
+        border-style: solid;
 
-
-        &.icon {
+        &.primary {
+            border-color: $primary;
             color: $primary;
         }
 
-        &:not(.icon) {
-            color: $onLight;
+        &.danger {
+            border-color: $danger;
+            color: $danger;
+        }
+
+        &.warning {
+            border-color: $warning;
+            color: $warning;
+        }
+
+        &.success {
+            border-color: $success;
+            color: $success;
+        }
+
+        &.info {
+            border-color: $info;
+            color: $info;
         }
     }
 }

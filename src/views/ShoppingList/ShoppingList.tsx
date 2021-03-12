@@ -5,11 +5,6 @@ interface ShoppingListProps {}
 
 interface ShoppingListState {}
 
-export default class ShoppingList extends Component<
-    ShoppingListProps,
-    ShoppingListState
-> {
-    render() {
-        return <div></div>;
-    }
+export default function ShoppingList(props: ShoppingListProps) {
+    return <div></div>;
 }

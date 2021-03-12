@@ -1,0 +1,28 @@
+@import '../../../global/colours';
+
+#menuitem-switcher {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 30%;
+    gap: 5%;
+    justify-items: center;
+    align-items: center;
+    overflow: auto;
+    scroll-behavior: smooth;
+
+    .selected {
+        box-shadow: $primary-light 0 4px 16px -3px;
+    }
+
+    & > * {
+        transition: all 0.5s;
+        width: fit-content;
+    }
+
+    & > *:not(.selected) {
+        opacity: 0.5;
+    }
+    & > *:not(.selected):hover {
+        opacity: 1;
+    }
+}

@@ -1,63 +1,22 @@
-import { Customer, OrderItem } from '.';
-import DbModel from './DbModel';
-export default class Order extends DbModel {
-    private _complete: boolean;
+import { Customer, OrderItem, DbModel } from '.';
 
-    private _items: OrderItem[];
-
-    private _user: Customer;
-
-    constructor(
-        complete: boolean,
-        items: OrderItem[],
-        user: Customer,
-        id?: number
-    ) {
-        super(id);
-        this._complete = complete;
-        this._items = items;
-        this._user = user;
-    }
-    public toObject(): object {
-        return this.id
-            ? {
-                  id: this.id,
-                  complete: this.complete,
-                  items: this.items.map((v) => v.toObject()),
-                  user_id: this.user.id,
-              }
-            : {
-                  complete: this.complete,
-                  items: this.items.map((v) => v.toObject()),
-                  user_id: this.user.id,
-              };
-    }
-
-    public toJSON(): string {
-        return JSON.stringify(this.toObject());
-    }
-
-    public static fromJSON(json: any): Order {
-        return new Order(
-            json['complete'],
-            json['items'].map((v: any) => OrderItem.fromJSON(v)),
-            Customer.fromJSON(json['user']),
-            json['id']
-        );
-    }
-
-    public get complete(): boolean {
-        return this._complete;
-    }
-    public set complete(value: boolean) {
-        this._complete = value;
-    }
-
-    public get items(): OrderItem[] {
-        return this._items;
-    }
-
-    public get user(): Customer {
-        return this._user;
-    }
+/**
+ * A base order interface representing an Order in the database
+ * @abstract
+ */
+interface Order extends DbModel {
+    /** Whether or not the order has been complete*/
+    complete: boolean;
+    /** The items in the order */
+    items: OrderItem[];
+    /**The customer who made the order. Typically the customer would only be present when the order is sent to the Order Collator */
+    user?: Customer;
 }
+
+/** An order may be placed by a customer on the website or
+ * an order may be sent from the database, by the server
+ * for the admin portal.
+ *
+ */
+
+export default Order;

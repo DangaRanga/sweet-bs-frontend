@@ -1,67 +1,65 @@
-import React, { Component } from 'react';
-import { Routes } from '..';
-import { AppController } from '../../controllers';
+import React, { useEffect } from 'react';
 import {
-    Admin,
-    Customer,
-    OrderItem,
-    ShoppingCartData,
-    User,
-} from '../../models';
+    Switch,
+    Route,
+    BrowserRouter,
+    RouteComponentProps,
+} from 'react-router-dom';
+import {
+    Menu,
+    MyAccount,
+    NotFound,
+    ProcessOrder,
+    ShoppingCart,
+} from '../../views';
+import { AppHooks } from '../../hooks';
 import './App.css';
 
-interface AppProps {}
+export default function App() {
+    const [cart, updateCart] = AppHooks.useCart();
+    const [jwt, updateJWT] = AppHooks.useJWT();
 
-interface AppState {
-    cart: ShoppingCartData;
-    user: User | undefined;
-}
+    /* updateJWT({
+        type: 'login',
+        username: 'ARich123',
+        password: 't#st123',
+    }); */
 
-export default class App extends Component<AppProps, AppState> {
-    private _controller: AppController;
+    console.log(jwt);
 
-    readonly state: Readonly<AppState> = {
-        cart: new ShoppingCartData(),
-        user: undefined,
-    };
+    return (
+        <BrowserRouter forceRefresh={false}>
+            <Switch>
+                <Route exact path="/cart">
+                    <ShoppingCart cart={cart} updateCart={updateCart} />
+                </Route>
+                <Route exact path="/menu">
+                    <Menu updateCart={updateCart} />
+                </Route>
+                <Route exact path="/profile">
+                    <MyAccount />
+                </Route>
+                <Route
+                    exact
+                    path="/processorder"
+                    render={(props: RouteComponentProps<any, any, any>) => (
+                        <ProcessOrder
+                            //appCtrl={this.props.appCtrl}
+                            cart={cart}
+                            jwt={jwt}
+                            updateCart={updateCart}
+                            history={props.history}
+                            location={props.location}
+                            match={props.match}
+                            staticContext={props.staticContext}
+                        />
+                    )}
+                ></Route>
 
-    constructor(props: AppProps) {
-        super(props);
-        this._controller = new AppController(this);
-    }
-
-    componentDidMount() {
-        var userData = localStorage.getItem('user');
-        var user: User | undefined;
-        var cartData = localStorage.getItem('cart');
-        if (userData) {
-            try {
-                user = Customer.fromJSON(JSON.parse(userData));
-            } catch (e) {
-                try {
-                    user = Admin.fromJSON(JSON.parse(userData));
-                } catch (e) {
-                    user = undefined;
-                }
-            } finally {
-                this.setState({ user: user });
-            }
-        }
-        if (cartData) {
-            var cartdataObj = JSON.parse(cartData);
-
-            try {
-                this._controller.cart = new ShoppingCartData(
-                    cartdataObj.map((v: any) => OrderItem.fromJSON(v))
-                );
-            } catch (e) {
-                console.log(e);
-                this._controller.cart = new ShoppingCartData();
-            }
-        }
-    }
-
-    render() {
-        return <Routes appCtrl={this._controller} />;
-    }
+                <Route>
+                    <NotFound />
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    );
 }

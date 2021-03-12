@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './AccessDenied.css';
 
 interface AccessDeniedProps {}
 
-interface AccessDeniedState {}
-
-export default class AccessDenied extends Component<
-    AccessDeniedProps,
-    AccessDeniedState
-> {
-    render() {
-        return <div></div>;
-    }
+export default function AccessDenied(props: AccessDeniedProps) {
+    return <div></div>;
 }

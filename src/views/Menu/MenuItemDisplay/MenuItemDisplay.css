@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
+/* theme colours */
+/* semantic colours */
+#menuitem {
+  display: flex;
+  padding: 3.5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f5ff;
+  border-radius: 50px;
+  color: #232323;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif; }
+  #menuitem #pastry-img-div {
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden; }
+    #menuitem #pastry-img-div:after {
+      content: '';
+      display: block;
+      padding-bottom: 100%; }
+    #menuitem #pastry-img-div #pastry-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain; }
+  #menuitem #menuitem-info {
+    width: 40%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 15% 5% 15% auto 15%; }
+    #menuitem #menuitem-info h1 {
+      font-weight: 700;
+      font-family: "Nunito", sans-serif; }
+    #menuitem #menuitem-info h3 {
+      display: flex;
+      flex-direction: row;
+      font-weight: 700;
+      font-family: "Poppins", sans-serif; }
+      #menuitem #menuitem-info h3 .price {
+        color: #9377e2; }
+    #menuitem #menuitem-info #flavours div {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 4rem; }
+      #menuitem #menuitem-info #flavours div .flavour {
+        font-weight: 400;
+        font-family: "Poppins", sans-serif;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 16px -3px;
+        background-color: #ffffff;
+        padding: 1rem;
+        transition: all 0.5s; }
+        #menuitem #menuitem-info #flavours div .flavour.selected {
+          background-color: #d5c6ff; }
+        #menuitem #menuitem-info #flavours div .flavour:hover {
+          box-shadow: #d5c6ff 0 4px 16px -3px; }
+    #menuitem #menuitem-info #add-to-cart-section {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-family: "Poppins", sans-serif;
+      width: 100%;
+      height: 5rem; }
+      #menuitem #menuitem-info #add-to-cart-section .btn {
+        padding: 0.5rem; }
+      #menuitem #menuitem-info #add-to-cart-section #add-to-cart-btn {
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 16px -3px;
+        padding: 1rem 2rem;
+        position: relative;
+        transition: all 1s; }
+        #menuitem #menuitem-info #add-to-cart-section #add-to-cart-btn #add-to-cart-success {
+          opacity: 0;
+          position: relative;
+          left: 26px;
+          transition: 1s all; }
+        #menuitem #menuitem-info #add-to-cart-section #add-to-cart-btn #first {
+          display: inline;
+          right: 8px;
+          transition: 0.7s all;
+          position: relative; }
+        #menuitem #menuitem-info #add-to-cart-section #add-to-cart-btn #extra {
+          position: relative;
+          right: 20px;
+          display: inline;
+          transition: 0.7s all; }
+        #menuitem #menuitem-info #add-to-cart-section #add-to-cart-btn #extra-inner {
+          opacity: 0;
+          transition: 0.7s all;
+          right: 30px;
+          position: relative;
+          display: inline; }
+      #menuitem #menuitem-info #add-to-cart-section #qty-chooser {
+        display: flex;
+        width: 50%;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 16px -3px;
+        background-color: #ffffff;
+        padding: 1.5rem;
+        column-gap: 4%;
+        border-radius: 10px; }
+        #menuitem #menuitem-info #add-to-cart-section #qty-chooser #qty {
+          outline: none;
+          border: none;
+          text-align: center;
+          font-weight: 700;
+          font-family: "Poppins", sans-serif;
+          width: 30%; }
+        #menuitem #menuitem-info #add-to-cart-section #qty-chooser .btn {
+          border-radius: 0;
+          background-color: #ffffff;
+          font-size: 1.5rem;
+          width: 30%; }
+          #menuitem #menuitem-info #add-to-cart-section #qty-chooser .btn.plus {
+            border-left: 2px solid #232323; }
+          #menuitem #menuitem-info #add-to-cart-section #qty-chooser .btn.minus {
+            border-right: 2px solid #232323; }
