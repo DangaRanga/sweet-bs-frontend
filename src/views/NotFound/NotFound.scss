@@ -2,4 +2,23 @@ $bg-img: url('../../assets/bg/404.png');
 
 #not-found {
     background: $bg-img center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Temporary Column Flex until the buttons are done */
+    align-items: center;
+    justify-content: center;
+}
+
+#not-found-img {
+    height: 55vh;
+}
+
+#not-found-text {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 4em;
+    width: 25%;
+    text-align: center;
+    margin-bottom: 20px;
 }
