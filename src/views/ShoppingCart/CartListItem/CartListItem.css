@@ -1,49 +1,58 @@
 /* theme colours */
 /* semantic colours */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
 .cart-list-item {
-  display: grid;
-  grid-template-columns: 12% 40% 15% 15% 10%;
-  grid-template-rows: min-content;
-  justify-items: center;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  column-gap: 2%;
-  color: #232323; }
-  .cart-list-item > div {
+    display: grid;
+    grid-template-columns: 12% 40% 15% 15% 10%;
+    grid-template-rows: min-content;
+    justify-items: center;
+    align-items: center;
     width: 100%;
-    height: 100%; }
-  .cart-list-item .info {
+    height: fit-content;
+    column-gap: 2%;
+    color: #232323;
+}
+.cart-list-item > div {
+    width: 100%;
+    height: 100%;
+}
+.cart-list-item .info {
     display: flex;
     flex-direction: column;
-    justify-content: center; }
-    .cart-list-item .info .name {
-      font-weight: 700;
-      font-family: "Nunito", sans-serif;
-      font-size: 1.85rem; }
-    .cart-list-item .info .desc {
-      font-weight: 400;
-      font-family: "Poppins", sans-serif;
-      font-size: 1.15rem; }
-  .cart-list-item .counter {
+    justify-content: center;
+}
+.cart-list-item .info .name {
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.85rem;
+}
+.cart-list-item .info .desc {
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+}
+.cart-list-item .counter {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
-    align-items: center; }
-  .cart-list-item .price,
-  .cart-list-item .qty {
+    align-items: center;
+}
+.cart-list-item .price,
+.cart-list-item .qty {
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    font-family: "Poppins", sans-serif;
-    font-size: 1.75rem; }
-  .cart-list-item .btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+}
+.cart-list-item .btn {
     height: 2rem;
-    width: 2rem; }
-  .cart-list-item img {
+    width: 2rem;
+}
+.cart-list-item img {
     object-fit: contain;
     width: 100%;
     max-height: 100%;
-    border-radius: 50%; }
+    border-radius: 50%;
+}

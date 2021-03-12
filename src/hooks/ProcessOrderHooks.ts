@@ -35,12 +35,12 @@ namespace ProcessOrderHooks {
             nameOnCard: '',
         };
 
-        function reducer(
+        const reducer = (
             fields: CardFormFields,
             action: CardFormUpdateActions
-        ) {
+        ) => {
             return { ...fields, ...action };
-        }
+        };
 
         const [fields, updateFields] = useReducer<
             Reducer<CardFormFields, CardFormUpdateActions>
@@ -89,9 +89,12 @@ namespace ProcessOrderHooks {
 
             if (isMounted) {
                 if (shouldPlaceOrder) {
-                    sendOrder(cart, jwt).then((success) =>
-                        success ? updateCart({ type: 'empty' }) : null
-                    );
+                    sendOrder(cart, jwt).then((success) => {
+                        if (success) {
+                            updateCart({ type: 'empty' });
+                            window.location.replace('/menu');
+                        }
+                    });
                 }
             }
             return () => {

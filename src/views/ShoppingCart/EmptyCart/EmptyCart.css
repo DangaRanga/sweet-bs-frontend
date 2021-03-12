@@ -1,17 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
 /* theme colours */
 /* semantic colours */
 #empty-cart {
-  max-height: 100%;
-  width: 100%;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly; }
-  #empty-cart img {
+    max-height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#empty-cart img {
     height: 60%;
-    width: auto; }
-  #empty-cart h1 {
+    width: auto;
+}
+#empty-cart h1 {
     font-weight: 700;
-    font-family: "Poppins", sans-serif; }
+    font-family: 'Poppins', sans-serif;
+}

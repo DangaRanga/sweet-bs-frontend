@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './EnterCard.css';
 import cardImg from '../../../assets/images/undraw_Credit_card_re_blml 1.svg';
+import visaImg from '../../../assets/icons/visa.svg';
+import mastercardImg from '../../../assets/icons/mastercard.svg';
 import { AppHooks, ProcessOrderHooks } from '../../../hooks';
 import { JWT, ShoppingCartData } from '../../../models/AppData';
 
@@ -16,7 +18,12 @@ export default function EnterCard(props: EnterCardProps) {
     const [
         canPlaceOrder,
         setShouldPlaceOrder,
-    ] = ProcessOrderHooks.usePlaceOrder(props.cart, props.jwt, fields, props.updateCart);
+    ] = ProcessOrderHooks.usePlaceOrder(
+        props.cart,
+        props.jwt,
+        fields,
+        props.updateCart
+    );
 
     return (
         <div id="enter-card">
@@ -29,34 +36,46 @@ export default function EnterCard(props: EnterCardProps) {
                     <h1>Please Enter Your Card Info</h1>
                     <div id="select-card-type">
                         <label htmlFor="card-type">Card Type</label>
-                        <input
-                            type="radio"
-                            name="card-type"
-                            id="visa-card-type"
-                            value="visa"
-                            required
-                            onChange={(e) =>
-                                e.currentTarget.checked
-                                    ? updateFields({
-                                          card: e.currentTarget.value,
-                                      })
-                                    : null
-                            }
-                        />
-                        <input
-                            type="radio"
-                            name="card-type"
-                            id="master-card-type"
-                            value="master-card"
-                            required
-                            onChange={(e) =>
-                                e.currentTarget.checked
-                                    ? updateFields({
-                                          card: e.currentTarget.value,
-                                      })
-                                    : null
-                            }
-                        />
+                        <label
+                            htmlFor="visa-card-type"
+                            className="radio-wrapper"
+                        >
+                            <input
+                                type="radio"
+                                name="card-type"
+                                id="visa-card-type"
+                                value="visa"
+                                required
+                                onChange={(e) =>
+                                    e.currentTarget.checked
+                                        ? updateFields({
+                                              card: e.currentTarget.value,
+                                          })
+                                        : null
+                                }
+                            />
+                            <img src={visaImg} alt="Visa" />
+                        </label>
+                        <label
+                            htmlFor="master-card-type"
+                            className="radio-wrapper"
+                        >
+                            <input
+                                type="radio"
+                                name="card-type"
+                                id="master-card-type"
+                                value="master-card"
+                                required
+                                onChange={(e) =>
+                                    e.currentTarget.checked
+                                        ? updateFields({
+                                              card: e.currentTarget.value,
+                                          })
+                                        : null
+                                }
+                            />
+                            <img src={mastercardImg} alt="Master Card" />
+                        </label>
                     </div>
                     <label htmlFor="card-number">Card Number</label>
                     <input
@@ -75,7 +94,6 @@ export default function EnterCard(props: EnterCardProps) {
                         }
                         value={fields.cardNumber}
                     />
-
                     <label htmlFor="name-on-card">Name On Card</label>
                     <input
                         type="text"

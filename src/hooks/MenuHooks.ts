@@ -52,29 +52,32 @@ namespace MenuHooks {
     }
 
     /**
+     * Updates the selected state based on the actions passed
+     */
+    function selectedReducer(
+        selected: SelectedState,
+        action: SelectedUpdateAction
+    ): SelectedState {
+        const { type, index } = action;
+
+        switch (type) {
+            case 'category':
+                return { category: index, flavour: 0 };
+            case 'flavour':
+                return { ...selected, flavour: index };
+            default:
+                return selected;
+        }
+    }
+
+    /**
      * Create the state for selected category and flavour in the menu.
      * @returns The selected state and corresponding setter
      */
     export function useSelected() {
-        function reducer(
-            selected: SelectedState,
-            action: SelectedUpdateAction
-        ) {
-            const { type, index } = action;
-
-            switch (type) {
-                case 'category':
-                    return { category: index, flavour: 0 };
-                case 'flavour':
-                    return { ...selected, flavour: index };
-                default:
-                    return selected;
-            }
-        }
-
         const [selected, updateSelected] = useReducer<
             Reducer<SelectedState, SelectedUpdateAction>
-        >(reducer, {
+        >(selectedReducer, {
             category: 0,
             flavour: 0,
         });
@@ -82,26 +85,30 @@ namespace MenuHooks {
         return <const>[selected, updateSelected];
     }
 
+    /** The actions that may be taken when changing the quantity */
+    type QtyDispatchAction = 'increment' | 'decrement';
+
+    /**
+     * Updates the quantity based on the action passed
+     */
+    function quantityReducer(qty: number, action: QtyDispatchAction): number {
+        switch (action) {
+            case 'increment':
+                return qty + 1;
+            case 'decrement':
+                return qty - 1 < 1 ? 1 : qty - 1;
+            default:
+                return qty;
+        }
+    }
+
     /**
      * Create and initialize the qty in the menu
      * @returns the qty state and corresponding updater
      */
     export function useQuantity() {
-        type QtyDispatchAction = 'increment' | 'decrement';
-
-        function reducer(qty: number, action: QtyDispatchAction) {
-            switch (action) {
-                case 'increment':
-                    return qty + 1;
-                case 'decrement':
-                    return qty - 1 < 1 ? 1 : qty - 1;
-                default:
-                    return qty;
-            }
-        }
-
         const [qty, updateQty] = useReducer<Reducer<number, QtyDispatchAction>>(
-            reducer,
+            quantityReducer,
             1
         );
 
