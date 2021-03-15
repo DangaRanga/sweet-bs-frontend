@@ -32,6 +32,7 @@
             color: $primary;
             @include heading1;
             font-size: 1.15rem;
+            width:fit-content;
         }
     }
 }

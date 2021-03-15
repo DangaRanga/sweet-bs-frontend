@@ -1,61 +1,49 @@
 /* theme colours */
 /* semantic colours */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
 #order-summary {
-    background-color: #f8f5ff;
-    height: 100%;
-    width: 100%;
-    color: #232323;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 6.4rem 4rem 3rem 4rem;
-}
-#order-summary h1 {
+  background-color: #f8f5ff;
+  height: 100%;
+  width: 100%;
+  color: #232323;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6.4rem 4rem 3rem 4rem; }
+  #order-summary h1 {
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-}
-#order-summary .items {
-    overflow: auto;
-}
-#order-summary .items,
-#order-summary .total-line {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem; }
+  #order-summary .items {
+    overflow: auto; }
+  #order-summary .items,
+  #order-summary .total-line {
     display: grid;
     grid-template-columns: 3fr 1.5fr;
     grid-auto-rows: 1fr;
     row-gap: 0.5rem;
-    align-items: flex-end;
-}
-#order-summary .items p:nth-child(2n + 1),
-#order-summary .total-line p:nth-child(2n + 1) {
-    text-align: left;
-}
-#order-summary .items p:nth-child(2n),
-#order-summary .total-line p:nth-child(2n) {
-    text-align: right;
-}
-#order-summary .item-name {
+    align-items: flex-end; }
+    #order-summary .items p:nth-child(2n + 1),
+    #order-summary .total-line p:nth-child(2n + 1) {
+      text-align: left; }
+    #order-summary .items p:nth-child(2n),
+    #order-summary .total-line p:nth-child(2n) {
+      text-align: right; }
+  #order-summary .item-name {
     font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.15rem;
-}
-#order-summary .item-qty {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.15rem; }
+  #order-summary .item-qty {
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.15rem;
-}
-#order-summary .total-line {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.15rem; }
+  #order-summary .total-line {
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-}
-#order-summary a.btn {
-    font-size: 1.5rem;
-}
-#order-summary #checkout-link {
-    width: 100%;
-}
-#order-summary #checkout-link #checkout-btn {
-    width: 100%;
-}
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem; }
+  #order-summary a.btn {
+    font-size: 1.5rem; }
+  #order-summary #checkout-link {
+    width: 100%; }
+    #order-summary #checkout-link #checkout-btn {
+      width: 100%; }
