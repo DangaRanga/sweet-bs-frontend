@@ -14,7 +14,7 @@ namespace MenuHooks {
         useEffect(() => {
             let isMounted = true;
             async function fetchMenuItems() {
-                await fetch('http://0.0.0.0:9090/menuitems/category')
+                await fetch('http://localhost:9090/menuitems/category')
                     .then((res) => res.json())
                     .then((data) =>
                         data.map((v: any) => fromJSON<MenuItemCategory>(v))

@@ -11,6 +11,7 @@ import {
     NotFound,
     ProcessOrder,
     ShoppingCart,
+    CustomerAnalytics,
 } from '../../views';
 import { AppHooks } from '../../hooks';
 import './App.css';
@@ -55,6 +56,9 @@ export default function App() {
                         />
                     )}
                 ></Route>
+                <Route exact path="/customers">
+                    <CustomerAnalytics />
+                </Route>
 
                 <Route>
                     <NotFound />
