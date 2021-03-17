@@ -13,6 +13,14 @@ interface EnterCardProps {
     jwt: JWT;
 }
 
+export function restrictToNumbers(e:React.FormEvent<HTMLInputElement>) {
+    console.log("hi");
+    
+    var value = e.currentTarget.value
+    console.log(value);
+    console.log(value.replace(/[^0-9]/g,''));
+}
+
 export default function EnterCard(props: EnterCardProps) {
     const [fields, updateFields] = ProcessOrderHooks.useFields();
     const [
@@ -87,6 +95,7 @@ export default function EnterCard(props: EnterCardProps) {
                         maxLength={19}
                         minLength={17}
                         required
+                        onInput={(e)=>restrictToNumbers(e)}
                         onChange={(e) =>
                             updateFields({
                                 cardNumber: e.currentTarget.value,
