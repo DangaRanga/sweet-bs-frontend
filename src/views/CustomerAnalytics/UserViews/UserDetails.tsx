@@ -18,7 +18,9 @@ export default function UserDetails(props: UserDetailsProps) {
                     <div className="detailed-info">
                         <p>
                             Name:{' '}
-                            {props.usr.firstname + ' ' + props.usr.lastname}
+                            <strong>
+                                {props.usr.firstname + ' ' + props.usr.lastname}
+                            </strong>
                         </p>
                         <p>Username: {props.usr.username}</p>
                         <p>Email: {props.usr.email}</p>

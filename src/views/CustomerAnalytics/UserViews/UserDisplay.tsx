@@ -1,6 +1,5 @@
 import '../CustomerAnalytics.css';
 import { User } from '../../../models';
-import UserDetails from './UserDetails';
 
 interface UserDisplayProps {
     user: User;
