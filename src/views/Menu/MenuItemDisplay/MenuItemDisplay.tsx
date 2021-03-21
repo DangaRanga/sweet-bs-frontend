@@ -87,6 +87,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                         className="btn primary filled"
                         id="add-to-cart-btn"
                         onClick={() => {
+                            console.log('hi');
                             props.updateCart({
                                 type: 'add',
                                 item: props.menuitem,

@@ -19,14 +19,6 @@ export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
     const [jwt, updateJWT] = AppHooks.useJWT();
 
-    /* updateJWT({
-        type: 'login',
-        username: 'ARich123',
-        password: 't#st123',
-    }); */
-
-    console.log(jwt);
-
     return (
         <BrowserRouter forceRefresh={false}>
             <Switch>
@@ -44,7 +36,6 @@ export default function App() {
                     path="/processorder"
                     render={(props: RouteComponentProps<any, any, any>) => (
                         <ProcessOrder
-                            //appCtrl={this.props.appCtrl}
                             cart={cart}
                             jwt={jwt}
                             updateCart={updateCart}

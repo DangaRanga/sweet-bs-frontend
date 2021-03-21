@@ -49,7 +49,7 @@ namespace AppHooks {
             }
         }
 
-        // 
+        //
         useEffect(() => {
             localStorage.setItem('sweetbs-jwt', toJSON(jwt) ?? '');
         }, [jwt]);
@@ -84,43 +84,56 @@ namespace AppHooks {
         | { type: 'remove' | 'incrementQty' | 'decrementQty'; item: OrderItem }
         | { type: 'empty' };
 
+    /** A function that can Update the cart */
     export type CartUpdater = React.Dispatch<UpdateCartAction>;
+
+    /**
+     * Initialize the cart
+     */
+    function cartInit(initial: ShoppingCartData): ShoppingCartData {
+        var cart = fromJSON<ShoppingCartData>(
+            localStorage.getItem('sweetbs-cart')
+        );
+        return cart ?? initial;
+    }
+
+    /**
+     * Updates the cart based on the actions passed
+     */
+    function cartReducer(
+        cart: ShoppingCartData,
+        action: UpdateCartAction
+    ): ShoppingCartData {
+        switch (action.type) {
+            case 'add':
+                console.log('random');
+                return addItemToCart(cart, action.item, action.qty);
+            case 'decrementQty':
+                console.log('random1');
+                return decrementItemQty(cart, action.item);
+            case 'incrementQty':
+                console.log('random2');
+                return incrementItemQty(cart, action.item);
+            case 'remove':
+                console.log('random3');
+                return removeItem(cart, action.item);
+            case 'empty':
+                //Completely empties the cart
+                return [];
+            default:
+                return cart;
+        }
+    }
 
     /**
      * Create a cart state to allow updating of the shopping cart in both app state and localStorage
      * @returns The cart state and corresponding setter
      */
     export function useCart() {
-        function init(initial: ShoppingCartData) {
-            var cart = fromJSON<ShoppingCartData>(
-                localStorage.getItem('sweetbs-cart')
-            );
-            return cart ?? initial;
-        }
-
-        function reducer(cart: ShoppingCartData, action: UpdateCartAction) {
-            switch (action.type) {
-                case 'add':
-                    return addItemToCart(cart, action.item, action.qty);
-                case 'decrementQty':
-                    return decrementItemQty(cart, action.item);
-                case 'incrementQty':
-                    return incrementItemQty(cart, action.item);
-                case 'remove':
-                    return removeItem(cart, action.item);
-                case 'empty':
-                    //Completely empties the cart
-
-                    return [];
-                default:
-                    return cart;
-            }
-        }
-
         const [cart, updateCart] = useReducer<
             Reducer<ShoppingCartData, UpdateCartAction>,
             ShoppingCartData
-        >(reducer, [], init);
+        >(cartReducer, [], cartInit);
 
         useEffect(() => {
             localStorage.setItem('sweetbs-cart', toJSON(cart) ?? '[]');
