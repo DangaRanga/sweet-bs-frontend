@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import {
     Switch,
     Route,
@@ -14,6 +13,7 @@ import {
 } from '../../views';
 import { AppHooks } from '../../hooks';
 import './App.css';
+import { Success } from '../../views/ProcessOrder/Success/Success';
 
 export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
@@ -46,6 +46,12 @@ export default function App() {
                         />
                     )}
                 ></Route>
+                <Route
+                    exact
+                    path='/success'
+                >
+                    <Success/>
+                </Route>
 
                 <Route>
                     <NotFound />

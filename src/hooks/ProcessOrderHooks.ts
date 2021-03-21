@@ -90,10 +90,11 @@ namespace ProcessOrderHooks {
             if (isMounted) {
                 if (shouldPlaceOrder) {
                     sendOrder(cart, jwt).then((success) => {
-                        if (success) {
+                        // TODO: Once login is implemented, redirect to login on failure
+                        //if (success) {
                             updateCart({ type: 'empty' });
-                            window.location.replace('/menu');
-                        }
+                            window.location.replace('/success');
+                        //}
                     });
                 }
             }

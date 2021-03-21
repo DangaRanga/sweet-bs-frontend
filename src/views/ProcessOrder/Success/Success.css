@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Poppins:wght@400;500;600;700&display=swap");
+/* theme colours */
+/* semantic colours */
+#success {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 5rem -webkit-min-content;
+  grid-template-rows: 5rem min-content;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  padding: 3rem; }
+  #success .content {
+    grid-template-rows: 50% 1fr 1fr 1fr;
+    justify-items: center;
+    align-content: center;
+    height: 100%; }
+    #success .content img {
+      height: 50%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      max-height: 50%; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlN1Y2Nlc3MuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLHdIQUF3SDtBQUN4SCxrQkFBa0I7QUFDbEIscUJBQXFCO0FBQ3JCO0VBQ0UsYUFBYTtFQUNiLFdBQVc7RUFDWCxhQUFhO0VBQ2IsNENBQW9DO0VBQXBDLG9DQUFvQztFQUNwQyxnQkFBZ0I7RUFDaEIsa0NBQWtDO0VBQ2xDLGFBQWEsRUFBRTtFQUNmO0lBQ0UsbUNBQW1DO0lBQ25DLHFCQUFxQjtJQUNyQixxQkFBcUI7SUFDckIsWUFBWSxFQUFFO0lBQ2Q7TUFDRSxXQUFXO01BQ1gsV0FBVztNQUNYLG1CQUFtQjtNQUNuQixjQUFjO01BQ2QsZUFBZSxFQUFFIiwiZmlsZSI6IlN1Y2Nlc3MuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCB1cmwoXCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PU51bml0bzp3Z2h0QDcwMCZmYW1pbHk9UG9wcGluczp3Z2h0QDQwMDs1MDA7NjAwOzcwMCZkaXNwbGF5PXN3YXBcIik7XG4vKiB0aGVtZSBjb2xvdXJzICovXG4vKiBzZW1hbnRpYyBjb2xvdXJzICovXG4jc3VjY2VzcyB7XG4gIGhlaWdodDogMTAwdmg7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBncmlkO1xuICBncmlkLXRlbXBsYXRlLXJvd3M6IDVyZW0gbWluLWNvbnRlbnQ7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG4gIGZvbnQtZmFtaWx5OiBcIlBvcHBpbnNcIiwgc2Fucy1zZXJpZjtcbiAgcGFkZGluZzogM3JlbTsgfVxuICAjc3VjY2VzcyAuY29udGVudCB7XG4gICAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA1MCUgMWZyIDFmciAxZnI7XG4gICAganVzdGlmeS1pdGVtczogY2VudGVyO1xuICAgIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBoZWlnaHQ6IDEwMCU7IH1cbiAgICAjc3VjY2VzcyAuY29udGVudCBpbWcge1xuICAgICAgaGVpZ2h0OiA1MCU7XG4gICAgICB3aWR0aDogYXV0bztcbiAgICAgIG9iamVjdC1maXQ6IGNvbnRhaW47XG4gICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgIG1heC1oZWlnaHQ6IDUwJTsgfVxuIl19 */
