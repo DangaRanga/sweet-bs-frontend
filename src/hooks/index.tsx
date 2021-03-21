@@ -1,3 +1,3 @@
-export { default as MenuHooks } from './MenuHooks';
-export { default as AppHooks } from './AppHooks';
-export { default as ProcessOrderHooks } from './ProcessOrderHooks';
+export * as MenuHooks from './MenuHooks';
+export * as AppHooks  from './AppHooks';
+export * as ProcessOrderHooks from './ProcessOrderHooks';
