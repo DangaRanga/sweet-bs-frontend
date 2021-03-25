@@ -8,3 +8,4 @@ export { default as Menu } from './Menu/Menu';
 export { default as Login } from './Login/Login';
 export { default as NotFound } from './NotFound/NotFound';
 export { default as ProcessOrder } from './ProcessOrder/ProcessOrder';
+export { default as OrderCollator } from './OrderCollator/OrderCollator';

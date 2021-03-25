@@ -11,6 +11,7 @@ import {
     NotFound,
     ProcessOrder,
     ShoppingCart,
+    OrderCollator,
 } from '../../views';
 import { AppHooks } from '../../hooks';
 import './App.css';
@@ -46,7 +47,9 @@ export default function App() {
                         />
                     )}
                 ></Route>
-
+                <Route exact path="/portal/orders">
+                    <OrderCollator />
+                </Route>
                 <Route>
                     <NotFound />
                 </Route>
