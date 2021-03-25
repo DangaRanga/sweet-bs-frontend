@@ -10,7 +10,7 @@ interface OrderCollatorProprs {}
 
 function OrderCollator() {
     return (
-        <div>
+        <div id="order-collator">
             <PortalNav></PortalNav>
             <OrderList></OrderList>
         </div>

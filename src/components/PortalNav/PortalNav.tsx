@@ -10,7 +10,12 @@ interface PortalNavProps {}
 
 // TODO - Create a protected route to render this on each portal view
 function PortalNav(props: PortalNavProps) {
-    return <div> Portal Nav</div>;
+    return (
+        <div>
+            <nav></nav>
+            <aside></aside>
+        </div>
+    );
 }
 
 export default PortalNav;

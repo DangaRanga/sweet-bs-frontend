@@ -26,4 +26,3 @@ yarn-error.log*
 
 # Compiled CSS
 .sass-cache/*
-*.css
