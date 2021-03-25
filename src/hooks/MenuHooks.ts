@@ -51,7 +51,7 @@ type SelectedUpdateAction =
 export type SelectedUpdater = React.Dispatch<SelectedUpdateAction>;
 
 /** The selected state of flavours and categories in the Menu */
-interface SelectedState {
+export interface SelectedState {
     /** The index of the selected category*/
     category: number;
     /** the index of the selected flavour*/

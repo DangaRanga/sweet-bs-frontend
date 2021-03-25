@@ -3,12 +3,14 @@ import placeholder from '../../../assets/big_cake.png';
 import { DoneRounded } from '@material-ui/icons';
 import { MenuItem, MenuItemCategory } from '../../../models';
 import { AppHooks, MenuHooks } from '../../../hooks';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 interface MenuItemDisplayProps {
     menuitem: MenuItem;
     category: MenuItemCategory;
     updateSelected: MenuHooks.SelectedUpdater;
     updateCart: AppHooks.CartUpdater;
+    selected: MenuHooks.SelectedState;
 }
 
 /**
@@ -20,25 +22,67 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
 
     const flavours = props.category.menuitems.map((item, i) =>
         item.id === props.menuitem?.id ? (
-            <button
-                key={item.id}
-                onClick={() => {
-                    props.updateSelected({ type: 'flavour', index: i });
+            <CSSTransition
+                key={`css-transition-${item.id}`}
+                onExit={() => {
+                    props.selected.flavour >
+                        props.category.menuitems.length - 2 &&
+                        props.updateSelected({
+                            type: 'flavour',
+                            index: props.category.menuitems.length - 2,
+                        });
                 }}
-                className="btn flavour selected"
+                timeout={{
+                    appear: 600,
+                    enter: 600,
+                    exit: 400,
+                }}
+                unmountOnExit={true}
+                mountOnEnter={true}
+                addEndListener={() => {}}
+                classNames="flavour"
             >
-                {item.flavour}
-            </button>
+                <button
+                    key={item.id}
+                    onClick={() => {
+                        props.updateSelected({ type: 'flavour', index: i });
+                    }}
+                    className="btn flavour selected"
+                >
+                    {item.flavour}
+                </button>
+            </CSSTransition>
         ) : (
-            <button
-                key={item.id}
-                onClick={() => {
-                    props.updateSelected({ type: 'flavour', index: i });
+            <CSSTransition
+                key={`css-transition-${item.id}`}
+                onExit={() => {
+                    props.selected.flavour >
+                        props.category.menuitems.length - 2 &&
+                        props.updateSelected({
+                            type: 'flavour',
+                            index: props.category.menuitems.length - 2,
+                        });
                 }}
-                className="btn flavour"
+                mountOnEnter={true}
+                unmountOnExit={true}
+                addEndListener={() => {}}
+                classNames="flavour"
+                timeout={{
+                    appear: 600,
+                    enter: 600,
+                    exit: 300,
+                }}
             >
-                {item.flavour}
-            </button>
+                <button
+                    key={item.id}
+                    onClick={() => {
+                        props.updateSelected({ type: 'flavour', index: i });
+                    }}
+                    className="btn flavour"
+                >
+                    {item.flavour}
+                </button>
+            </CSSTransition>
         )
     );
 
@@ -58,7 +102,8 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                 <p className="desc">{props.menuitem.description}</p>
                 <div id="flavours">
                     <h3>Flavours</h3>
-                    <div>{flavours}</div>
+                    <TransitionGroup>{flavours}</TransitionGroup>
+                    {/*  <div>{flavours}</div> */}
                 </div>
                 <div id="add-to-cart-section">
                     <div id="qty-chooser">

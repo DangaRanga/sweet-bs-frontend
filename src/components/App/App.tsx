@@ -26,7 +26,7 @@ export default function App() {
                     <ShoppingCart cart={cart} updateCart={updateCart} />
                 </Route>
                 <Route exact path="/menu">
-                    <Menu updateCart={updateCart} />
+                    <Menu updateCart={updateCart} cart={cart}/>
                 </Route>
                 <Route exact path="/profile">
                     <MyAccount />
@@ -50,7 +50,7 @@ export default function App() {
                     exact
                     path='/success'
                 >
-                    <Success/>
+                    <Success cart={cart}/>
                 </Route>
 
                 <Route>
