@@ -1,0 +1,16 @@
+#portal-nav {
+    display: grid;
+    grid-template-columns: 0.17fr 0.83fr;
+    height: 100vh;
+}
+
+#portal-nav nav {
+    height: 60px;
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
