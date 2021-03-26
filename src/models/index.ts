@@ -6,3 +6,5 @@ export type { Customer, Admin } from './User';
 export type { default as Order } from './Order';
 export * as AppData from './AppData';
 export type { default as DbModel } from './DbModel';
+export type { default as User } from './User';
+export type { default as UserList } from './UserList';
