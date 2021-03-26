@@ -70,6 +70,11 @@ function OrderList(props: OrderListProps) {
                                         'DD/MM/YY'
                                     )}
                                 </li>
+                                <li>
+                                    <button className="collator-btn">
+                                        View Order
+                                    </button>
+                                </li>
                             </ul>
                             <hr className="collator-list-divider" />
                         </div>
