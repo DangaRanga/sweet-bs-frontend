@@ -39,11 +39,11 @@
         width: 40%;
         height: 100%;
         display: grid;
-        gap:2%;
+        gap: 2%;
         grid-template-rows: 15% 5% 15% 42% 15%;
 
-        & > *{
-            height:100%;
+        & > * {
+            height: 100%;
         }
 
         h1 {
@@ -69,8 +69,8 @@
                 gap: 1rem;
                 grid-template-columns: 1fr 1fr;
                 grid-auto-rows: 4rem;
-                overflow:auto;
-                padding-right:1rem;
+                overflow: auto;
+                padding-right: 1rem;
 
                 .flavour {
                     @include body;
@@ -86,24 +86,25 @@
                     &:hover {
                         box-shadow: $primary-light 0 4px 16px -3px;
                     }
-
-                    
                 }
 
-                .flavour-enter{
+                .flavour-enter {
                     opacity: 0.01;
                 }
 
-                .flavour-enter.flavour-enter-active{
+                .flavour-enter.flavour-enter-active {
                     opacity: 1;
-                    transition: opacity 0.6s ease-in;
+                    transition-delay: 0.45s;
+                    transition-property: opacity;
+                    transition-duration: 0.6s;
+                    transition-timing-function: ease-in;
                 }
 
-                .flavour-exit{
+                .flavour-exit {
                     opacity: 1;
                 }
 
-                .flavour-exit.flavour-exit-active{
+                .flavour-exit.flavour-exit-active {
                     opacity: 0.01;
                     transition: opacity 0.3s ease-in;
                 }
@@ -121,12 +122,22 @@
                 padding: 0.5rem;
             }
 
-            #add-to-cart-btn {
+            canvas {
+                width: auto;
+                height: 100%;
+                border-radius: 10px;
                 box-shadow: $shadow 0 4px 16px -3px;
-                padding: 1rem 2rem;
-                position: relative;
+                cursor: pointer;
+            }
 
-                transition: all 1s;
+            #add-to-cart-btn {
+                //box-shadow: $shadow 0 4px 16px -3px;
+                width: fit-content;
+                //padding: 1rem 2rem;
+
+                //position: relative;
+
+                //transition: all 1s;
 
                 #add-to-cart-success {
                     opacity: 0;
