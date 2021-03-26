@@ -11,6 +11,8 @@ import {
     NotFound,
     ProcessOrder,
     ShoppingCart,
+    CustomerAnalytics,
+    ShoppingList,
 } from '../../views';
 import { AppHooks } from '../../hooks';
 import './App.css';
@@ -18,6 +20,14 @@ import './App.css';
 export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
     const [jwt, updateJWT] = AppHooks.useJWT();
+
+    /* updateJWT({
+        type: 'login',
+        username: 'ARich123',
+        password: 't#st123',
+    }); */
+
+    console.log(jwt);
 
     return (
         <BrowserRouter forceRefresh={false}>
@@ -36,6 +46,7 @@ export default function App() {
                     path="/processorder"
                     render={(props: RouteComponentProps<any, any, any>) => (
                         <ProcessOrder
+                            //appCtrl={this.props.appCtrl}
                             cart={cart}
                             jwt={jwt}
                             updateCart={updateCart}
@@ -46,7 +57,12 @@ export default function App() {
                         />
                     )}
                 ></Route>
-
+                <Route exact path="/customers">
+                    <CustomerAnalytics />
+                </Route>
+                <Route exact path="/ingredients">
+                    <ShoppingList />
+                </Route>
                 <Route>
                     <NotFound />
                 </Route>

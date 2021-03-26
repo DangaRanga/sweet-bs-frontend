@@ -4,12 +4,14 @@ import { DbModel } from '.';
  * Represents a user in the database
  * @abstract
  */
-interface User extends DbModel {
+export default interface User extends DbModel {
+    id: number;
     username: string;
     email: string;
     password: string;
     firstname: string;
     lastname: string;
+    address: string;
     /** Indicates whether or not this user has administraitive privledges */
     is_admin: boolean;
     /** A unique public uuid attached to this user */
