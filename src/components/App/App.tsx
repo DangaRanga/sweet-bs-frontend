@@ -40,7 +40,6 @@ export default function App() {
                     path="/processorder"
                     render={(props: RouteComponentProps<any, any, any>) => (
                         <ProcessOrder
-                            //appCtrl={this.props.appCtrl}
                             cart={cart}
                             jwt={jwt}
                             updateCart={updateCart}
