@@ -79,7 +79,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                             -
                         </button>
                         <input
-                            type="number"
+                            type="text"
                             name="qty"
                             id="qty"
                             value={qty}
