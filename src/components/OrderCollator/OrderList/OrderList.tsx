@@ -16,16 +16,20 @@ function OrderList(props: OrderListProps) {
     const [modalOpen, setModalOpen] = useState(false);
 
     const url = `http://localhost:9090/orders`;
+    let fetchedOrders: any = false;
 
     useEffect(() => {
         const fetchOrders = async () => {
             return await fetch(url)
                 .then((response) => response.json())
-                .then((response) => setOrders(response))
+                .then((response) => {
+                    setOrders(response);
+                    setLoading(false);
+                })
+
                 .catch((err) => console.error(err));
         };
         fetchOrders();
-        setLoading(false);
     }, []);
 
     return (
