@@ -56,6 +56,17 @@ nav {
     #cart-link {
         grid-area: cartlink;
 
+        .circle {
+            background-color: $accent;
+            border-radius: 50%;
+            height: 2rem;
+            width: 2rem;
+            color: $onLight;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .btn.filled.primary {
             height: 3.5rem;
         }

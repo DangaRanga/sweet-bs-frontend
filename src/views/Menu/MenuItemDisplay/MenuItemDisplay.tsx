@@ -1,14 +1,15 @@
 import './MenuItemDisplay.css';
 import placeholder from '../../../assets/big_cake.png';
-import { DoneRounded } from '@material-ui/icons';
 import { MenuItem, MenuItemCategory } from '../../../models';
-import { AppHooks, MenuHooks } from '../../../hooks';
+import { AppHooks, MenuHooks, RiveHooks } from '../../../hooks';
+import Rive from 'rive-js';
 
 interface MenuItemDisplayProps {
     menuitem: MenuItem;
     category: MenuItemCategory;
     updateSelected: MenuHooks.SelectedUpdater;
     updateCart: AppHooks.CartUpdater;
+    selected: MenuHooks.SelectedState;
 }
 
 /**
@@ -44,6 +45,15 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
 
     const [qty, updateQty] = MenuHooks.useQuantity();
 
+    const riveCanvas = RiveHooks.useRiveRef();
+
+    const riveAddToCart = new Rive.Rive({
+        src: '/assets/rive/add_to_cart.riv',
+        canvas: riveCanvas.current,
+        animations: 'idle',
+        autoplay: true,
+    });
+
     return (
         <div id="menuitem">
             <div id="menuitem-info">
@@ -69,7 +79,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                             -
                         </button>
                         <input
-                            type="number"
+                            type="text"
                             name="qty"
                             id="qty"
                             value={qty}
@@ -83,26 +93,22 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                             +
                         </button>
                     </div>
-                    <button
-                        className="btn primary filled"
-                        id="add-to-cart-btn"
+                    <canvas
                         onClick={() => {
-                            console.log('hi');
-                            props.updateCart({
-                                type: 'add',
-                                item: props.menuitem,
-                                qty: qty,
-                            });
+                            riveAddToCart.play(['forward']);
+                            setTimeout(() => {
+                                riveAddToCart.play(['reverse']);
+                            }, 1000);
+                            setTimeout(() => {
+                                props.updateCart({
+                                    type: 'add',
+                                    item: props.menuitem,
+                                    qty: qty,
+                                });
+                            }, 1400);
                         }}
-                    >
-                        <DoneRounded
-                            id="add-to-cart-success"
-                            fontSize="large"
-                        />
-                        <p id="first">Add</p>
-                        <p id="extra-inner">ed</p>
-                        <p id="extra"> to Cart</p>
-                    </button>
+                        ref={riveCanvas}
+                    />
                 </div>
             </div>
             <div id="pastry-img-div">

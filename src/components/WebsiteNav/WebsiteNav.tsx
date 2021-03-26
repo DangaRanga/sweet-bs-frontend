@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/CLIENT/Sweet B's Long.png";
 import './WebsiteNav.css';
 import { Icons } from '..';
+import { ShoppingCartData } from '../../models/AppData';
 
-interface WebsiteNavProps {}
+interface WebsiteNavProps {
+    cart:ShoppingCartData
+}
 
 export default function WebsiteNav(props: WebsiteNavProps) {
     // needed for hiding/showing the drop down for the account navigation links
@@ -23,6 +26,7 @@ export default function WebsiteNav(props: WebsiteNavProps) {
                     <Link id="cart-link" to="/cart">
                         <button className="btn primary filled">
                             <Icons.ShoppingCartHollow fill="white" />
+                            <div className="circle">{props.cart.length}</div>
                         </button>
                     </Link>
                     <div id="account-dropdown-section">

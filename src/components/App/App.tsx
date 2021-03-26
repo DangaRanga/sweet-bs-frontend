@@ -15,6 +15,8 @@ import {
     ProcessOrder,
     ShoppingCart,
     ManagementPortal,
+    CustomerAnalytics,
+    ShoppingList,
 } from '../../views';
 
 // Component Imports
@@ -22,10 +24,13 @@ import { OrderCollator, Dashboard } from '..';
 
 import { AppHooks } from '../../hooks';
 import './App.css';
+import { Success } from '../../views/ProcessOrder/Success/Success';
 
 export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
     const [jwt, updateJWT] = AppHooks.useJWT();
+
+    console.log(jwt);
 
     return (
         <BrowserRouter forceRefresh={false}>
@@ -34,7 +39,7 @@ export default function App() {
                     <ShoppingCart cart={cart} updateCart={updateCart} />
                 </Route>
                 <Route exact path="/menu">
-                    <Menu updateCart={updateCart} />
+                    <Menu updateCart={updateCart} cart={cart} />
                 </Route>
                 <Route exact path="/profile">
                     <MyAccount />
@@ -59,6 +64,16 @@ export default function App() {
                 </Route>
                 <Route exact path="/portal/orders">
                     <ManagementPortal portalComponent={OrderCollator} />
+                </Route>
+                <Route exact path="/success">
+                    <Success cart={cart} />
+                </Route>
+
+                <Route exact path="/customers">
+                    <CustomerAnalytics />
+                </Route>
+                <Route exact path="/ingredients">
+                    <ShoppingList />
                 </Route>
                 <Route>
                     <NotFound />

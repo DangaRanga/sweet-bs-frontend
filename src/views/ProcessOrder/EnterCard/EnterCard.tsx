@@ -13,12 +13,9 @@ interface EnterCardProps {
     jwt: JWT;
 }
 
-export function restrictToNumbers(e:React.FormEvent<HTMLInputElement>) {
-    console.log("hi");
-    
-    var value = e.currentTarget.value
-    console.log(value);
-    console.log(value.replace(/[^0-9]/g,''));
+export function restrictToNumbers(e: React.FormEvent<HTMLInputElement>) {
+    var value = e.currentTarget.value;
+    e.currentTarget.value = value.replace(/[^0-9]/g, '');
 }
 
 export default function EnterCard(props: EnterCardProps) {
@@ -36,7 +33,17 @@ export default function EnterCard(props: EnterCardProps) {
     return (
         <div id="enter-card">
             <div className="content">
-                <form method="post">
+                <form method="post" onSubmit={(e)=>{
+                        if(e.currentTarget.checkValidity()){
+                            setShouldPlaceOrder(true);
+
+                        }
+                        console.log("onsubit")
+                        e.preventDefault();
+                        console.log(fields);
+                        
+                    
+                }}>
                     <Link replace className="danger" to="/cart">
                         Cancel
                     </Link>
@@ -55,11 +62,10 @@ export default function EnterCard(props: EnterCardProps) {
                                 value="visa"
                                 required
                                 onChange={(e) =>
-                                    e.currentTarget.checked
-                                        ? updateFields({
-                                              card: e.currentTarget.value,
-                                          })
-                                        : null
+                                    e.currentTarget.checked &&
+                                    updateFields({
+                                        card: e.currentTarget.value,
+                                    })
                                 }
                             />
                             <img src={visaImg} alt="Visa" />
@@ -75,11 +81,10 @@ export default function EnterCard(props: EnterCardProps) {
                                 value="master-card"
                                 required
                                 onChange={(e) =>
-                                    e.currentTarget.checked
-                                        ? updateFields({
-                                              card: e.currentTarget.value,
-                                          })
-                                        : null
+                                    e.currentTarget.checked &&
+                                    updateFields({
+                                        card: e.currentTarget.value,
+                                    })
                                 }
                             />
                             <img src={mastercardImg} alt="Master Card" />
@@ -95,7 +100,7 @@ export default function EnterCard(props: EnterCardProps) {
                         maxLength={19}
                         minLength={17}
                         required
-                        onInput={(e)=>restrictToNumbers(e)}
+                        onInput={(e) => restrictToNumbers(e)}
                         onChange={(e) =>
                             updateFields({
                                 cardNumber: e.currentTarget.value,
@@ -129,6 +134,9 @@ export default function EnterCard(props: EnterCardProps) {
                                     minLength={2}
                                     inputMode="numeric"
                                     required
+                                    pattern="(0[1-9]{1}|1[0-2]{1})"
+                                    title="The month must be between 01 and 12 inclusive"
+                                    onInput={(e) => restrictToNumbers(e)}
                                     value={fields.expiryMonth}
                                     onChange={(e) =>
                                         updateFields({
@@ -145,6 +153,7 @@ export default function EnterCard(props: EnterCardProps) {
                                     minLength={4}
                                     inputMode="numeric"
                                     required
+                                    onInput={(e) => restrictToNumbers(e)}
                                     value={fields.expiryYear}
                                     onChange={(e) =>
                                         updateFields({
@@ -172,6 +181,7 @@ export default function EnterCard(props: EnterCardProps) {
                                 inputMode="numeric"
                                 required
                                 value={fields.cvv}
+                                onInput={(e) => restrictToNumbers(e)}
                                 onChange={(e) =>
                                     updateFields({
                                         cvv: e.currentTarget.value,
@@ -184,10 +194,6 @@ export default function EnterCard(props: EnterCardProps) {
                         type="submit"
                         disabled={!canPlaceOrder}
                         className="btn success filled"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setShouldPlaceOrder(true);
-                        }}
                     >
                         Place Order
                     </button>
