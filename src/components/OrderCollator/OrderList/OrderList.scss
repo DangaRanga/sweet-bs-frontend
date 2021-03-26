@@ -1,0 +1,50 @@
+@import '../../../global/colours';
+
+.collator-list-divider {
+    border: none;
+    border-top: 1px solid $border;
+}
+
+#order-collator-list h3 {
+    margin: 5px 15px;
+    font-size: 1.5em;
+}
+#order-collator-list li {
+    font-size: 1.025em;
+}
+
+#order-collator-list {
+    height: 80vh;
+    background: $onDark;
+    border: 1px solid $border;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    margin: 20px 30px;
+}
+
+#order-collator-list ul {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 15px;
+    margin: 10px 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.collator-btn {
+    border: none;
+    background: $primary;
+    padding: 5px 25px;
+    width: 70%;
+    color: $onDark;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.025em;
+}
+
+.collator-btn:hover {
+    background: $primary-dark;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+}

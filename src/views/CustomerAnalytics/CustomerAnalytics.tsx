@@ -1,14 +1,14 @@
 import './CustomerAnalytics.css';
 import React from 'react';
+import { useState, useEffect } from 'react';
+import Select from 'react-select';
+import { User } from '../../models';
 import { AnalyticsHooks } from '../../hooks';
 import UserDisplay from './UserViews/UserDisplay';
 import TotalCustomers from './UserViews/TotalCustomers';
 import UserDetails from './UserViews/UserDetails';
-import { useState, useEffect } from 'react';
-import { User } from '../../models';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
 import Pagination from './UserViews/Pagination';
+import logo from "../../assets/CLIENT/Sweet B's Long.png";
 
 interface CustomerAnalyticsProps {}
 
@@ -31,7 +31,7 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     const [usr, setUsr] = useState<User>(users[0]);
     const [userLst, setUserLst] = useState<User[]>([...users]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage, setUsersPerPage] = useState(10);
+    const [usersPerPage] = useState(10);
 
     function getUser(user: User) {
         setUsr(user);
@@ -58,7 +58,7 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     };
 
     useEffect(() => {
-        selectedOption.value == 'name'
+        selectedOption.value === 'name'
             ? setUserLst(
                   [...users].sort((a, b) =>
                       a.firstname > b.firstname ? 1 : -1
@@ -82,8 +82,6 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
 
     return (
         <div className="container">
-            <div className="nav"></div>
-            <div className="dashboard"></div>
             <div className="analytics">
                 <div className="cards">
                     <div className="analytics-title">

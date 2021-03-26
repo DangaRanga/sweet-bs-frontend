@@ -1,5 +1,6 @@
 import '../CustomerAnalytics.css';
 import { User } from '../../../models';
+import face from '../../../assets/icons/person_black_24dp.svg';
 
 interface UserDisplayProps {
     user: User;
@@ -25,6 +26,7 @@ export default function UserDisplay(props: UserDisplayProps) {
                         }}
                     >
                         <p>
+                            <img src={face} alt="placeholder face" />
                             {props.user.firstname + ' ' + props.user.lastname}
                         </p>
                         <p>{props.user.address}</p>

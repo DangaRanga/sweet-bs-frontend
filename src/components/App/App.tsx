@@ -12,9 +12,12 @@ import {
     ProcessOrder,
     ShoppingCart,
     CustomerAnalytics,
+    ShoppingList,
 } from '../../views';
 import { AppHooks } from '../../hooks';
 import './App.css';
+import ManagementPortal from '../../views/ManagementPortal/ManagementPortal';
+import OrderCollator from '../OrderCollator/OrderCollator';
 
 export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
@@ -56,10 +59,16 @@ export default function App() {
                         />
                     )}
                 ></Route>
-                <Route exact path="/customers">
-                    <CustomerAnalytics />
+                <Route exact path="/portal/customers">
+                    <ManagementPortal portalComponent={CustomerAnalytics} />
                 </Route>
-
+                <Route exact path="/portal/ingredients">
+                    <ManagementPortal portalComponent={ShoppingList} />
+                </Route>
+                <Route exact path="/portal/orders">
+                    <ManagementPortal portalComponent={OrderCollator} />
+                </Route>
+                <Route></Route>
                 <Route>
                     <NotFound />
                 </Route>

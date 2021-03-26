@@ -1,6 +1,7 @@
-import { useEffect, useState, useReducer, Reducer } from 'react';
+import { useEffect, useState } from 'react';
 import { User } from '../models';
 import { fromJSON } from '../utils/JsonUtils';
+import { io } from 'socket.io-client';
 
 namespace AnalyticsHooks {
     export function useUsers() {
@@ -8,21 +9,31 @@ namespace AnalyticsHooks {
 
         useEffect(() => {
             let isMounted = true;
+
+            const socket = io('http://localhost:9090/users/watch');
+
             async function fetchUsers() {
-                await fetch('http://localhost:9090/users')
-                    .then((res) => res.json())
-                    .then((data) => data.map((v: any) => fromJSON<User>(v)))
-                    .then((list) => {
-                        if (isMounted) {
-                            setUser(list);
-                        }
-                    })
-                    .catch((err) => []);
+                socket.connect();
+
+                socket.on('changed:users', (...data: any[][]) => {
+                    if (isMounted) {
+                        var list = data[0]
+                            .map((v: any) => fromJSON<User>(v))
+                            .filter((item) => item !== null) as User[];
+                        console.log(list);
+                        setUser(list);
+                    }
+                });
+
+                socket.on('error', (...error) => {
+                    //todo
+                });
             }
             fetchUsers();
 
             return () => {
                 isMounted = false;
+                socket.disconnect();
             };
         }, []);
 
