@@ -18,5 +18,44 @@
 .portal-divider {
     border: none;
     border-top: 1px solid $border;
-    margin-top: 10px;
+    margin: 10px 0px;
+}
+
+#portal-nav-items li {
+    display: flex;
+    font-size: 1.1em;
+    color: $onDark;
+    padding: 5px;
+    transition: all 0.5s ease;
+}
+
+#portal-nav-items p {
+    margin: 10px;
+}
+#portal-nav-items li:hover {
+    cursor: pointer;
+    background-color: $primary-dark;
+}
+
+.portal-divider-word {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $onDark;
+}
+
+.portal-divider-word::before,
+.portal-divider-word::after {
+    content: '';
+    flex: 10;
+    border-bottom: 1px solid $onDark;
+}
+
+.portal-divider-word:not(:empty)::before {
+    margin-right: 0.25em;
+}
+
+.portal-divider-word:not(:empty)::after {
+    margin-left: 0.25em;
 }
