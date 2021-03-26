@@ -14,7 +14,7 @@ function NavSidebar() {
                 <img src={LongLogo} id="sweetbs-logo" alt="logo" />
             </div>
             <hr className="portal-divider" />
-            <ul id="portal-nav-items">
+            <ul className="portal-nav-items">
                 <li>
                     <img
                         src=""
@@ -57,6 +57,32 @@ function NavSidebar() {
                 </li>
             </ul>
             <div className="portal-divider-word">Controls</div>
+            <ul id="portal-controls" className="portal-nav-items">
+                <li>
+                    <img
+                        src=""
+                        className="portal-nav-icon"
+                        onClick={() => {}}
+                    />
+                    <p>Settings</p>
+                </li>
+                <li>
+                    <img
+                        src=""
+                        className="portal-nav-icon"
+                        onClick={() => {}}
+                    />
+                    <p>Themes</p>
+                </li>
+                <li>
+                    <img
+                        src=""
+                        className="portal-nav-icon"
+                        onClick={() => {}}
+                    />
+                    <p>Logout</p>
+                </li>
+            </ul>
         </aside>
     );
 }

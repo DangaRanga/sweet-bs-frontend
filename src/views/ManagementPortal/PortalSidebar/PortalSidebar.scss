@@ -21,7 +21,7 @@
     margin: 10px 0px;
 }
 
-#portal-nav-items li {
+.portal-nav-items li {
     display: flex;
     font-size: 1.1em;
     color: $onDark;
@@ -29,16 +29,16 @@
     transition: all 0.5s ease;
 }
 
-#portal-nav-items p {
+.portal-nav-items p {
     margin: 10px;
 }
-#portal-nav-items li:hover {
+.portal-nav-items li:hover {
     cursor: pointer;
     background-color: $primary-dark;
 }
 
 .portal-divider-word {
-    margin-top: 15px;
+    margin: 25px 0px;
     display: flex;
     align-items: center;
     text-align: center;
