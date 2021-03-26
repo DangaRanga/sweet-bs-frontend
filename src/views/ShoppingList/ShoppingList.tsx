@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ShoppingList.css';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
@@ -55,13 +55,13 @@ export default function ShoppingList(props: ShoppingListProps) {
 
     // Sorting List Based on Select with useEffect
     useEffect(() => {
-        if (selectedOption.value == 'name') {
+        if (selectedOption.value === 'name') {
             setIngredients(
                 [...ingredientLst].sort((a, b) => (a.name > b.name ? 1 : -1))
             );
-        } else if (selectedOption.value == 'stock') {
+        } else if (selectedOption.value === 'stock') {
             setIngredients(
-                [...ingredientLst].sort((a) => (a.in_stock == true ? 1 : -1))
+                [...ingredientLst].sort((a) => (a.in_stock === true ? 1 : -1))
             );
         } else {
             setIngredients(

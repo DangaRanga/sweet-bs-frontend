@@ -8,7 +8,6 @@ import UserDisplay from './UserViews/UserDisplay';
 import TotalCustomers from './UserViews/TotalCustomers';
 import UserDetails from './UserViews/UserDetails';
 import Pagination from './UserViews/Pagination';
-import logo from "../../assets/CLIENT/Sweet B's Long.png";
 
 interface CustomerAnalyticsProps {}
 
