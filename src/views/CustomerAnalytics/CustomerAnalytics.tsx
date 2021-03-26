@@ -81,7 +81,7 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     }
 
     return (
-        <div className="container">
+        <div id="cust-analytics">
             <div className="nav"></div>
             <div className="dashboard">
                 <img src={logo} alt="Sweet Bs Logo" />

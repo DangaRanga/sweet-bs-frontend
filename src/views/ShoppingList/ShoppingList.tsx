@@ -83,7 +83,7 @@ export default function ShoppingList(props: ShoppingListProps) {
     }
 
     return (
-        <div className="container">
+        <div id="shopping">
             <div className="nav"></div>
             <div className="dashboard"></div>
             <div className="shopping-list">
