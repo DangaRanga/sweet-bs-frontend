@@ -1,11 +1,8 @@
 import './MenuItemDisplay.css';
 import placeholder from '../../../assets/big_cake.png';
 import { MenuItem, MenuItemCategory } from '../../../models';
-import { AppHooks, MenuHooks , RiveHooks} from '../../../hooks';
-import { Spinner } from '../../../components';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { AppHooks, MenuHooks, RiveHooks } from '../../../hooks';
 import Rive from 'rive-js';
-import { useRef } from 'react';
 
 interface MenuItemDisplayProps {
     menuitem: MenuItem;
@@ -24,76 +21,31 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
 
     const flavours = props.category.menuitems.map((item, i) =>
         item.id === props.menuitem?.id ? (
-            <CSSTransition
-                key={`css-transition-${item.id}`}
-                onExit={() => {
-                    props.selected.flavour >
-                        props.category.menuitems.length - 2 &&
-                        props.updateSelected({
-                            type: 'flavour',
-                            index: props.category.menuitems.length - 2,
-                        });
+            <button
+                key={item.id}
+                onClick={() => {
+                    props.updateSelected({ type: 'flavour', index: i });
                 }}
-                timeout={{
-                    appear: 600,
-                    enter: 600,
-                    exit: 300,
-                }}
-                unmountOnExit={true}
-                mountOnEnter={true}
-                addEndListener={() => {}}
-                classNames="flavour"
+                className="btn flavour selected"
             >
-                <button
-                    key={item.id}
-                    onClick={() => {
-                        props.updateSelected({ type: 'flavour', index: i });
-                    }}
-                    className="btn flavour selected"
-                >
-                    {item.flavour}
-                </button>
-            </CSSTransition>
+                {item.flavour}
+            </button>
         ) : (
-            <CSSTransition
-                key={`css-transition-${item.id}`}
-                onExit={() => {
-                    props.selected.flavour >
-                        props.category.menuitems.length - 2 &&
-                        props.updateSelected({
-                            type: 'flavour',
-                            index: props.category.menuitems.length - 2,
-                        });
+            <button
+                key={item.id}
+                onClick={() => {
+                    props.updateSelected({ type: 'flavour', index: i });
                 }}
-                mountOnEnter={true}
-                unmountOnExit={true}
-                addEndListener={() => {}}
-                classNames="flavour"
-                timeout={{
-                    appear: 600,
-                    enter: 600,
-                    exit: 300,
-                }}
+                className="btn flavour"
             >
-                <button
-                    key={item.id}
-                    onClick={() => {
-                        props.updateSelected({ type: 'flavour', index: i });
-                    }}
-                    className="btn flavour"
-                >
-                    {item.flavour}
-                </button>
-            </CSSTransition>
+                {item.flavour}
+            </button>
         )
     );
 
     const [qty, updateQty] = MenuHooks.useQuantity();
 
-    const [riveIsLoaded, riveCanvas] = RiveHooks.useRiveRef();
-
-
-    console.log(Rive);
+    const riveCanvas = RiveHooks.useRiveRef();
 
     const riveAddToCart = new Rive.Rive({
         src: '/assets/rive/add_to_cart.riv',
@@ -101,13 +53,6 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
         animations: 'idle',
         autoplay: true,
     });
-
-    riveAddToCart.on('load', () => {
-        riveAddToCart.play(['idle']);
-    });
-
-    console.log(riveAddToCart);
-    console.log(riveCanvas);
 
     return (
         <div id="menuitem">
@@ -123,8 +68,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                 <p className="desc">{props.menuitem.description}</p>
                 <div id="flavours">
                     <h3>Flavours</h3>
-                    <TransitionGroup>{flavours}</TransitionGroup>
-                    {/*  <div>{flavours}</div> */}
+                    <div>{flavours}</div>
                 </div>
                 <div id="add-to-cart-section">
                     <div id="qty-chooser">
@@ -149,22 +93,22 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                             +
                         </button>
                     </div>
-                        <canvas
-                            onClick={() => {
-                                riveAddToCart.play(['forward']);
-                                setTimeout(() => {
-                                    riveAddToCart.play(['reverse']);
-                                }, 1000);
-                                setTimeout(() => {
-                                    props.updateCart({
-                                        type: 'add',
-                                        item: props.menuitem,
-                                        qty: qty,
-                                    });
-                                }, 1400);
-                            }}
-                            ref={riveCanvas}
-                        />
+                    <canvas
+                        onClick={() => {
+                            riveAddToCart.play(['forward']);
+                            setTimeout(() => {
+                                riveAddToCart.play(['reverse']);
+                            }, 1000);
+                            setTimeout(() => {
+                                props.updateCart({
+                                    type: 'add',
+                                    item: props.menuitem,
+                                    qty: qty,
+                                });
+                            }, 1400);
+                        }}
+                        ref={riveCanvas}
+                    />
                 </div>
             </div>
             <div id="pastry-img-div">
@@ -179,7 +123,6 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                     }
                 />
             </div>
-
         </div>
     );
 }

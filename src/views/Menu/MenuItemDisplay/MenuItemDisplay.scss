@@ -87,27 +87,6 @@
                         box-shadow: $primary-light 0 4px 16px -3px;
                     }
                 }
-
-                .flavour-enter {
-                    opacity: 0.01;
-                }
-
-                .flavour-enter.flavour-enter-active {
-                    opacity: 1;
-                    transition-delay: 0.45s;
-                    transition-property: opacity;
-                    transition-duration: 0.6s;
-                    transition-timing-function: ease-in;
-                }
-
-                .flavour-exit {
-                    opacity: 1;
-                }
-
-                .flavour-exit.flavour-exit-active {
-                    opacity: 0.01;
-                    transition: opacity 0.3s ease-in;
-                }
             }
         }
 

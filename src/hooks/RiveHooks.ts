@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export function useRiveRef() {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -7,15 +7,13 @@ export function useRiveRef() {
     const ref = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
-        console.log("hi");
-        
         if (ref.current !== null) {
             if (!isLoaded) {
                 setIsLoaded(true);
             }
         }
-    });
+    }, [isLoaded]);
 
-    
-    return <const>[isLoaded, ref];
+
+    return ref;
 }
