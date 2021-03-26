@@ -82,10 +82,6 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
 
     return (
         <div id="cust-analytics">
-            <div className="nav"></div>
-            <div className="dashboard">
-                <img src={logo} alt="Sweet Bs Logo" />
-            </div>
             <div className="analytics">
                 <div className="cards">
                     <div className="analytics-title">

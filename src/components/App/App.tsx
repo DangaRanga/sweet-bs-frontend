@@ -69,11 +69,11 @@ export default function App() {
                     <Success cart={cart} />
                 </Route>
 
-                <Route exact path="/customers">
-                    <CustomerAnalytics />
+                <Route exact path="/portal/customers">
+                    <ManagementPortal portalComponent={CustomerAnalytics} />
                 </Route>
-                <Route exact path="/ingredients">
-                    <ShoppingList />
+                <Route exact path="/portal/ingredients">
+                    <ManagementPortal portalComponent={ShoppingList} />
                 </Route>
                 <Route>
                     <NotFound />
