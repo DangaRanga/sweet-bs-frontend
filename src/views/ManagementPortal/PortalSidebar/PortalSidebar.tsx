@@ -27,7 +27,7 @@ function NavSidebar() {
                         <p>Dashboard</p>
                     </li>
                 </Link>
-                <Link to="/portal/customer">
+                <Link to="/portal/customers">
                     <li>
                         <img
                             src=""
@@ -57,7 +57,7 @@ function NavSidebar() {
                         <p>Manage Menu</p>
                     </li>
                 </Link>
-                <Link to="/portal/orders">
+                <Link to="/portal/ingredients">
                     <li>
                         <img
                             src=""

@@ -84,8 +84,6 @@ export default function ShoppingList(props: ShoppingListProps) {
 
     return (
         <div id="shopping">
-            <div className="nav"></div>
-            <div className="dashboard"></div>
             <div className="shopping-list">
                 <div className="cards-shopping-list">
                     <div className="shopping-list-title">
