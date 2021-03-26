@@ -1,0 +1,22 @@
+@import '../../../global/colours';
+
+#nav-sidebar {
+    background-color: $primary;
+}
+
+#sweetbs-logo {
+    height: 65px;
+}
+
+#sidebar-header {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.portal-divider {
+    border: none;
+    border-top: 1px solid $border;
+    margin-top: 10px;
+}

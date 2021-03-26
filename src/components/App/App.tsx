@@ -1,3 +1,4 @@
+// React Imports
 import React, { useEffect } from 'react';
 import {
     Switch,
@@ -5,14 +6,20 @@ import {
     BrowserRouter,
     RouteComponentProps,
 } from 'react-router-dom';
+
+// Views Imports
 import {
     Menu,
     MyAccount,
     NotFound,
     ProcessOrder,
     ShoppingCart,
-    OrderCollator,
+    ManagementPortal,
 } from '../../views';
+
+// Component Imports
+import { OrderCollator } from '..';
+
 import { AppHooks } from '../../hooks';
 import './App.css';
 
@@ -48,7 +55,7 @@ export default function App() {
                     )}
                 ></Route>
                 <Route exact path="/portal/orders">
-                    <OrderCollator />
+                    <ManagementPortal portalComponent={OrderCollator} />
                 </Route>
                 <Route>
                     <NotFound />
