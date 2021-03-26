@@ -18,7 +18,7 @@ import {
 } from '../../views';
 
 // Component Imports
-import { OrderCollator } from '..';
+import { OrderCollator, Dashboard } from '..';
 
 import { AppHooks } from '../../hooks';
 import './App.css';
@@ -54,6 +54,9 @@ export default function App() {
                         />
                     )}
                 ></Route>
+                <Route exact path="/portal/">
+                    <ManagementPortal portalComponent={Dashboard} />
+                </Route>
                 <Route exact path="/portal/orders">
                     <ManagementPortal portalComponent={OrderCollator} />
                 </Route>

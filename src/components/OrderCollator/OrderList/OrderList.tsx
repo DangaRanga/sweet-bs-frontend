@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import moment from 'moment';
 
+import { OrderModal } from '../OrderModal';
 import { Spinner } from '../../';
 
 import './OrderList.css';
@@ -9,9 +10,10 @@ import './OrderList.css';
 interface OrderListProps {}
 
 function OrderList(props: OrderListProps) {
-    // Temporarily placing this here
+    // Initialize State values
     const [orders, setOrders] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const url = `http://localhost:9090/orders`;
 
@@ -68,7 +70,6 @@ function OrderList(props: OrderListProps) {
                                         'DD/MM/YY'
                                     )}
                                 </li>
-                                <button className="collator-btn"> View </button>
                             </ul>
                             <hr className="collator-list-divider" />
                         </div>

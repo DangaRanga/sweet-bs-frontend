@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 // CSS imports
 import './PortalSidebar.css';
 
@@ -15,46 +17,56 @@ function NavSidebar() {
             </div>
             <hr className="portal-divider" />
             <ul className="portal-nav-items">
-                <li>
-                    <img
-                        src=""
-                        className="portal-nav-icon"
-                        onClick={() => {}}
-                    />
-                    <p>Dashboard</p>
-                </li>
-                <li>
-                    <img
-                        src=""
-                        className="portal-nav-icon"
-                        onClick={() => {}}
-                    />
-                    <p>Customer Analytics</p>
-                </li>
-                <li>
-                    <img
-                        src=""
-                        className="portal-nav-icon"
-                        onClick={() => {}}
-                    />
-                    <p>Order Analytics</p>
-                </li>
-                <li>
-                    <img
-                        src=""
-                        className="portal-nav-icon"
-                        onClick={() => {}}
-                    />
-                    <p>Manage Menu</p>
-                </li>
-                <li>
-                    <img
-                        src=""
-                        className="portal-nav-icon"
-                        onClick={() => {}}
-                    />
-                    <p>Shopping List</p>
-                </li>
+                <Link to="/portal/">
+                    <li>
+                        <img
+                            src=""
+                            className="portal-nav-icon"
+                            onClick={() => {}}
+                        />
+                        <p>Dashboard</p>
+                    </li>
+                </Link>
+                <Link to="/portal/customer">
+                    <li>
+                        <img
+                            src=""
+                            className="portal-nav-icon"
+                            onClick={() => {}}
+                        />
+                        <p>Customer Analytics</p>
+                    </li>
+                </Link>
+                <Link to="/portal/orders">
+                    <li>
+                        <img
+                            src=""
+                            className="portal-nav-icon"
+                            onClick={() => {}}
+                        />
+                        <p>Order Analytics</p>
+                    </li>
+                </Link>
+                <Link to="/portal/menu-manager">
+                    <li>
+                        <img
+                            src=""
+                            className="portal-nav-icon"
+                            onClick={() => {}}
+                        />
+                        <p>Manage Menu</p>
+                    </li>
+                </Link>
+                <Link to="/portal/orders">
+                    <li>
+                        <img
+                            src=""
+                            className="portal-nav-icon"
+                            onClick={() => {}}
+                        />
+                        <p>Shopping List</p>
+                    </li>
+                </Link>
             </ul>
             <div className="portal-divider-word">Controls</div>
             <ul id="portal-controls" className="portal-nav-items">

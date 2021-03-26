@@ -1,0 +1,9 @@
+#dashboard-card-group {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkRhc2hib2FyZC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQkFBYTtFQUFiLGFBQWE7RUFDYiwyQkFBbUI7VUFBbkIsbUJBQW1CO0VBQ25CLCtCQUF1QjtVQUF2Qix1QkFBdUIsRUFBRSIsImZpbGUiOiJEYXNoYm9hcmQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2Rhc2hib2FyZC1jYXJkLWdyb3VwIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IH1cbiJdfQ== */

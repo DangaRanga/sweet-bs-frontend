@@ -1,0 +1,20 @@
+.dashboard-card {
+    width: 230px;
+    height: 110px;
+
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    margin: 20px 0px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dashboard-card h1 {
+    font-size: 2.5em;
+}
