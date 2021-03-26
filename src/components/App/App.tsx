@@ -30,7 +30,13 @@ export default function App() {
     const [cart, updateCart] = AppHooks.useCart();
     const [jwt, updateJWT] = AppHooks.useJWT();
 
-    console.log(jwt);
+    /* updateJWT({
+        type: 'login',
+        username: 'ARich123',
+        password: 't#st123',
+    }); */
+
+    //console.log(jwt);
 
     return (
         <BrowserRouter forceRefresh={false}>

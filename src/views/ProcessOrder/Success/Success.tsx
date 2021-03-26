@@ -17,7 +17,8 @@ export function Success(props: SuccessProps) {
                 <img src={successImg} alt="Order placed successfully" />
                 <h1 className="success">We got your order!</h1>
                 <p>It will be delivered to you over the weekend</p>
-                <Link to="/home" className="primary btn filled">HOME</Link>
+                {/* // TODO if home is implemented then change link */}
+                <Link to="/menu" className="primary btn filled">MENU</Link>
             </div>
         </div>
     );
