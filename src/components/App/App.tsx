@@ -48,7 +48,7 @@ export default function App() {
                     <Menu updateCart={updateCart} cart={cart} />
                 </Route>
                 <Route exact path="/profile">
-                    <MyAccount />
+                    <MyAccount cart={cart}/>
                 </Route>
                 <Route
                     exact
