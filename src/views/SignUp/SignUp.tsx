@@ -6,5 +6,5 @@ interface SignUpProps {}
 interface SignUpState {}
 
 export default function SignUp(props: SignUpProps) {
-    return <div></div>;
+    return <div>Signup</div>;
 }
