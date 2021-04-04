@@ -1,7 +1,7 @@
 import './MenuItemDisplay.css';
 import placeholder from '../../../assets/big_cake.png';
 import { MenuItem, MenuItemCategory } from '../../../models';
-import { AppHooks, MenuHooks, RiveHooks } from '../../../hooks';
+import { MenuHooks, RiveHooks } from '../../../hooks';
 import Rive from 'rive-js';
 import { useContext } from 'react';
 import { AppContext } from '../../../context';

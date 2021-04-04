@@ -1,4 +1,4 @@
-import { DbModel } from '.';
+import { DbModel, Order } from '.';
 
 /**
  * Represents a user in the database
@@ -36,4 +36,5 @@ export interface Customer extends User {
     /** The address to which this customer's orders are delivered */
     address: string;
     is_admin: false;
+    orders: Order[]
 }

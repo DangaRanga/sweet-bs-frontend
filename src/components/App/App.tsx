@@ -37,7 +37,7 @@ export default function App() {
         type: 'login',
         username: 'ARich123',
         password: 't#st123',
-    }); */
+    });  */
 
     //console.log(jwt);
 

@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import { Spinner, WebsiteNav } from '../../components';
-import { AppContext } from '../../context';
 import { MenuHooks } from '../../hooks';
 import { MenuItem } from '../../models';
 import './Menu.css';

@@ -102,12 +102,23 @@
 
             .details {
                 position: relative;
-                top: 50%;
+                top: 45%;
                 display: grid;
-                width: 40%;
-                grid-template-columns: 24px 24px auto;
+                width: 35%;
+                grid-template-columns: 24px 24px auto 24px 24px;
                 grid-template-rows: auto;
                 grid-auto-rows: auto;
+                row-gap:1rem;
+                column-gap:1rem;
+
+                span{
+                    cursor:pointer
+                }
+
+                *:read-only{
+                    outline: none;
+                    border: none;
+                }
             }
         }
     }

@@ -5,3 +5,6 @@ export { default as Face } from './Face';
 export { default as Email } from './Email';
 export { default as Lock } from './Lock';
 export { default as Location } from './Location';
+export { default as EditOutline } from './EditOutline';
+export { default as Cancel } from './Cancel';
+export { default as CheckCircle } from './2';
