@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './EnterCard.css';
 import cardImg from '../../../assets/images/undraw_Credit_card_re_blml 1.svg';
 import visaImg from '../../../assets/icons/visa.svg';
 import mastercardImg from '../../../assets/icons/mastercard.svg';
-import { AppHooks, ProcessOrderHooks } from '../../../hooks';
-import { JWT, ShoppingCartData } from '../../../models/AppData';
+import { ProcessOrderHooks } from '../../../hooks';
+import { AppContext } from '../../../context';
 
 interface EnterCardProps {
-    cart: ShoppingCartData;
-    updateCart: AppHooks.CartUpdater;
-    jwt: JWT;
 }
 
 export function restrictToNumbers(e: React.FormEvent<HTMLInputElement>) {
@@ -19,15 +16,17 @@ export function restrictToNumbers(e: React.FormEvent<HTMLInputElement>) {
 }
 
 export default function EnterCard(props: EnterCardProps) {
+    const context = useContext(AppContext);
+
     const [fields, updateFields] = ProcessOrderHooks.useFields();
     const [
         canPlaceOrder,
         setShouldPlaceOrder,
     ] = ProcessOrderHooks.usePlaceOrder(
-        props.cart,
-        props.jwt,
+        context.cart,
+        context.jwt,
         fields,
-        props.updateCart
+        context.updateCart
     );
 
     return (

@@ -23,7 +23,6 @@ export function useCategories() {
                     var list = data[0]
                         .map((v: any) => fromJSON<MenuItemCategory>(v))
                         .filter((item) => item !== null) as MenuItemCategory[];
-                    console.log(list);
                     setCategories(list);
                 }
             });

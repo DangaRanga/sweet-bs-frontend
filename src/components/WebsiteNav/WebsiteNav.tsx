@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/CLIENT/Sweet B's Long.png";
 import './WebsiteNav.css';
 import { Icons } from '..';
-import { ShoppingCartData } from '../../models/AppData';
+import { AppContext } from '../../context';
 
-interface WebsiteNavProps {
-    cart:ShoppingCartData
-}
+interface WebsiteNavProps {}
 
 export default function WebsiteNav(props: WebsiteNavProps) {
     // needed for hiding/showing the drop down for the account navigation links
     const [showDropdown, setShowDropdown] = useState<'hidden' | undefined>(
         'hidden'
     );
+
+    const context = useContext(AppContext);
 
     return (
         <nav>
@@ -26,7 +26,7 @@ export default function WebsiteNav(props: WebsiteNavProps) {
                     <Link id="cart-link" to="/cart">
                         <button className="btn primary filled">
                             <Icons.ShoppingCartHollow fill="white" />
-                            <div className="circle">{props.cart.length}</div>
+                            <div className="circle">{context.cart.length}</div>
                         </button>
                     </Link>
                     <div id="account-dropdown-section">
@@ -47,8 +47,10 @@ export default function WebsiteNav(props: WebsiteNavProps) {
                             <Link to="/signup">Sign Up</Link>
                             <hr />
                             <Link to="/login">Login</Link>
-                            <hr />
-                            <Link to="/profile">My Profile</Link>
+                            {context.jwt.token && <hr />}
+                            {context.jwt.token && (
+                                <Link to="/profile">My Profile</Link>
+                            )}
                         </div>
                     </div>
                 </div>

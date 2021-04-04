@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AppHooks } from '../../hooks';
-import { ShoppingCartData } from '../../models/AppData';
+import { AppContext } from '../../context';
 import CartList from './CartList/CartList';
 import EmptyCart from './EmptyCart/EmptyCart';
 import OrderSummary from './OrderSummary/OrderSummary';
 import './ShoppingCart.css';
 
-interface ShoppingCartProps {
-    updateCart: AppHooks.CartUpdater;
-    cart: ShoppingCartData;
-}
+interface ShoppingCartProps {}
 
 export default function ShoppingCart(props: ShoppingCartProps) {
+    const context = useContext(AppContext);
+
     return (
         <div id="cart">
             <main>
@@ -20,14 +18,10 @@ export default function ShoppingCart(props: ShoppingCartProps) {
                     Back to Menu
                 </Link>
                 <h2 className="pgtitle">My Order</h2>
-                {props.cart.length > 0 ? (
-                    <CartList cart={props.cart} updateCart={props.updateCart} />
-                ) : (
-                    <EmptyCart />
-                )}
+                {context.cart.length > 0 ? <CartList /> : <EmptyCart />}
             </main>
             <aside>
-                <OrderSummary cart={props.cart} />
+                <OrderSummary />
             </aside>
         </div>
     );

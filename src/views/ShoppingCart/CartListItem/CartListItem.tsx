@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './CartListItem.css';
 import placeholder from '../../../assets/cart_placeholder.png';
 import { OrderItem } from '../../../models';
-import { AppHooks } from '../../../hooks';
+import { AppContext } from '../../../context';
 
 interface CartListItemProps {
     item: OrderItem;
-    updateCart: AppHooks.CartUpdater;
 }
 
 export default function CartListItem(props: CartListItemProps) {
+
+    const context = useContext(AppContext);
+
     return (
         <div className="cart-list-item">
             <img
@@ -30,7 +32,7 @@ export default function CartListItem(props: CartListItemProps) {
                 <button
                     className="btn outline icon primary"
                     onClick={(e) =>
-                        props.updateCart({
+                        context.updateCart({
                             type: 'decrementQty',
                             item: props.item,
                         })
@@ -42,7 +44,7 @@ export default function CartListItem(props: CartListItemProps) {
                 <button
                     className="btn filled icon primary"
                     onClick={(e) =>
-                        props.updateCart({
+                        context.updateCart({
                             type: 'incrementQty',
                             item: props.item,
                         })
@@ -57,7 +59,7 @@ export default function CartListItem(props: CartListItemProps) {
             <button
                 className="btn filled icon primary"
                 onClick={(e) =>
-                    props.updateCart({ type: 'remove', item: props.item })
+                    context.updateCart({ type: 'remove', item: props.item })
                 }
             >
                 x

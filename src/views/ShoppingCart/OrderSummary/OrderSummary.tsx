@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCartData } from '../../../models/AppData';
+import { AppContext } from '../../../context';
 import './OrderSummary.css';
 
 interface OrderSummaryProps {
-    cart: ShoppingCartData;
 }
 
 export default function OrderSummary(props: OrderSummaryProps) {
     var list: JSX.Element[] = [];
     var total = 0;
+    const context = useContext(AppContext);
 
-    props.cart.forEach((oitem) => {
+    context.cart.forEach((oitem) => {
         list.push(
             <p key={`item-name-${oitem.menuitem.id}`} className="item-name">
                 {oitem.menuitem.flavour + ' ' + oitem.menuitem.category.name}
@@ -42,7 +42,7 @@ export default function OrderSummary(props: OrderSummaryProps) {
             >
                 <button
                     id="checkout-btn"
-                    disabled={props.cart.length === 0}
+                    disabled={context.cart.length === 0}
                     className="btn filled primary"
                 >
                     CHECKOUT

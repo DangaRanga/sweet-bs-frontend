@@ -1,15 +1,13 @@
+import { useContext } from 'react';
 import { Spinner, WebsiteNav } from '../../components';
-import { AppHooks, MenuHooks } from '../../hooks';
+import { AppContext } from '../../context';
+import { MenuHooks } from '../../hooks';
 import { MenuItem } from '../../models';
-import { ShoppingCartData } from '../../models/AppData';
 import './Menu.css';
 import MenuItemDisplay from './MenuItemDisplay/MenuItemDisplay';
 import MenuItemSwitcher from './MenuItemSwitcher/MenuItemSwitcher';
 
-interface MenuProps {
-    updateCart: AppHooks.CartUpdater;
-    cart: ShoppingCartData;
-}
+interface MenuProps {}
 
 /**
  * The Menu View from which customer may add items to their cart
@@ -20,7 +18,7 @@ export default function Menu(props: MenuProps) {
     /** The index of the category and flavour selected by the user */
     const [selected, setSelected] = MenuHooks.useSelected();
 
-    var menuitem!:MenuItem;
+    var menuitem!: MenuItem;
     if (categories.length > 0) {
         menuitem = categories[selected.category].menuitems[selected.flavour];
 
@@ -32,11 +30,10 @@ export default function Menu(props: MenuProps) {
     // display a spinner until the the menu items have been fetched then display the menu
     return categories.length > 0 ? (
         <div id="menu">
-            <WebsiteNav cart={props.cart} />
+            <WebsiteNav />
             <div className="content">
                 <MenuItemDisplay
                     selected={selected}
-                    updateCart={props.updateCart}
                     updateSelected={setSelected}
                     category={categories[selected.category]}
                     menuitem={menuitem}
@@ -50,7 +47,7 @@ export default function Menu(props: MenuProps) {
         </div>
     ) : (
         <div id="menu">
-            <WebsiteNav cart={props.cart} />
+            <WebsiteNav />
             <Spinner />
         </div>
     );

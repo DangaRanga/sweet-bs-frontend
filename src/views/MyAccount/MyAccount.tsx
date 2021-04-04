@@ -1,18 +1,19 @@
+import { useContext } from 'react';
 import { WebsiteNav } from '../../components';
 import { Email, Face, Location, Lock } from '../../components/Icons';
-import { ShoppingCartData } from '../../models/AppData';
+import { AppContext } from '../../context';
 import './MyAccount.css';
 
 interface MyAccountProps {
-    cart: ShoppingCartData;
 }
 
 export default function MyAccount(props: MyAccountProps) {
     var primary = '#9377e2';
+    const context = useContext(AppContext);
 
     return (
         <div id="my-account">
-            <WebsiteNav cart={props.cart} />
+            <WebsiteNav />
             <div className="content">
                 <div className="bottom-pane"></div>
                 <div className="info">

@@ -25,10 +25,13 @@ import { OrderCollator, Dashboard } from '..';
 import { AppHooks } from '../../hooks';
 import './App.css';
 import { Success } from '../../views/ProcessOrder/Success/Success';
+import { AppContext } from '../../context';
 
 export default function App() {
-    const [cart, updateCart] = AppHooks.useCart();
+
     const [jwt, updateJWT] = AppHooks.useJWT();
+
+    const [cart, updateCart] = AppHooks.useCart();
 
     /* updateJWT({
         type: 'login',
@@ -39,25 +42,23 @@ export default function App() {
     //console.log(jwt);
 
     return (
+        <AppContext.Provider value={{jwt:jwt, updateJWT:updateJWT, cart:cart, updateCart:updateCart}}>
         <BrowserRouter forceRefresh={false}>
             <Switch>
                 <Route exact path="/cart">
-                    <ShoppingCart cart={cart} updateCart={updateCart} />
+                    <ShoppingCart />
                 </Route>
                 <Route exact path="/menu">
-                    <Menu updateCart={updateCart} cart={cart} />
+                    <Menu/>
                 </Route>
                 <Route exact path="/profile">
-                    <MyAccount cart={cart}/>
+                    <MyAccount/>
                 </Route>
                 <Route
                     exact
                     path="/processorder"
                     render={(props: RouteComponentProps<any, any, any>) => (
                         <ProcessOrder
-                            cart={cart}
-                            jwt={jwt}
-                            updateCart={updateCart}
                             history={props.history}
                             location={props.location}
                             match={props.match}
@@ -72,7 +73,7 @@ export default function App() {
                     <ManagementPortal portalComponent={OrderCollator} />
                 </Route>
                 <Route exact path="/success">
-                    <Success cart={cart} />
+                    <Success  />
                 </Route>
 
                 <Route exact path="/portal/customers">
@@ -86,5 +87,6 @@ export default function App() {
                 </Route>
             </Switch>
         </BrowserRouter>
+        </AppContext.Provider>
     );
 }
