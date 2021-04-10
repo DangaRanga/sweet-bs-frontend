@@ -9,6 +9,10 @@
     justify-content: center;
     cursor: pointer;
 
+    &.transparent{
+        background-color: $transparent;
+    }
+
     &:not(.icon) {
         @include heading1;
         padding: 1.2rem 2.5rem;

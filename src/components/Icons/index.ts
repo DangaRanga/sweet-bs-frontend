@@ -7,4 +7,6 @@ export { default as Lock } from './Lock';
 export { default as Location } from './Location';
 export { default as EditOutline } from './EditOutline';
 export { default as Cancel } from './Cancel';
-export { default as CheckCircle } from './2';
+export { default as CheckCircle } from './CheckCircle';
+export { default as RemoveCircleOutline } from "./RemoveCircleOutline";
+export { default as AddCircle } from "./AddCircle";

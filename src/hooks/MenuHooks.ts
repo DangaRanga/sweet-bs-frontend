@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useEffect, useState, useReducer, Reducer } from 'react';
 import { MenuItemCategory } from '../models';
 import { fromJSON } from '../utils/JsonUtils';
@@ -24,11 +25,24 @@ export function useCategories() {
                         .map((v: any) => fromJSON<MenuItemCategory>(v))
                         .filter((item) => item !== null) as MenuItemCategory[];
                     setCategories(list);
+                    toast.info('Menu updated', { className: 'menu-update' });
+                }
+            });
+
+            socket.on('initial:menuitems', (...data: any[][]) => {
+                if (isMounted) {
+                    var list = data[0]
+                        .map((v: any) => fromJSON<MenuItemCategory>(v))
+                        .filter((item) => item !== null) as MenuItemCategory[];
+                    setCategories(list);
                 }
             });
 
             socket.on('error', (...error) => {
-                // TODO handle error
+                toast.error('Something went wrong :(', {
+                    toastId: 'menu-socket-error',
+                    className: 'menu-error',
+                });
             });
         }
         fetchMenuItems();

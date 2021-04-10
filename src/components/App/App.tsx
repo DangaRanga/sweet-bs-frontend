@@ -33,11 +33,12 @@ export default function App() {
 
     const [cart, updateCart] = AppHooks.useCart();
 
-    /* updateJWT({
+ /* updateJWT({
         type: 'login',
         username: 'ARich123',
         password: 't#st123',
-    });  */
+    });   */
+
 
     //console.log(jwt);
 

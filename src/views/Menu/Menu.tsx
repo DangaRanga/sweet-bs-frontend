@@ -4,6 +4,8 @@ import { MenuItem } from '../../models';
 import './Menu.css';
 import MenuItemDisplay from './MenuItemDisplay/MenuItemDisplay';
 import MenuItemSwitcher from './MenuItemSwitcher/MenuItemSwitcher';
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface MenuProps {}
 
@@ -40,6 +42,18 @@ export default function Menu(props: MenuProps) {
                     categories={categories}
                     selectedCategory={selected.category}
                     updateSelected={setSelected}
+                />
+                <ToastContainer
+                    transition={Zoom}
+                    position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
                 />
             </div>
         </div>

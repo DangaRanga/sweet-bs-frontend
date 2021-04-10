@@ -20,8 +20,7 @@
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.2",
         "react-select": "^4.3.0",
-        "rive-canvas": "^0.6.13",
-        "rive-js": "^0.0.4",
+        "react-toastify": "^7.0.3",
         "socket.io-client": "^4.0.0",
         "typescript": "^4.1.4",
         "web-vitals": "^1.0.1"

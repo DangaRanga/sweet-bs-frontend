@@ -1,3 +1,6 @@
+@import "../../global/colours";
+@import "../../global/fonts";
+
 #menu {
     display: grid;
     //flex-direction:column;
@@ -14,7 +17,7 @@
 
     .content {
         padding: 2rem 3rem;
-        grid-template-columns: 8fr 2fr;
+        grid-template-columns: 8.25fr 1.75fr;
         display: grid;
         grid-template-areas: 'menuitem category';
         grid-template-rows: 100%;
@@ -34,4 +37,21 @@
         grid-area: maincontent;
     }
 
+    .add-to-cart-success{
+        background-color: $success;
+        @include heading2;
+        font-size: 1.2rem;
+    }
+
+    .menu-error{
+        background-color: $danger;
+        @include heading2;
+        font-size: 1.2rem;
+    }
+
+    .menu-update{
+        background-color: $info;
+        @include heading2;
+        font-size: 1.2rem;
+    }
 }
