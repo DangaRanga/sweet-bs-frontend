@@ -4,10 +4,11 @@ import successImg from '../../../assets/images/High_five 1.svg';
 import { WebsiteNav } from '../../../components';
 import './Success.css';
 
-interface SuccessProps {
-}
-
-export function Success(props: SuccessProps) {
+/**
+ * Reports that an order was successfully placed
+ * @returns The success component
+ */
+export function Success() {
     return (
         <div id="success">
             <WebsiteNav />

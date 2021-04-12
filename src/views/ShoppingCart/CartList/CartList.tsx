@@ -3,13 +3,15 @@ import './CartList.css';
 import CartListItem from '../CartListItem/CartListItem';
 import { AppContext } from '../../../context';
 
-interface CartListProps {
-}
-
-export default function CartList(props: CartListProps) {
+/**
+ * The list of cart items displayed in the shopping cart view
+ * @returns The cart list component
+ */
+export default function CartList() {
 
     const context = useContext(AppContext);
 
+    // build the cart list from the cart
     const list = context.cart.map((item) => {
         return (
             <CartListItem

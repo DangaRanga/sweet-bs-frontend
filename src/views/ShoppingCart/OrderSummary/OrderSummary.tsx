@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../../../context';
 import './OrderSummary.css';
 
-interface OrderSummaryProps {
-}
-
-export default function OrderSummary(props: OrderSummaryProps) {
+/**
+ * A condensed list of all the items in the cart and their quantities
+ * @returns The Order summary component
+ */
+export default function OrderSummary() {
     var list: JSX.Element[] = [];
     var total = 0;
     const context = useContext(AppContext);
 
+    // build list of order items from the cart
     context.cart.forEach((oitem) => {
         list.push(
             <p key={`item-name-${oitem.menuitem.id}`} className="item-name">
@@ -37,12 +39,12 @@ export default function OrderSummary(props: OrderSummaryProps) {
                 id="checkout-link"
                 to={{
                     pathname: '/processorder',
-                    state: { fromCart: true },
+                    state: { fromCart: true }, // used to ensure that the user checked out intentionally from the cart
                 }}
             >
                 <button
                     id="checkout-btn"
-                    disabled={context.cart.length === 0}
+                    disabled={context.cart.length === 0} // disable the checkout button if the cart is empty
                     className="btn filled primary"
                 >
                     CHECKOUT

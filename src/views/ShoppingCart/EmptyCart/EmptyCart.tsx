@@ -3,9 +3,11 @@ import './EmptyCart.css';
 import EmptyImg from '../../../assets/images/empty.svg';
 import { Link } from 'react-router-dom';
 
-interface EmptyCartProps {}
-
-export default function EmptyCart(props: EmptyCartProps) {
+/**
+ * A simple display with a call to action when the cart is empty
+ * @returns The Empty cart component
+ */
+export default function EmptyCart() {
     return (
         <div id="empty-cart">
             <img src={EmptyImg} alt="Empty Cart" />

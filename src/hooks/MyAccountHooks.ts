@@ -45,7 +45,7 @@ export function updateUserInDb(data:ProfileUpdateAction, jwt:JWT) {
 }
 
 
-export function useUpdateProfile(jwt: JWT) {
+export function useProfile(jwt: JWT) {
     const [profile, updateProfile] = useReducer<
         Reducer<Partial<Customer>, ProfileUpdateAction>
     >(profileReducer, {});

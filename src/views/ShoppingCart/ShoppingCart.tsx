@@ -6,9 +6,11 @@ import EmptyCart from './EmptyCart/EmptyCart';
 import OrderSummary from './OrderSummary/OrderSummary';
 import './ShoppingCart.css';
 
-interface ShoppingCartProps {}
-
-export default function ShoppingCart(props: ShoppingCartProps) {
+/**
+ * The shopping cart where a customer may modify their order or checkout
+ * @returns The shopping cart component
+ */
+export default function ShoppingCart() {
     const context = useContext(AppContext);
 
     return (

@@ -44,9 +44,15 @@ export default function WebsiteNav(props: WebsiteNavProps) {
                             <Icons.PersonCircleInverted fill="white" />
                         </button>
                         <div id="account-dropdown" className={showDropdown}>
-                            <Link to="/signup">Sign Up</Link>
-                            <hr />
-                            <Link to="/login">Login</Link>
+                            {!context.jwt.token && (
+                                <Link to="/signup">Sign Up</Link>
+                            )}
+                            {!context.jwt.token && <hr />}
+                            {context.jwt.token ? (
+                                <Link to="/logout">Logout</Link>
+                            ) : (
+                                <Link to="/login">Login</Link>
+                            )}
                             {context.jwt.token && <hr />}
                             {context.jwt.token && (
                                 <Link to="/profile">My Profile</Link>

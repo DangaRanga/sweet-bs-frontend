@@ -14,21 +14,24 @@ import { AppContext } from '../../context';
 import { MyAccountHooks } from '../../hooks';
 import './MyAccount.css';
 
-interface MyAccountProps {}
-
-export default function MyAccount(props: MyAccountProps) {
+/**
+ * A view to allow the user to view and update their account information
+ * @returns the myaccount component
+ */
+export default function MyAccount() {
+    //colours for the icons
     var primary = '#9377e2';
     var placeholder = '#C7C7C7';
     var success = '#3abc41';
     var danger = '#ff3a54';
+    //states
     const context = useContext(AppContext);
-    const [profile, updateProfile] = MyAccountHooks.useUpdateProfile(
-        context.jwt
-    );
+
+    // allows the user to update parts of their profile
+    const [profile, updateProfile] = MyAccountHooks.useProfile(context.jwt);
+    // allows toggle on and off edit mode for the account fields
     const [toggleEdit, updateToggleEdit] = MyAccountHooks.useToggleEdit();
 
-    console.log(profile.orders);
-    
     return (
         <div id="my-account">
             <WebsiteNav />
@@ -40,16 +43,25 @@ export default function MyAccount(props: MyAccountProps) {
                         joined{' '}
                         {moment(profile.created_on).format('MMM D, YYYY')}
                     </p>
+                    {/* Display stats for the user */}
                     <div className="stats">
                         <p className="label-faded">Weekly Stats</p>
                         <div className="stats-inner">
                             <div className="stat-group">
-                                <p className="value">{profile?.orders?.filter((order)=>!order.complete).length ?? 0}</p>
+                                <p className="value">
+                                    {profile?.orders?.filter(
+                                        (order) => !order.complete
+                                    ).length ?? 0}
+                                </p>
                                 <p className="label">orders pending</p>
                             </div>
                             <div className="separator"></div>
                             <div className="stat-group">
-                                <p className="value">{profile?.orders?.filter((order)=>order.complete).length ?? 0}</p>
+                                <p className="value">
+                                    {profile?.orders?.filter(
+                                        (order) => order.complete
+                                    ).length ?? 0}
+                                </p>
                                 <p className="label">orders complete</p>
                             </div>
                             <div className="separator"></div>
@@ -78,12 +90,19 @@ export default function MyAccount(props: MyAccountProps) {
                             }
                         />
                         {!toggleEdit.firstnameReadOnly && (
-                            <span onClick={() => {
-                                MyAccountHooks.updateUserInDb({firstname:profile.firstname as string}, context.jwt);
-                                updateToggleEdit({
-                                    firstnameReadOnly: true,
-                                });
-                            }}>
+                            <span
+                                onClick={() => {
+                                    MyAccountHooks.updateUserInDb(
+                                        {
+                                            firstname: profile.firstname as string,
+                                        },
+                                        context.jwt
+                                    );
+                                    updateToggleEdit({
+                                        firstnameReadOnly: true,
+                                    });
+                                }}
+                            >
                                 <CheckCircle fill={success} />
                             </span>
                         )}
@@ -125,13 +144,18 @@ export default function MyAccount(props: MyAccountProps) {
 
                         {!toggleEdit.lastnameReadOnly && (
                             <span
-                            
-                            onClick={() => {
-                                MyAccountHooks.updateUserInDb({lastname:profile.lastname as string}, context.jwt);
-                                updateToggleEdit({
-                                    lastnameReadOnly: true,
-                                });
-                            }}>
+                                onClick={() => {
+                                    MyAccountHooks.updateUserInDb(
+                                        {
+                                            lastname: profile.lastname as string,
+                                        },
+                                        context.jwt
+                                    );
+                                    updateToggleEdit({
+                                        lastnameReadOnly: true,
+                                    });
+                                }}
+                            >
                                 <CheckCircle fill={success} />
                             </span>
                         )}
@@ -249,6 +273,11 @@ export default function MyAccount(props: MyAccountProps) {
                                 updateProfile({ password: e.target.value })
                             }
                         />
+                        {
+                            {
+                                /* When the field is in edit mode show cancel and confirm buttons */
+                            }
+                        }
                         {!toggleEdit.passwordReadOnly && (
                             <span>
                                 <CheckCircle fill={success} />
@@ -269,6 +298,7 @@ export default function MyAccount(props: MyAccountProps) {
                                 <Cancel fill={danger} />
                             </span>
                         )}
+                        {/*placeholders when the buttons are deactivated */}
                         {toggleEdit.passwordReadOnly && <p></p>}
                         {toggleEdit.passwordReadOnly && <p></p>}
                     </div>

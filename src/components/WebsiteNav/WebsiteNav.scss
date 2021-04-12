@@ -88,6 +88,7 @@ nav {
     #account-dropdown {
         position: relative;
         display: flex;
+        z-index:9999;
 
         @include body;
         flex-direction: column;

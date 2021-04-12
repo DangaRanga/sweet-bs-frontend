@@ -9,7 +9,12 @@ interface CartListItemProps {
     item: OrderItem;
 }
 
-export default function CartListItem(props: CartListItemProps) {
+/**
+ * An item the cart list
+ * @param item The cart item to display
+ * @returns The Cartlist Item component
+ */
+export default function CartListItem({ item }: CartListItemProps) {
     const context = useContext(AppContext);
     const primaryColor = '#9377e2';
 
@@ -23,11 +28,9 @@ export default function CartListItem(props: CartListItemProps) {
             />
             <div className="info">
                 <p className="name">
-                    {props.item.menuitem.flavour +
-                        ' ' +
-                        props.item.menuitem.category.name}
+                    {item.menuitem.flavour + ' ' + item.menuitem.category.name}
                 </p>
-                <p className="desc">{props.item.menuitem.description}</p>
+                <p className="desc">{item.menuitem.description}</p>
             </div>
             <div className="counter">
                 <button
@@ -35,32 +38,30 @@ export default function CartListItem(props: CartListItemProps) {
                     onClick={(e) =>
                         context.updateCart({
                             type: 'decrementQty',
-                            item: props.item,
+                            item: item,
                         })
                     }
                 >
                     <Icons.RemoveCircleOutline fill={primaryColor} />
                 </button>
-                <p className="qty">{props.item.qty}</p>
+                <p className="qty">{item.qty}</p>
                 <button
                     className="btn icon transparent"
                     onClick={(e) =>
                         context.updateCart({
                             type: 'incrementQty',
-                            item: props.item,
+                            item: item,
                         })
                     }
                 >
                     <Icons.AddCircle fill={primaryColor} />
                 </button>
             </div>
-            <p className="price">
-                ${props.item.menuitem.price * props.item.qty}
-            </p>
+            <p className="price">${item.menuitem.price * item.qty}</p>
             <button
                 className="btn icon transparent"
                 onClick={(e) =>
-                    context.updateCart({ type: 'remove', item: props.item })
+                    context.updateCart({ type: 'remove', item: item })
                 }
             >
                 <Icons.Cancel fill={primaryColor} />
