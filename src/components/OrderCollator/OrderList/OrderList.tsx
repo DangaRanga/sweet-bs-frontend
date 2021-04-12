@@ -13,7 +13,6 @@ function OrderList(props: OrderListProps) {
     // Initialize State values
     const [orders, setOrders] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-    const [modalOpen, setModalOpen] = useState(false);
 
     const url = `http://localhost:9090/orders`;
     let fetchedOrders: any = false;
@@ -65,7 +64,12 @@ function OrderList(props: OrderListProps) {
                                         ? 'Delivered'
                                         : 'In Progress'}{' '}
                                 </li>
-                                <li> {order['user']['name']}</li>
+                                <li>
+                                    {' '}
+                                    {order['user']['firstname'] +
+                                        ' ' +
+                                        order['user']['lastname']}
+                                </li>
                                 <li> {order['user']['address']} </li>
                                 <li> $500 </li>
                                 <li>
