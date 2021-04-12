@@ -9,6 +9,7 @@ interface OrderCollatorProps {}
 function OrderCollator() {
     return (
         <div id="order-collator">
+            <h1>Order Analytics</h1>
             <OrderList></OrderList>
         </div>
     );
