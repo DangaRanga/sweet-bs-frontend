@@ -44,7 +44,7 @@ function DashboardChart() {
                     ],
                 }}
                 height={200}
-                width={150}
+                width={50}
                 options={{
                     maintainAspectRatio: false,
                     scales: {
