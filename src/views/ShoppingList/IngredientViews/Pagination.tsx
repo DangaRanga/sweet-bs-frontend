@@ -18,7 +18,7 @@ export default function Pagination(props: paginationProps) {
     }
 
     return (
-        <nav>
+        <div>
             <ul className="pagination">
                 {pageNumber.map((number) => (
                     <li key={number} className="page-item">
@@ -32,6 +32,6 @@ export default function Pagination(props: paginationProps) {
                     </li>
                 ))}
             </ul>
-        </nav>
+        </div>
     );
 }

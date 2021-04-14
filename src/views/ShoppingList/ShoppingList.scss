@@ -2,15 +2,16 @@
 @import '../../global/colours';
 
 #shopping {
-    min-height: 100%;
+    height: 90vh;
     width: 100%;
+    overflow-y: hidden;
+    background-color: $bgDarker;
 
     .shopping-list {
         padding: 2.5rem;
         width: 100%;
-        height: 93vh;
+        height: 100%;
         align-items: center;
-        background-color: $bgDarker;
         color: $onLight;
         @include body;
         grid-column: 2;

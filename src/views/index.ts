@@ -1,5 +1,6 @@
 export { default as ShoppingCart } from './ShoppingCart/ShoppingCart';
 export { default as CustomerAnalytics } from './CustomerAnalytics/CustomerAnalytics';
+export { default as UserOrders } from './CustomerAnalytics/UserViews/UserOrders';
 export { default as SignUp } from './SignUp/SignUp';
 export { default as ShoppingList } from './ShoppingList/ShoppingList';
 export { default as MyAccount } from './MyAccount/MyAccount';

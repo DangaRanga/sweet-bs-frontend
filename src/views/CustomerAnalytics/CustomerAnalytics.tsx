@@ -8,14 +8,15 @@ import UserDisplay from './UserViews/UserDisplay';
 import TotalCustomers from './UserViews/TotalCustomers';
 import UserDetails from './UserViews/UserDetails';
 import Pagination from './UserViews/Pagination';
-import logo from "../../assets/CLIENT/Sweet B's Long.png";
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface CustomerAnalyticsProps {}
 
 export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     const sortOptions = [
-        { value: 'date', label: 'Date Created' },
         { value: 'name', label: 'Name' },
+        { value: 'orders', label: 'Orders Placed' },
     ];
     const [selectedOption, setSelectedOption] = useState({
         value: 'name',
@@ -31,7 +32,8 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     const [usr, setUsr] = useState<User>(users[0]);
     const [userLst, setUserLst] = useState<User[]>([...users]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage] = useState(10);
+    const [usersPerPage] = useState(9);
+    const [totalOrders, setTotalOrders] = useState(0);
 
     function getUser(user: User) {
         setUsr(user);
@@ -60,17 +62,20 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     useEffect(() => {
         selectedOption.value === 'name'
             ? setUserLst(
-                  [...users].sort((a, b) =>
-                      a.firstname > b.firstname ? 1 : -1
-                  )
+                  [...users].sort((a, b) => (a.lastname > b.lastname ? 1 : -1))
               )
             : setUserLst(
                   [...users].sort((a, b) =>
-                      a.created_on > b.created_on ? 1 : -1
+                      a.orders_placed > b.orders_placed ? -1 : 1
                   )
               );
-        console.log(selectedOption.value);
     }, [users, selectedOption]);
+    useEffect(() => {
+        let total = users
+            .map((user) => user.orders_placed)
+            .reduce((a, b) => a + b, 0);
+        setTotalOrders(total);
+    }, [users]);
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -110,8 +115,8 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
                             <hr />
                             <div className="customer-info-title">
                                 <p className="titles">Name</p>
-                                <p className="titles">Location</p>
-                                <p className="titles">Total Orders</p>
+                                <p className="titles">Email Address</p>
+                                <p className="titles">Orders Placed</p>
                             </div>
                             <hr />
                             {currentUsers.map((user) => (
@@ -133,15 +138,27 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
                     <div>
                         <TotalCustomers users={users} />
                     </div>
-                    <div className="total-orders">Number</div>
-                    <div className="updates">
-                        <h2>Latest Updates</h2>
+                    <div className="total-orders">
+                        <p>Total Orders</p>
+                        <h2>{totalOrders}</h2>
                     </div>
-                    <div>
+                    <div className="details">
                         <UserDetails usr={usr} />
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                transition={Zoom}
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 }

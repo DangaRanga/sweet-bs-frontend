@@ -12,7 +12,7 @@ export default function TotalCustomers(props: TotalCustomersProps) {
     useEffect(() => {
         let total = 0;
         for (let i of props.users) {
-            if (i.is_admin != true) {
+            if (i.is_admin !== true) {
                 total += 1;
             }
         }

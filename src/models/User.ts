@@ -18,6 +18,7 @@ export default interface User extends DbModel {
     public_id: string;
     /** The date on which this user was created */
     created_on: Date;
+    orders_placed: number;
 }
 
 /**
@@ -36,5 +37,5 @@ export interface Customer extends User {
     /** The address to which this customer's orders are delivered */
     address: string;
     is_admin: false;
-    orders: Order[]
+    orders: Order[];
 }

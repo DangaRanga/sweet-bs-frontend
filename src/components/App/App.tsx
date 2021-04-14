@@ -18,6 +18,7 @@ import {
     CustomerAnalytics,
     ShoppingList,
     SignUp,
+    UserOrders,
 } from '../../views';
 
 // Component Imports
@@ -79,6 +80,9 @@ export default function App() {
 
                     <Route exact path="/portal/customers">
                         <ManagementPortal portalComponent={CustomerAnalytics} />
+                    </Route>
+                    <Route exact path="/portal/customers/:id">
+                        <ManagementPortal portalComponent={UserOrders} />
                     </Route>
                     <Route exact path="/portal/ingredients">
                         <ManagementPortal portalComponent={ShoppingList} />
