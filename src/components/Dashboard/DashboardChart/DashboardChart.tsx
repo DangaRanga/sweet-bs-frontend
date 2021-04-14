@@ -16,7 +16,7 @@ interface DashboardChartProps {
 function DashboardChart() {
     return (
         <div id="dashboard-chart">
-            <Line
+            {/* <Line
                 data={{
                     labels: [
                         'Monday',
@@ -63,7 +63,7 @@ function DashboardChart() {
                         },
                     },
                 }}
-            />
+            /> */}
         </div>
     );
 }

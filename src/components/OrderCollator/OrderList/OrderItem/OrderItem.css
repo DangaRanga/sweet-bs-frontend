@@ -1,13 +1,7 @@
-/* theme colours */
-/* semantic colours */
-/* functionality colours */
-#order-collator {
-    margin: 20px 30px;
-    max-height: 100vh;
-}
+.not-selected {
+  display: none; }
 
-#order-collator h1 {
-    margin-bottom: 10px;
-}
+.order-detail {
+  margin: 20px 0px; }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk9yZGVyQ29sbGF0b3IuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtCQUFrQjtBQUNsQixxQkFBcUI7QUFDckIsMEJBQTBCO0FBQzFCO0VBQ0UsaUJBQWlCO0VBQ2pCLGlCQUFpQixFQUFFOztBQUVyQjtFQUNFLG1CQUFtQixFQUFFIiwiZmlsZSI6Ik9yZGVyQ29sbGF0b3IuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogdGhlbWUgY29sb3VycyAqL1xuLyogc2VtYW50aWMgY29sb3VycyAqL1xuLyogZnVuY3Rpb25hbGl0eSBjb2xvdXJzICovXG4jb3JkZXItY29sbGF0b3Ige1xuICBtYXJnaW46IDIwcHggMzBweDtcbiAgbWF4LWhlaWdodDogMTAwdmg7IH1cblxuI29yZGVyLWNvbGxhdG9yIGgxIHtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDsgfVxuIl19 */
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk9yZGVySXRlbS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhLEVBQUU7O0FBRWpCO0VBQ0UsZ0JBQWdCLEVBQUUiLCJmaWxlIjoiT3JkZXJJdGVtLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ub3Qtc2VsZWN0ZWQge1xuICBkaXNwbGF5OiBub25lOyB9XG5cbi5vcmRlci1kZXRhaWwge1xuICBtYXJnaW46IDIwcHggMHB4OyB9XG4iXX0= */

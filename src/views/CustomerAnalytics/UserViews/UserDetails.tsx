@@ -56,7 +56,7 @@ export default function UserDetails(props: UserDetailsProps) {
                                 <p>Email: {props.usr.email}</p>
                                 <p>Address: {props.usr.address}</p>
                                 <p>ID: {props.usr.id}</p>
-                                <p>Total Orders: 30</p>
+                                <p>Total Orders: {props.usr.orders_placed}</p>
                             </div>
                             <div className="detail-btns">
                                 <p className="details-btn">

@@ -62,12 +62,16 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
     useEffect(() => {
         selectedOption.value === 'name'
             ? setUserLst(
-                  [...users].sort((a, b) => (a.lastname > b.lastname ? 1 : -1))
+                  [...users]
+                      .filter((user) => !user.is_admin)
+                      .sort((a, b) => (a.lastname > b.lastname ? 1 : -1))
               )
             : setUserLst(
-                  [...users].sort((a, b) =>
-                      a.orders_placed > b.orders_placed ? -1 : 1
-                  )
+                  [...users]
+                      .filter((user) => !user.is_admin)
+                      .sort((a, b) =>
+                          a.orders_placed > b.orders_placed ? -1 : 1
+                      )
               );
     }, [users, selectedOption]);
     useEffect(() => {
