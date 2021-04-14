@@ -17,7 +17,7 @@ interface MenuItemItem {
 interface MenuItemFields {
     id: number;
     menuitem: MenuItemItem;
-    quantity: number;
+    qty: number;
 }
 
 interface OrderFields {
@@ -65,7 +65,7 @@ function OrderItem({ order: order }: OrderItemProps) {
                 {order.items.map((menuitem) => (
                     <ul>
                         <li>Item: {menuitem.menuitem.description}</li>
-                        <li>Quantity: {menuitem.quantity}</li>
+                        <li>Quantity: {menuitem.qty}</li>
                         <li>Flavour: {menuitem.menuitem.flavour}</li>
                         <li>Price: $50</li>
                     </ul>

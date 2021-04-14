@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { DashboardCard } from './DashboardCard';
+import { DashboardChart } from './DashboardChart';
 
 import './Dashboard.css';
 
@@ -8,7 +9,7 @@ function Dashboard() {
     return (
         <div id="dashboard">
             <h1>Dashboard</h1>
-            <div id="dashboard-card-group">
+            <section id="dashboard-card-group">
                 <DashboardCard cardItemName="Total Orders" cardItemData={[]} />
                 <DashboardCard
                     cardItemName="Total Customers"
@@ -22,7 +23,10 @@ function Dashboard() {
                     cardItemName="Shopping List Items"
                     cardItemData={[]}
                 />
-            </div>
+            </section>
+            <section id="dashboard-graphs">
+                <DashboardChart></DashboardChart>
+            </section>
         </div>
     );
 }
