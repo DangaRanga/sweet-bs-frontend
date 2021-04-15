@@ -14,6 +14,9 @@ import {
     NotFound,
     ProcessOrder,
     ShoppingCart,
+    MenuManager,
+    AddMenuItem,
+    EditItem,
     ManagementPortal,
     CustomerAnalytics,
     ShoppingList,
@@ -77,7 +80,15 @@ export default function App() {
                     <Route exact path="/success">
                         <Success />
                     </Route>
-
+		    <Route exact path="/portal/menu-manager">
+			<ManagementPortal portalComponent={MenuManager} />
+		    </Route>
+		    <Route exact path="/portal/menu-manager/add">
+			<ManagementPortal portalComponent={AddMenuItem} />
+		    </Route>
+		    <Route exact path="/portal/menu-manager/edit/:id">
+		        <ManagementPortal portalComponent={EditItem} />
+		    </Route>
                     <Route exact path="/portal/customers">
                         <ManagementPortal portalComponent={CustomerAnalytics} />
                     </Route>
