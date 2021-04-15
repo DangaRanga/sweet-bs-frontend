@@ -4,10 +4,11 @@
 #shopping {
     height: 90vh;
     width: 100%;
-    overflow-y: hidden;
+    overflow: auto;
     background-color: $bgDarker;
 
     .shopping-list {
+        position: relative;
         padding: 2.5rem;
         width: 100%;
         height: 100%;
@@ -172,5 +173,41 @@
         border-radius: 5px;
         background-color: white;
         box-shadow: -2px 2px 14px -5px rgba(0, 0, 0, 0.75);
+    }
+
+    .pagination-con {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-right: 30%;
+    }
+
+    .pagination {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        border: none;
+        list-style: none;
+        padding-top: 20px;
+        position: absolute;
+        bottom: 0;
+        justify-content: center;
+        display: flex;
+
+        .page-link {
+            height: 24px;
+            width: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .active-page {
+            background-color: $primary;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+        }
     }
 }

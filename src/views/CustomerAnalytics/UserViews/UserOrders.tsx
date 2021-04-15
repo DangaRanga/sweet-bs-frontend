@@ -48,8 +48,8 @@ export default function UserOrders() {
         { value: 'not-complete', label: 'Not Completed' },
     ];
     const [selectedOption, setSelectedOption] = useState({
-        value: 'name',
-        label: 'Name',
+        value: 'not-complete',
+        label: 'Not Complete',
     });
 
     function handleChange(option: any) {
@@ -86,6 +86,10 @@ export default function UserOrders() {
               );
     }, [selectedOption]);
 
+    const handleRefresh = () => {
+        getUserOrders(id);
+    };
+
     return (
         <div>
             {loading || loadingUser ? (
@@ -107,7 +111,12 @@ export default function UserOrders() {
                                     {user.firstname + ' ' + user.lastname}
                                 </h1>
                                 <div>
-                                    <button className="btn">Refresh</button>
+                                    <button
+                                        onClick={handleRefresh}
+                                        className="btn"
+                                    >
+                                        Refresh
+                                    </button>
                                 </div>
                                 <div className="select">
                                     <label>Sort by </label>
