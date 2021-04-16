@@ -69,7 +69,13 @@ async function login(username: string, password: string): Promise<JWT> {
             'Content-Type': 'application/json',
         },
     })
-        .then((res) => res.json())
+        .then((res) => {
+            if (res.status === 202) {
+                return res.json();
+            } else {
+                throw Error("Incorrect Credentials");
+            }
+        })
         .then((data) => fromJSON<JWT>(data) ?? { token: null })
         .catch((err) => ({ token: null }));
 }
