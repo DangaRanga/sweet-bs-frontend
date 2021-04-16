@@ -172,7 +172,7 @@ function AuthForm({ isLogin: isLogin }: AuthFormProps) {
                             className="input-field"
                             type="password"
                             name="password-confirm"
-                            id="password-confim"
+                            id="password-confirm"
                             placeholder=" "
                             onChange={(e) =>
                                 setFormState((prev) => ({
