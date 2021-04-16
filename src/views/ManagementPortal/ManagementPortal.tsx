@@ -17,9 +17,11 @@ function ManagementPortal({
     portalComponent: PortalComponent,
 }: ManagementPortalProps) {
     const context = useContext(AppContext);
-
+    
     checkAuthorization(context.jwt);
     
+    setTimeout(() => { }, 1500);
+
     return (
         <div id="portal-nav">
             <PortalSidebar></PortalSidebar>

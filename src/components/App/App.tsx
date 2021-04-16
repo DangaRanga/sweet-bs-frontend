@@ -36,7 +36,7 @@ export default function App() {
 
     const [cart, updateCart] = AppHooks.useCart();
 
-    useEffect(() => {
+    /* useEffect(() => {
         let mounted = true;
 
         if (mounted) {
@@ -52,7 +52,7 @@ export default function App() {
         return () => {
             mounted = false;
         };
-    }, []);
+    }, []); */
 
     return (
         <AppContext.Provider
@@ -81,7 +81,10 @@ export default function App() {
                         <ProcessOrder />
                     </Route>
                     <Route exact path="/signup">
-                        <SignUp></SignUp>
+                        <SignUp />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
                     </Route>
                     <Route exact path="/portal/">
                         <ManagementPortal portalComponent={Dashboard} />

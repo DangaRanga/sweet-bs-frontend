@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 import './OrderItem.css';
+import { MenuItemCategory } from '../../../../models';
 
 interface UserFields {
     firstname: string;
@@ -12,6 +13,8 @@ interface UserFields {
 interface MenuItemItem {
     description: string;
     flavour: string;
+    price: number;
+    category: MenuItemCategory;
 }
 
 interface MenuItemFields {
@@ -34,6 +37,11 @@ interface OrderItemProps {
 
 function OrderItem({ order: order }: OrderItemProps) {
     const [selected, setSelected] = useState(false);
+    let total = 0;
+    order.items.map((item) => {
+        total += item.menuitem.price * item.qty;
+    });
+    total = (total * 100) / 100;
 
     return (
         <article className="order-list-row">
@@ -43,7 +51,7 @@ function OrderItem({ order: order }: OrderItemProps) {
                     <li> {order.complete ? 'Delivered' : 'In Progress'} </li>
                     <li> {order.user.firstname + ' ' + order.user.lastname}</li>
                     <li> {order.user.address} </li>
-                    <li> $500 </li>
+                    <li> ${total} </li>
 
                     {/* Convert the date into a readable form */}
                     <li> {moment(order.created_on).format('DD/MM/YY')}</li>
@@ -64,10 +72,15 @@ function OrderItem({ order: order }: OrderItemProps) {
             >
                 {order.items.map((menuitem) => (
                     <ul>
-                        <li>Item: {menuitem.menuitem.description}</li>
+                        <li>
+                            Item:{' '}
+                            {menuitem.menuitem.flavour +
+                                ' ' +
+                                menuitem.menuitem.category.name}
+                        </li>
                         <li>Quantity: {menuitem.qty}</li>
                         <li>Flavour: {menuitem.menuitem.flavour}</li>
-                        <li>Price: $50</li>
+                        <li>Price: ${menuitem.menuitem.price}</li>
                     </ul>
                 ))}
             </section>
