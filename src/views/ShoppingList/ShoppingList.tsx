@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ShoppingList.css';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
@@ -12,13 +12,42 @@ interface ShoppingListProps {}
 
 export default function ShoppingList(props: ShoppingListProps) {
     var ingredientLst = IngredientsHooks.useIngredients();
+    const [ingredientsNeeded, setIngredientsNeeded] = useState<Ingredient[]>(
+        []
+    );
+    const [lst, setLst] = useState<string[]>([]);
+
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        const getOrders = async () => {
+            let res = await fetch(`http://localhost:9090/orders`);
+            let data = await res.json();
+            setOrders(data);
+        };
+        getOrders();
+    }, []);
+
+    useEffect(() => {
+        const getNeeded = async () => {
+            let res = await fetch(`http://localhost:9090/weeks-ingredients`);
+            let data = await res.json();
+            setLst(data);
+        };
+        getNeeded();
+    }, []);
+    useEffect(() => {
+        setIngredientsNeeded(
+            ingredientLst.filter((ingredient) => lst.includes(ingredient.name))
+        );
+    }, [ingredientLst, lst]);
 
     // Use States
     const [ingredients, setIngredients] = useState<Ingredient[]>([
-        ...ingredientLst,
+        ...ingredientsNeeded,
     ]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [ingredientsPerPage] = useState(10);
+    const [ingredientsPerPage] = useState(8);
     const [selectedOption, setSelectedOption] = useState({
         value: 'id',
         label: 'ID',
@@ -55,20 +84,24 @@ export default function ShoppingList(props: ShoppingListProps) {
 
     // Sorting List Based on Select with useEffect
     useEffect(() => {
-        if (selectedOption.value == 'name') {
+        if (selectedOption.value === 'name') {
             setIngredients(
-                [...ingredientLst].sort((a, b) => (a.name > b.name ? 1 : -1))
+                [...ingredientsNeeded].sort((a, b) =>
+                    a.name > b.name ? 1 : -1
+                )
             );
-        } else if (selectedOption.value == 'stock') {
+        } else if (selectedOption.value === 'stock') {
             setIngredients(
-                [...ingredientLst].sort((a) => (a.in_stock == true ? 1 : -1))
+                [...ingredientsNeeded].sort((a) =>
+                    a.in_stock === true ? 1 : -1
+                )
             );
         } else {
             setIngredients(
-                [...ingredientLst].sort((a, b) => (a.id > b.id ? 1 : -1))
+                [...ingredientsNeeded].sort((a, b) => (a.id > b.id ? 1 : -1))
             );
         }
-    }, [ingredientLst, selectedOption]);
+    }, [ingredientLst, selectedOption, ingredientsNeeded]);
 
     // Pagination
     const indexOfLastIngredient = currentPage * ingredientsPerPage;
@@ -107,7 +140,7 @@ export default function ShoppingList(props: ShoppingListProps) {
                         </div>
                     </div>
                     <div className="ingredients">
-                        <h2>Ingredients Needed</h2>
+                        <h2>Ingredients Needed This Week</h2>
                         <div className="lst">
                             <hr />
                             <div className="ingredient-info-title">
@@ -131,7 +164,7 @@ export default function ShoppingList(props: ShoppingListProps) {
                     </div>
                     <div className="total-orders-shopping">
                         <p>Total Orders</p>
-                        <h2>30</h2>
+                        <h2>{orders.length}</h2>
                     </div>
                     <div className="total-ingredients">
                         <p>Total Ingredients</p>

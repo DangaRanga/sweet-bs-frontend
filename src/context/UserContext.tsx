@@ -6,6 +6,11 @@ interface UserProviderProps {
     children: any;
 }
 
-function UserProvider(props: UserProviderProps) {}
+function UserProvider({ children }: UserProviderProps) {
+    const [userData, setUserData] = useState({
+        token: '',
+        user: {},
+    });
+}
 
 export default UserProvider;

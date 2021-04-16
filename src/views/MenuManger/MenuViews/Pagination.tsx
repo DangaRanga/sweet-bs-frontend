@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 interface paginationProps {
-    usersPerPage: number;
-    totalUsers: number;
+    itemsPerPage: number;
+    totalItems: number;
     paginate(num: number): any;
 }
 
@@ -12,7 +12,7 @@ export default function Pagination(props: paginationProps) {
 
     for (
         let i = 1;
-        i <= Math.ceil(props.totalUsers / props.usersPerPage);
+        i <= Math.ceil(props.totalItems / props.itemsPerPage);
         i++
     ) {
         pageNumber.push(i);
