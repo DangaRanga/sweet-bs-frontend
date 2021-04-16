@@ -35,7 +35,7 @@
     }
 
     & span {
-        padding: 15px 30px;
+        padding: 15px 35px;
         pointer-events: none;
         position: absolute;
         left: 0;
@@ -49,14 +49,14 @@
     & input:focus + span,
     & input:not(:placeholder-shown) + span {
         opacity: 0.7;
-        transform: scale(0.75) translateY(-100%) translateX(-45px);
+        transform: scale(0.75) translateY(-100%) translateX(-50px);
     }
 
     /* For IE Browsers*/
     & input:focus + span,
     & input:not(:-ms-input-placeholder) + span {
         opacity: 0.7;
-        transform: scale(0.75) translateY(-100%) translateX(-45px);
+        transform: scale(0.75) translateY(-100%) translateX(-50px);
     }
 }
 
@@ -97,4 +97,27 @@
 #auth-toggle button:hover {
     cursor: pointer;
     color: #9377e2;
+}
+
+#firstname,
+#lastname,
+#username,
+#address {
+    background: url('../../assets/icons/account-circle-purple.svg') no-repeat
+        scroll;
+    background-position: left;
+    background-size: 30px;
+}
+
+#password,
+#password-confirm {
+    background: url('../../assets/icons/lock-purple.svg') no-repeat scroll;
+    background-position: left;
+    background-size: 30px;
+}
+
+#email {
+    background: url('../../assets/icons/mail-purple.svg') no-repeat scroll;
+    background-position: left;
+    background-size: 30px;
 }
