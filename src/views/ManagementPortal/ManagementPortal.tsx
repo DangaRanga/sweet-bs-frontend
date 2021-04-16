@@ -1,6 +1,8 @@
 // React Imports
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
+import { AppContext } from '../../context';
+import { checkAuthorization } from '../../hooks/AppHooks';
 import { PortalSidebar } from './PortalSidebar';
 
 // CSS Imports
@@ -14,6 +16,10 @@ interface ManagementPortalProps {
 function ManagementPortal({
     portalComponent: PortalComponent,
 }: ManagementPortalProps) {
+    const context = useContext(AppContext);
+
+    checkAuthorization(context.jwt);
+    
     return (
         <div id="portal-nav">
             <PortalSidebar></PortalSidebar>

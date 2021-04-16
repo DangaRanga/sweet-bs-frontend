@@ -37,21 +37,5 @@
         grid-area: maincontent;
     }
 
-    .add-to-cart-success{
-        background-color: $success;
-        @include heading2;
-        font-size: 1.2rem;
-    }
-
-    .menu-error{
-        background-color: $danger;
-        @include heading2;
-        font-size: 1.2rem;
-    }
-
-    .menu-update{
-        background-color: $info;
-        @include heading2;
-        font-size: 1.2rem;
-    }
+    
 }

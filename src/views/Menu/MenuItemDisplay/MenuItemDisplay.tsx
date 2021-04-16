@@ -95,7 +95,7 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                                 item: props.menuitem,
                                 qty: qty,
                             });
-                            toast.success("Added to cart successfully", {className:"add-to-cart-success"});
+                            toast.success("Added to cart successfully", {className:"toast-success"});
                         }}
                     >
                         Add to Cart

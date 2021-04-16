@@ -8,8 +8,6 @@ import UserDisplay from './UserViews/UserDisplay';
 import TotalCustomers from './UserViews/TotalCustomers';
 import UserDetails from './UserViews/UserDetails';
 import Pagination from './UserViews/Pagination';
-import { ToastContainer, Zoom } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 interface CustomerAnalyticsProps {}
 
@@ -151,18 +149,6 @@ export default function CustomerAnalytics(props: CustomerAnalyticsProps) {
                     </div>
                 </div>
             </div>
-            <ToastContainer
-                transition={Zoom}
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </div>
     );
 }

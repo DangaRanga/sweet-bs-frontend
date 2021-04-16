@@ -1,11 +1,7 @@
 // React Imports
 import React, { useEffect } from 'react';
-import {
-    Switch,
-    Route,
-    BrowserRouter,
-    RouteComponentProps,
-} from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { ToastContainer, Zoom } from 'react-toastify';
 
 // Views Imports
 import {
@@ -32,6 +28,8 @@ import { AppHooks } from '../../hooks';
 import './App.css';
 import { Success } from '../../views/ProcessOrder/Success/Success';
 import { AppContext } from '../../context';
+import 'react-toastify/dist/ReactToastify.css';
+import LoginFirst from '../LoginFirst/LoginFirst';
 
 export default function App() {
     const [jwt, updateJWT] = AppHooks.useJWT();
@@ -50,7 +48,7 @@ export default function App() {
 
             //console.log(jwt);
         }
-    
+
         return () => {
             mounted = false;
         };
@@ -67,6 +65,9 @@ export default function App() {
         >
             <BrowserRouter forceRefresh={false}>
                 <Switch>
+                    <Route exact path="/unauth">
+                        <LoginFirst message="You are unauthorized to access this page. Login as admin first" />
+                    </Route>
                     <Route exact path="/cart">
                         <ShoppingCart />
                     </Route>
@@ -109,11 +110,26 @@ export default function App() {
                     <Route exact path="/portal/ingredients">
                         <ManagementPortal portalComponent={ShoppingList} />
                     </Route>
+                    <Route exact path="/">
+                        <Redirect to="/menu" />
+                    </Route>
                     <Route>
                         <NotFound />
                     </Route>
                 </Switch>
             </BrowserRouter>
+            <ToastContainer
+                transition={Zoom}
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </AppContext.Provider>
     );
 }

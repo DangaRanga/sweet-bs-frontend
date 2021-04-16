@@ -4,8 +4,7 @@ import { useParams } from 'react-router';
 import { MenuHooks } from '../../../hooks';
 import { MenuItem } from '../../../models';
 import { Spinner } from '../../../components';
-import { toast, ToastContainer, Zoom } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default function EditItem() {
     const id = parseInt(useParams<{ id: string }>().id);
@@ -156,18 +155,6 @@ export default function EditItem() {
                     )}
                 </div>
             )}
-            <ToastContainer
-                transition={Zoom}
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </div>
     );
 }

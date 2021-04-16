@@ -25,7 +25,7 @@ export function useCategories() {
                         .map((v: any) => fromJSON<MenuItemCategory>(v))
                         .filter((item) => item !== null) as MenuItemCategory[];
                     setCategories(list);
-                    toast.info('Menu updated', { className: 'menu-update' });
+                    toast.info('Menu updated', { className: 'toast-update' });
                 }
             });
 
@@ -41,7 +41,7 @@ export function useCategories() {
             socket.on('error', (...error) => {
                 toast.error('Something went wrong :(', {
                     toastId: 'menu-socket-error',
-                    className: 'menu-error',
+                    className: 'toast-error',
                 });
             });
         }

@@ -1,5 +1,5 @@
 import './MenuManager.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Select from 'react-select';
 import { MenuHooks } from '../../hooks';
 import Pagination from './MenuViews/Pagination';

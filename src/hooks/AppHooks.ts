@@ -2,6 +2,7 @@ import { JWT, ShoppingCartData } from '../models/AppData';
 import { MenuItem, OrderItem } from '../models';
 import { fromJSON, toJSON } from '../utils/JsonUtils';
 import { Reducer, useEffect, useReducer, useState } from 'react';
+import { toast } from 'react-toastify';
 
 /**
  * Hooks to manage the global app state
@@ -69,10 +70,11 @@ export async function login(username: string, password: string): Promise<JWT> {
             'Content-Type': 'application/json',
         },
     })
-        .then((res) => {
+        .then(async (res) => {
             if (res.status === 202) {
                 return res.json();
             } else {
+                toast.error((await res.json()).message, { className: "toast-error" });
                 throw Error("Incorrect Credentials");
             }
         })
@@ -266,4 +268,14 @@ function removeItem(cart: ShoppingCartData, item: OrderItem): ShoppingCartData {
     // filter out the item to be removed
     newCart = newCart.filter((oitem) => oitem.menuitem.id !== item.menuitem.id);
     return newCart;
+}
+
+export function checkAuthorization(jwt: JWT) {
+    fetch("http://0.0.0.0:9090/isauthorized", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Access-Token': jwt.token ?? "",
+        }
+    }).then(res=> res.status!==200 && window.location.replace("/unauth"))
 }

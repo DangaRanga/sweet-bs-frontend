@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import { IngredientsHooks, MenuHooks } from '../../../hooks';
 import Creatable from 'react-select/creatable';
 import { Ingredient, MenuItemCategory } from '../../../models';
-import { toast, ToastContainer, Zoom } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default function AddMenuItem() {
     var ingredientLst = IngredientsHooks.useIngredients();
@@ -292,18 +291,6 @@ export default function AddMenuItem() {
                     <input type="submit" value="submit" className="submit" />
                 </form>
             </div>
-            <ToastContainer
-                transition={Zoom}
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
         </div>
     );
 }

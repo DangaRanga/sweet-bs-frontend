@@ -55,3 +55,22 @@ a {
 ul {
     list-style-type: none;
 }
+
+
+.toast-success{
+    background-color: $success;
+    @include heading2;
+    font-size: 1.2rem;
+}
+
+.toast-error{
+    background-color: $danger;
+    @include heading2;
+    font-size: 1.2rem;
+}
+
+.toast-update{
+    background-color: $info;
+    @include heading2;
+    font-size: 1.2rem;
+}

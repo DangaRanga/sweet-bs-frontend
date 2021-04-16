@@ -2,7 +2,6 @@ import '../CustomerAnalytics.css';
 import { User } from '../../../models';
 import remove from '../../../assets/icons/person_remove_black_24dp.svg';
 import viewOrders from '../../../assets/icons/view_list_black_24dp.svg';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnalyticsHooks } from '../../../hooks';
 import { toast } from 'react-toastify';
