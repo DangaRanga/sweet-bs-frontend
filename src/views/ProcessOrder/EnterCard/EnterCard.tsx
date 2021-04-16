@@ -1,54 +1,61 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './EnterCard.css';
 import cardImg from '../../../assets/images/undraw_Credit_card_re_blml 1.svg';
 import visaImg from '../../../assets/icons/visa.svg';
 import mastercardImg from '../../../assets/icons/mastercard.svg';
-import { AppHooks, ProcessOrderHooks } from '../../../hooks';
-import { JWT, ShoppingCartData } from '../../../models/AppData';
+import { ProcessOrderHooks } from '../../../hooks';
+import { AppContext } from '../../../context';
 
-interface EnterCardProps {
-    cart: ShoppingCartData;
-    updateCart: AppHooks.CartUpdater;
-    jwt: JWT;
-}
-
-export function restrictToNumbers(e: React.FormEvent<HTMLInputElement>) {
+/**
+ * Prevents a user from entereing anything other than numbers in fields where this is called
+ * @param e the input event
+ */
+function restrictToNumbers(e: React.FormEvent<HTMLInputElement>) {
     var value = e.currentTarget.value;
+    // remove anything that isnt a number from the input
     e.currentTarget.value = value.replace(/[^0-9]/g, '');
 }
 
-export default function EnterCard(props: EnterCardProps) {
+/**
+ * The form that allows the customer to enter their card information so that the order can be processed
+ * @returns The enter card component
+ */
+export default function EnterCard() {
+    const context = useContext(AppContext);
+
+    // create a state for the fields in the form
     const [fields, updateFields] = ProcessOrderHooks.useFields();
+
+    // canPlaceOrder deteremines whether or not all fielda have been filled and the order can be placed
+    // shouldPlaceOrder determines whether or not the order should be sent. This set to true when the user presses the place order button
     const [
         canPlaceOrder,
         setShouldPlaceOrder,
     ] = ProcessOrderHooks.usePlaceOrder(
-        props.cart,
-        props.jwt,
+        context.cart,
+        context.jwt,
         fields,
-        props.updateCart
+        context.updateCart
     );
 
     return (
         <div id="enter-card">
             <div className="content">
-                <form method="post" onSubmit={(e)=>{
-                        if(e.currentTarget.checkValidity()){
+                <form
+                    method="post"
+                    onSubmit={(e) => {
+                        if (e.currentTarget.checkValidity()) {
                             setShouldPlaceOrder(true);
-
                         }
-                        console.log("onsubit")
                         e.preventDefault();
-                        console.log(fields);
-                        
-                    
-                }}>
+                    }}
+                >
                     <Link replace className="danger" to="/cart">
                         Cancel
                     </Link>
                     <h2>One more thing first!</h2>
-                    <h1>Please Enter Your Card Info</h1>
+                    <h1>Please Enter Your Card Info</h1>                    
                     <div id="select-card-type">
                         <label htmlFor="card-type">Card Type</label>
                         <label

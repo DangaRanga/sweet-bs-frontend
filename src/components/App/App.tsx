@@ -14,11 +14,15 @@ import {
     NotFound,
     ProcessOrder,
     ShoppingCart,
+    MenuManager,
+    AddMenuItem,
+    EditItem,
     ManagementPortal,
     CustomerAnalytics,
     ShoppingList,
     SignUp,
     Login,
+    UserOrders,
 } from '../../views';
 
 // Component Imports
@@ -27,66 +31,79 @@ import { OrderCollator, Dashboard } from '..';
 import { AppHooks } from '../../hooks';
 import './App.css';
 import { Success } from '../../views/ProcessOrder/Success/Success';
+import { AppContext } from '../../context';
 
 export default function App() {
-    const [cart, updateCart] = AppHooks.useCart();
     const [jwt, updateJWT] = AppHooks.useJWT();
 
-    console.log(jwt);
+    const [cart, updateCart] = AppHooks.useCart();
+
+    /* updateJWT({
+        type: 'login',
+        username: 'ARich123',
+        password: 't#st123',
+    });   */
+
+    //console.log(jwt);
 
     return (
-        <BrowserRouter forceRefresh={false}>
-            <Switch>
-                <Route exact path="/cart">
-                    <ShoppingCart cart={cart} updateCart={updateCart} />
-                </Route>
-                <Route exact path="/menu">
-                    <Menu updateCart={updateCart} cart={cart} />
-                </Route>
-                <Route exact path="/profile">
-                    <MyAccount />
-                </Route>
-                <Route
-                    exact
-                    path="/processorder"
-                    render={(props: RouteComponentProps<any, any, any>) => (
-                        <ProcessOrder
-                            cart={cart}
-                            jwt={jwt}
-                            updateCart={updateCart}
-                            history={props.history}
-                            location={props.location}
-                            match={props.match}
-                            staticContext={props.staticContext}
-                        />
-                    )}
-                ></Route>
-                <Route exact path="/signup">
-                    <SignUp></SignUp>
-                </Route>
-                <Route exact path="/login">
-                    <Login></Login>
-                </Route>
-                <Route exact path="/portal/">
-                    <ManagementPortal portalComponent={Dashboard} />
-                </Route>
-                <Route exact path="/portal/orders">
-                    <ManagementPortal portalComponent={OrderCollator} />
-                </Route>
-                <Route exact path="/success">
-                    <Success cart={cart} />
-                </Route>
-
-                <Route exact path="/portal/customers">
-                    <ManagementPortal portalComponent={CustomerAnalytics} />
-                </Route>
-                <Route exact path="/portal/ingredients">
-                    <ManagementPortal portalComponent={ShoppingList} />
-                </Route>
-                <Route>
-                    <NotFound />
-                </Route>
-            </Switch>
-        </BrowserRouter>
+        <AppContext.Provider
+            value={{
+                jwt: jwt,
+                updateJWT: updateJWT,
+                cart: cart,
+                updateCart: updateCart,
+            }}
+        >
+            <BrowserRouter forceRefresh={false}>
+                <Switch>
+                    <Route exact path="/cart">
+                        <ShoppingCart />
+                    </Route>
+                    <Route exact path="/menu">
+                        <Menu />
+                    </Route>
+                    <Route exact path="/profile">
+                        <MyAccount />
+                    </Route>
+                    <Route exact path="/processorder">
+                        <ProcessOrder />
+                    </Route>
+                    <Route exact path="/signup">
+                        <SignUp></SignUp>
+                    </Route>
+                    <Route exact path="/portal/">
+                        <ManagementPortal portalComponent={Dashboard} />
+                    </Route>
+                    <Route exact path="/portal/orders">
+                        <ManagementPortal portalComponent={OrderCollator} />
+                    </Route>
+                    <Route exact path="/success">
+                        <Success />
+                    </Route>
+                    <Route exact path="/portal/menu-manager">
+                        <ManagementPortal portalComponent={MenuManager} />
+                    </Route>
+                    <Route exact path="/portal/menu-manager/add">
+                        <ManagementPortal portalComponent={AddMenuItem} />
+                    </Route>
+                    <Route exact path="/portal/menu-manager/edit/:id">
+                        <ManagementPortal portalComponent={EditItem} />
+                    </Route>
+                    <Route exact path="/portal/customers">
+                        <ManagementPortal portalComponent={CustomerAnalytics} />
+                    </Route>
+                    <Route exact path="/portal/customers/:id">
+                        <ManagementPortal portalComponent={UserOrders} />
+                    </Route>
+                    <Route exact path="/portal/ingredients">
+                        <ManagementPortal portalComponent={ShoppingList} />
+                    </Route>
+                    <Route>
+                        <NotFound />
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </AppContext.Provider>
     );
 }

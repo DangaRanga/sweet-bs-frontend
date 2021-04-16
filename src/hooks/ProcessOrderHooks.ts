@@ -84,7 +84,7 @@ export function usePlaceOrder(
         let isMounted = true;
 
         if (isMounted) {
-            if (shouldPlaceOrder) {
+            if (shouldPlaceOrder && cart.length !== 0) {
                 sendOrder(cart, jwt).then((success) => {
                     // TODO: Once login is implemented, redirect to login on failure
                     //if (success) {
@@ -113,19 +113,21 @@ async function sendOrder(cart: ShoppingCartData, jwt: JWT): Promise<boolean> {
 
     const token = jwt.token ?? '';
     // After initialization, send the new order to the database
-    success = await fetch('http://0.0.0.0:9090/orders/add', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Access-Token': token,
-        },
-        body: toJSON(newOrder),
-    })
-        .then((res) => res.status === 201)
-        .catch((err) => {
-            console.log(err);
-            return false;
-        });
+    if (cart.length > 0) {
+        success = await fetch('http://0.0.0.0:9090/orders/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Access-Token': token,
+            },
+            body: toJSON(newOrder),
+        })
+            .then((res) => res.status === 201)
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+    }
 
     return success;
 }

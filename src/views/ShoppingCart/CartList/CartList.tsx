@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './CartList.css';
 import CartListItem from '../CartListItem/CartListItem';
-import { ShoppingCartData } from '../../../models/AppData';
-import { AppHooks } from '../../../hooks';
+import { AppContext } from '../../../context';
 
-interface CartListProps {
-    cart: ShoppingCartData;
-    updateCart: AppHooks.CartUpdater;
-}
+/**
+ * The list of cart items displayed in the shopping cart view
+ * @returns The cart list component
+ */
+export default function CartList() {
 
-export default function CartList(props: CartListProps) {
-    const list = props.cart.map((item) => {
+    const context = useContext(AppContext);
+
+    // build the cart list from the cart
+    const list = context.cart.map((item) => {
         return (
             <CartListItem
                 key={item.menuitem.id}
                 item={item}
-                updateCart={props.updateCart}
             />
         );
     });

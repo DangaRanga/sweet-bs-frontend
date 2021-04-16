@@ -1,14 +1,15 @@
 import './MenuItemDisplay.css';
 import placeholder from '../../../assets/big_cake.png';
 import { MenuItem, MenuItemCategory } from '../../../models';
-import { AppHooks, MenuHooks, RiveHooks } from '../../../hooks';
-import Rive from 'rive-js';
+import { useContext } from 'react';
+import { AppContext } from '../../../context';
+import { toast } from 'react-toastify';
+import { MenuHooks } from '../../../hooks';
 
 interface MenuItemDisplayProps {
     menuitem: MenuItem;
     category: MenuItemCategory;
     updateSelected: MenuHooks.SelectedUpdater;
-    updateCart: AppHooks.CartUpdater;
     selected: MenuHooks.SelectedState;
 }
 
@@ -18,6 +19,7 @@ interface MenuItemDisplayProps {
  */
 export default function MenuItemDisplay(props: MenuItemDisplayProps) {
     // build the list of flavour buttons and register an onclick handler to each to switch the flavour
+    const context = useContext(AppContext);
 
     const flavours = props.category.menuitems.map((item, i) =>
         item.id === props.menuitem?.id ? (
@@ -44,15 +46,6 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
     );
 
     const [qty, updateQty] = MenuHooks.useQuantity();
-
-    const riveCanvas = RiveHooks.useRiveRef();
-
-    const riveAddToCart = new Rive.Rive({
-        src: '/assets/rive/add_to_cart.riv',
-        canvas: riveCanvas.current,
-        animations: 'idle',
-        autoplay: true,
-    });
 
     return (
         <div id="menuitem">
@@ -93,22 +86,20 @@ export default function MenuItemDisplay(props: MenuItemDisplayProps) {
                             +
                         </button>
                     </div>
-                    <canvas
+                    <button
+                    id="add-to-cart-btn"
+                    className="btn primary filled"
                         onClick={() => {
-                            riveAddToCart.play(['forward']);
-                            setTimeout(() => {
-                                riveAddToCart.play(['reverse']);
-                            }, 1000);
-                            setTimeout(() => {
-                                props.updateCart({
-                                    type: 'add',
-                                    item: props.menuitem,
-                                    qty: qty,
-                                });
-                            }, 1400);
+                            context.updateCart({
+                                type: 'add',
+                                item: props.menuitem,
+                                qty: qty,
+                            });
+                            toast.success("Added to cart successfully", {className:"add-to-cart-success"});
                         }}
-                        ref={riveCanvas}
-                    />
+                    >
+                        Add to Cart
+                    </button>
                 </div>
             </div>
             <div id="pastry-img-div">

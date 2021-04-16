@@ -11,6 +11,7 @@ interface Order extends DbModel {
     items: OrderItem[];
     /**The customer who made the order. Typically the customer would only be present when the order is sent to the Order Collator */
     user?: Customer;
+    created_on?: Date;
 }
 
 /** An order may be placed by a customer on the website or

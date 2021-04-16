@@ -143,16 +143,12 @@ function cartReducer(
 ): ShoppingCartData {
     switch (action.type) {
         case 'add':
-            console.log('random');
             return addItemToCart(cart, action.item, action.qty);
         case 'decrementQty':
-            console.log('random1');
             return decrementItemQty(cart, action.item);
         case 'incrementQty':
-            console.log('random2');
             return incrementItemQty(cart, action.item);
         case 'remove':
-            console.log('random3');
             return removeItem(cart, action.item);
         case 'empty':
             //Completely empties the cart

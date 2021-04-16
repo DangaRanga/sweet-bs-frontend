@@ -37,7 +37,7 @@
 
         form {
             display: grid;
-            grid-template-columns: min-content;
+            grid-template-columns: auto;
             grid-template-rows: min-content min-content min-content;
             grid-auto-rows: min-content;
             gap: 2%;
@@ -52,6 +52,7 @@
                 border: none;
                 outline: none;
                 border-bottom: 2px solid $onLight;
+                width: 100%;
                 padding: 1rem 0;
                 transition: all 0.3s;
             }

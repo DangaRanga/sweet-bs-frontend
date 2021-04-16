@@ -83,12 +83,12 @@ nav {
         width: 8rem;
         grid-area: accountlink;
         //top:0;
-        z-index: 1;
     }
 
     #account-dropdown {
         position: relative;
         display: flex;
+        z-index:9999;
 
         @include body;
         flex-direction: column;

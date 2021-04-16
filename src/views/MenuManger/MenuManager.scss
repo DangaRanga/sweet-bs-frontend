@@ -1,0 +1,218 @@
+@import '../../global/fonts';
+@import '../../global/colours';
+#menu-manager {
+    height: 92vh;
+    width: 100%;
+    overflow-y: hidden;
+    background-color: $bgDarker;
+
+    .menu-items {
+        position: relative;
+        min-height: 80vh;
+        h2 {
+            padding: 12px;
+        }
+        .titles {
+            font-weight: bold;
+        }
+        padding: 10px;
+        margin: 8px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        overflow: auto;
+    }
+
+    .heading-title {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .sort-by {
+        display: grid;
+        grid-template-columns: 1fr 4fr 3fr;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            background-color: $primary;
+            padding: 7px 25px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    }
+
+    .item-info {
+        padding: 2px 0;
+        user-select: none;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2px;
+        transition: 0.3s;
+
+        p {
+            padding: 14px 20px;
+        }
+
+        button {
+            background-color: $primary;
+            padding: 7px 25px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        hr {
+            width: 100%;
+        }
+    }
+    .item-info:hover {
+        background-color: rgba(147, 119, 226, 0.4);
+    }
+    .item-info:active {
+        background-color: rgba(147, 119, 226, 0.7);
+    }
+    .manager-title {
+        user-select: none;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 1;
+        gap: 2px;
+
+        p {
+            padding: 10px 20px;
+        }
+
+        hr {
+            width: 100%;
+        }
+    }
+
+    .pagination-con {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .pagination {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        border: none;
+        list-style: none;
+        padding-top: 20px;
+        position: absolute;
+        bottom: 0;
+        justify-content: center;
+
+        .page-link {
+            height: 24px;
+            width: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .active-page {
+            background-color: $primary;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
+
+.con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    background-color: $bgDarker;
+    min-height: 92vh;
+
+    .success-toast {
+        background-color: $success;
+        color: white;
+        @include heading2;
+        font-size: 1.2rem;
+    }
+
+    .error-toast {
+        background-color: $danger;
+        color: white;
+        @include heading2;
+        font-size: 1.2rem;
+    }
+}
+.form-con {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    margin: 10px 0;
+    width: 600px;
+}
+.item-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 10px;
+
+    input {
+        background-color: white;
+        color: black;
+        width: 100%;
+        padding: 5px 2px;
+        border-radius: 3px;
+        border: 1px solid #aaa;
+        &:focus {
+            outline: none;
+            border: 1.5px solid $primary;
+        }
+    }
+    textarea {
+        background-color: white;
+        color: black;
+        width: 100%;
+        padding: 5px 2px;
+        border-radius: 3px;
+        border: 1px solid #aaa;
+        &:focus {
+            outline: none;
+            border: 1.5px solid $primary;
+        }
+    }
+    .submit {
+        border: none;
+        background-color: $primary;
+        color: white;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+
+    span {
+        font-size: 14px;
+        color: gray;
+    }
+    label {
+        font-size: 16px;
+    }
+}
