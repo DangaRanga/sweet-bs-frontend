@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import { IRegistration, login, register } from '../../hooks/AppHooks';
+import { AppContext } from '../../context';
 
 import './AuthForm.css';
 import SweetBsLogo from "../../assets/CLIENT/Sweet B's Long.png";
@@ -11,15 +12,20 @@ interface AuthFormProps {
 
 function AuthForm({ isLogin: isLogin }: AuthFormProps) {
     const history = useHistory();
+    const { updateJWT } = useContext(AppContext);
+
     const [formState, setFormState] = useState<IRegistration>({
         firstName: '',
         lastName: '',
         username: '',
         email: '',
-        address: [],
+        address: '',
         password: '',
         passwordConfirm: '',
     });
+
+    // Used for setting error or regular messages
+    const [message, setMessage] = useState('');
 
     function validateForSignup() {
         if (formState.password !== formState.passwordConfirm) {
@@ -33,10 +39,15 @@ function AuthForm({ isLogin: isLogin }: AuthFormProps) {
         e.preventDefault();
         let userData = {};
         if (isLogin) {
-            userData = await login(formState.username, formState.password);
+            await updateJWT({
+                type: 'login',
+                username: formState.username,
+                password: formState.password,
+            });
         } else {
             if (validateForSignup()) {
                 userData = await register(formState);
+                console.log(userData);
             }
         }
     }
@@ -83,6 +94,44 @@ function AuthForm({ isLogin: isLogin }: AuthFormProps) {
                             }
                         />
                         <span className="floating-label">Last Name</span>
+                    </div>
+                )}
+                {!isLogin && (
+                    <div className="form-field">
+                        <input
+                            className="input-field"
+                            type="text"
+                            id="email"
+                            name="email"
+                            placeholder=" "
+                            value={formState.email}
+                            onChange={(e) =>
+                                setFormState((prev) => ({
+                                    ...prev,
+                                    email: e.target.value,
+                                }))
+                            }
+                        />
+                        <span className="floating-label">Email Address</span>
+                    </div>
+                )}
+                {!isLogin && (
+                    <div className="form-field">
+                        <input
+                            className="input-field"
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder=" "
+                            value={formState.address}
+                            onChange={(e) =>
+                                setFormState((prev) => ({
+                                    ...prev,
+                                    address: e.target.value,
+                                }))
+                            }
+                        />
+                        <span className="floating-label">Address</span>
                     </div>
                 )}
                 <div className="form-field">
@@ -150,7 +199,13 @@ function AuthForm({ isLogin: isLogin }: AuthFormProps) {
                         Sign {!isLogin ? 'in' : 'up'}
                     </button>
                 </div>
-                <button className="btn auth-btn" onClick={(e) => submit(e)}>
+                <button
+                    className="btn auth-btn"
+                    onClick={(e) => {
+                        console.log(formState);
+                        submit(e);
+                    }}
+                >
                     {isLogin ? 'Login' : 'Sign Up'}
                 </button>
             </form>

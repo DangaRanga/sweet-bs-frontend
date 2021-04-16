@@ -84,7 +84,7 @@ export interface IRegistration {
     firstName: string;
     lastName: string;
     email: string;
-    address: string[];
+    address: string;
 }
 
 /**
@@ -94,25 +94,30 @@ export interface IRegistration {
 export async function register(registerObject: IRegistration) {
     // Destructuring object fields
 
-    return await fetch('http://0.0.0.0:9090/auth/signup', {
+    return await fetch('http://localhost:9090/auth/signup', {
         body: toJSON({
             username: registerObject.username,
             password: registerObject.password,
-            firstName: registerObject.firstName,
-            lastName: registerObject.lastName,
+            firstname: registerObject.firstName,
+            lastname: registerObject.lastName,
             email: registerObject.email,
-
-            // Convert address to comma spaced values
-            address: registerObject.address.toString(),
+            address: registerObject.address,
         }),
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
     })
-        .then((res) => res.json())
-        .then((data) => fromJSON<JWT>(data) ?? { token: null })
-        .catch((err) => ({ token: null }));
+        .then((res) => {
+            if (res.status === 401) {
+                return res.json();
+            } else if (res.status === 201) {
+                return res.json();
+            } else {
+                return res.json();
+            }
+        })
+        .catch((err) => ({ message: err }));
 }
 
 /**

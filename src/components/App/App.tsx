@@ -70,7 +70,10 @@ export default function App() {
                         <ProcessOrder />
                     </Route>
                     <Route exact path="/signup">
-                        <SignUp></SignUp>
+                        <SignUp />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
                     </Route>
                     <Route exact path="/portal/">
                         <ManagementPortal portalComponent={Dashboard} />
